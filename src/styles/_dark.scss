@@ -1,0 +1,67 @@
+@use './mixins' as *;
+
+[vs-theme='dark'] {
+  --sv-background: 30, 32, 35;
+  --sv-text: 255, 255, 255;
+  --sv-gray-1: 24, 25, 28;
+  --sv-gray-2: 20, 20, 23;
+  --sv-gray-3: 15, 16, 19;
+  --sv-gray-4: 10, 11, 14;
+  --sv-shadow-opacity: 0.3;
+  --sv-dark: 0, 0, 0;
+  --sv-background-opacity: 0.6;
+
+  .sv-pagination-content {
+    &.sv-component-dark {
+      .sv-pagination__active {
+        --sv-color: 255, 255, 255;
+        color: -color('gray-3');
+      }
+    }
+  }
+  .sv-button {
+    &.sv-component-dark {
+      &.sv-button--transparent {
+        color: -color('text') !important;
+
+        &:hover {
+          &:before {
+            background: -color('color', 0.2);
+          }
+        }
+        &.sv-button--active {
+          &:before {
+            background: -color('color', -var('background-opacity'));
+          }
+        }
+      }
+    }
+  }
+  .vs-ripple,
+  .vs-ripple-invert,
+  .vs-ripple-content {
+    --sv-color: 0, 0, 0;
+  }
+  .sv-loading {
+    --sv-background: 0, 0, 0;
+  }
+  .sv-input-parent--state-dark {
+    --sv-dark: 255, 255, 255 !important;
+
+    .sv-input {
+      background: #000 !important;
+    }
+  }
+  .sv-component-dark {
+    --sv-color: 0, 0, 0 !important;
+
+    .sv-avatar {
+      color: #fff !important;
+    }
+    &.sv-alert {
+      --sv-color: 0, 0, 0 !important;
+      background: -color('color', 1) !important;
+      color: -color('text', 1) !important;
+    }
+  }
+}

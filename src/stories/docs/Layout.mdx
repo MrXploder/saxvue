@@ -1,0 +1,77 @@
+4                  444444import { Meta } from "@storybook/blocks";
+
+<Meta title="SaxVue/Components/Layout" />
+
+# Layout Components
+
+Grid system for building responsive page layouts.
+
+---
+
+## SvRow & SvCol
+
+A 12-column flexbox grid inspired by Bootstrap.
+
+### SvRow Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `justify` | `string` | `null` | Flex `justify-content` value |
+| `align` | `string` | `null` | Flex `align-items` value |
+| `direction` | `string` | `null` | Flex `flex-direction` value |
+
+### SvCol Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `w` | `string \| number` | `12` | Column width (1–12) |
+| `offset` | `string \| number` | `0` | Left offset (0–11) |
+| `lg` | `string \| number` | — | Width on large screens (≥ 1024px) |
+| `sm` | `string \| number` | — | Width on small screens (≤ 768px) |
+| `xs` | `string \| number` | — | Width on extra-small screens (≤ 480px) |
+
+### Usage
+
+```html
+<sv-row>
+  <sv-col w="8">Main content (8/12)</sv-col>
+  <sv-col w="4">Sidebar (4/12)</sv-col>
+</sv-row>
+```
+
+### Responsive
+
+```html
+<sv-row>
+  <sv-col w="4" sm="6" xs="12">
+    Adapts from 4-col → 6-col → full-width
+  </sv-col>
+  <sv-col w="4" sm="6" xs="12">
+    Same responsive behavior
+  </sv-col>
+  <sv-col w="4" sm="12" xs="12">
+    Fills row on small screens
+  </sv-col>
+</sv-row>
+```
+
+### Alignment
+
+```html
+<sv-row justify="center" align="center">
+  <sv-col w="4">Centered column</sv-col>
+</sv-row>
+
+<sv-row justify="space-between">
+  <sv-col w="3">Left</sv-col>
+  <sv-col w="3">Right</sv-col>
+</sv-row>
+```
+
+### Offset
+
+```html
+<sv-row>
+  <sv-col w="6" offset="3">Centered with offset</sv-col>
+</sv-row>
+```

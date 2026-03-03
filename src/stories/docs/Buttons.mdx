@@ -1,0 +1,89 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="SaxVue/Components/Buttons" />
+
+# SvButton
+
+A versatile button component with multiple style variants, ripple effects, and
+built-in loading states.
+
+## Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `color` | `string` | `null` | Any CSS color value |
+| `primary` | `boolean` | `false` | Use theme primary color |
+| `danger` | `boolean` | `false` | Use theme danger color |
+| `success` | `boolean` | `false` | Use theme success color |
+| `warn` | `boolean` | `false` | Use theme warning color |
+| `dark` | `boolean` | `false` | Use theme dark color |
+| `active` | `boolean` | `false` | Active/selected state |
+| `flat` | `boolean` | `false` | Flat variant (no background) |
+| `border` | `boolean` | `false` | Border-only variant |
+| `gradient` | `boolean` | `false` | Gradient background |
+| `relief` | `boolean` | `false` | Raised/relief effect |
+| `transparent` | `boolean` | `false` | Semi-transparent background |
+| `shadow` | `boolean` | `false` | Adds drop shadow |
+| `floating` | `boolean` | `false` | Floating action button style |
+| `icon` | `boolean` | `false` | Icon-only mode (square aspect) |
+| `circle` | `boolean` | `false` | Circular shape |
+| `square` | `boolean` | `false` | Square corners (no border-radius) |
+| `size` | `string` | `null` | Custom size (`"xl"`, `"large"`, `"small"`, `"mini"`, or any CSS value) |
+| `loading` | `boolean` | `false` | Shows loading spinner |
+| `block` | `boolean` | `false` | Full-width button |
+| `ripple` | `string` | `""` | Ripple effect type: `""`, `"reverse"`, `"cut"` |
+| `to` | `string` | `null` | Vue Router path (uses `$router.push`) |
+| `href` | `string` | `null` | External link URL |
+| `blank` | `boolean` | `false` | Open link in new tab |
+
+## Events
+
+| Event | Payload | Description |
+| --- | --- | --- |
+| `click` | `MouseEvent` | Emitted on button click |
+
+## Slots
+
+| Slot | Description |
+| --- | --- |
+| `default` | Button label content |
+| `animate` | Content shown on hover when using `animationType` |
+
+## Usage
+
+### Style Variants
+
+```html
+<sv-button>Default</sv-button>
+<sv-button flat>Flat</sv-button>
+<sv-button border>Border</sv-button>
+<sv-button gradient>Gradient</sv-button>
+<sv-button relief>Relief</sv-button>
+<sv-button transparent>Transparent</sv-button>
+<sv-button shadow>Shadow</sv-button>
+```
+
+### Loading State
+
+```html
+<sv-button loading>Loading…</sv-button>
+```
+
+### Button Group
+
+Wrap buttons in `<sv-button-group>` for connected button sets:
+
+```html
+<sv-button-group>
+  <sv-button active>One</sv-button>
+  <sv-button>Two</sv-button>
+  <sv-button>Three</sv-button>
+</sv-button-group>
+```
+
+### Link Buttons
+
+```html
+<sv-button to="/dashboard">Router link</sv-button>
+<sv-button href="https://example.com" blank>External</sv-button>
+```

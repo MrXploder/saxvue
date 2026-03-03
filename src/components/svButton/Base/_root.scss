@@ -1,0 +1,11 @@
+.sv-button {
+  --sv-color: '';
+  --sv-color-rotate: var(--sv-primary);
+  --sv-color-darken: var(--sv-primary);
+
+  // component vars;
+  --sv-button-padding: 8px 12px;
+  --sv-button-margin: 5px;
+  --sv-button-border-radius: 12px;
+  --sv-button-text-color: #fff;
+}

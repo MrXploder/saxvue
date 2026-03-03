@@ -1,0 +1,32 @@
+@use '../../../styles/mixins' as *;
+
+.sv-button-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .sv-button {
+    margin: 0px;
+  }
+  .sv-button:not(:last-of-type):not(:first-of-type) {
+    border-radius: 0px;
+    border: 0px;
+    &.sv-button--border {
+      &:before {
+        border-left: 0px;
+        width: 100%;
+      }
+      + .sv-button--border:not(:last-of-type) {
+        &:before {
+          border-right: 0px;
+          width: calc(100%);
+        }
+      }
+    }
+  }
+  .sv-button:last-of-type {
+    border-radius: 0px 12px 12px 0px;
+  }
+  .sv-button:first-of-type {
+    border-radius: 12px 0px 0px 12px;
+  }
+}

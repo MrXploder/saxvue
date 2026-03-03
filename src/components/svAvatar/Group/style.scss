@@ -1,0 +1,60 @@
+@use '../../../styles/mixins' as *;
+.sv-avatar__group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 18px;
+  &.float {
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-left: 0px;
+    .sv-avatar-content {
+      position: relative;
+      z-index: 2;
+      border: 3px solid sv-color('background');
+      margin: 0px;
+    }
+  }
+  &:not(.float) {
+    .sv-avatar-content {
+      margin-left: -18px;
+      position: relative;
+      z-index: 2;
+      &:hover {
+        .sv-avatar {
+          box-shadow: inset 0px 0px 0px 0px rgba(0, 0, 0, 0.1);
+        }
+        img {
+          transform: scale(1);
+        }
+      }
+      .sv-avatar__latest {
+        width: calc(100% - 6px);
+        height: calc(100% - 6px);
+        margin: 3px;
+      }
+      &:not(.vs-change-color) {
+        .sv-avatar {
+          background: sv-color('background');
+        }
+      }
+      img {
+        width: calc(100% - 6px);
+      }
+      // border: 3px solid sv-color('background');
+      &:hover:not(.sv-avatar-content--hasIcons) {
+        transform: translate(-10px);
+        .sv-avatar {
+          transform: scale(1);
+        }
+      }
+      &--hasIcons {
+        margin-right: 0px;
+        &:hover {
+          transform: translate(-34px) !important;
+        }
+      }
+    }
+  }
+}

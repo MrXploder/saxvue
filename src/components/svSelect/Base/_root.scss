@@ -1,0 +1,8 @@
+.sv-select {
+  --sv-color: var(--sv-primary);
+}
+.sv-select__options {
+  .sv-checkbox-content {
+    --sv-color: inherit;
+  }
+}

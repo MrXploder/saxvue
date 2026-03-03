@@ -1,0 +1,18 @@
+@use '../../../styles/mixins' as *;
+.sv-navbar__item {
+  padding: 10px 15px;
+  margin: 0px;
+  border: 0px;
+  background: transparent;
+  font-size: 0.85rem;
+  opacity: 0.7;
+  transition: all 0.25s ease, color 0s;
+  font-weight: bold;
+  color: inherit;
+  &.active {
+    opacity: 1;
+  }
+  &:hover {
+    opacity: 1;
+  }
+}

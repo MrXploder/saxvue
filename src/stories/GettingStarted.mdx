@@ -1,0 +1,62 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="SaxVue/Getting Started" />
+
+# 🎨 SaxVue
+
+**SaxVue** is a Vue 3 UI component library — a modern fork of SaxVue, rebuilt with
+Composition API, TypeScript, and render functions.
+
+## Installation
+
+```bash
+npm install saxvue
+```
+
+## Setup
+
+```js
+import { createApp } from "vue";
+import SaxVue from "saxvue";
+import "saxvue/dist/base.css";
+
+const app = createApp(App);
+app.use(SaxVue);
+app.mount("#app");
+```
+
+## Color System
+
+Every SaxVue component accepts **color props** that map to CSS custom properties:
+
+| Prop | Description |
+| --- | --- |
+| `color` | Any CSS color value (hex, rgb, hsl, named) |
+| `primary` | Uses the theme primary color |
+| `danger` | Uses the theme danger color |
+| `success` | Uses the theme success color |
+| `warn` | Uses the theme warning color |
+| `dark` | Uses the theme dark color |
+| `active` | Applies the active/selected state |
+
+```html
+<sv-button color="#7d33ff">Custom</sv-button>
+<sv-button primary>Primary</sv-button>
+<sv-button danger>Danger</sv-button>
+```
+
+## Global Functions
+
+After installing SaxVue, the `$vs` helper is available on every component instance:
+
+| Function | Description |
+| --- | --- |
+| `$vs.loading()` | Show a full-screen or target-scoped loading overlay |
+| `$vs.notification()` | Programmatically display a notification |
+| `$vs.toggleTheme()` | Toggle between light and dark themes |
+| `$vs.setColor()` | Override a theme color at runtime |
+
+## Project Links
+
+- [GitHub Repository](https://github.com/MrXploder/saxvue)
+- [Changelog](https://github.com/MrXploder/saxvue/blob/main/CHANGELOG.md)

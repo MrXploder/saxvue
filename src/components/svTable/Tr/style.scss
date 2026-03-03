@@ -1,0 +1,111 @@
+@use '../../../styles/mixins' as *;
+.isMultipleSelected {
+  .sv-table__tr {
+    .sv-table__td {
+      border-radius: 0px !important;
+    }
+  }
+}
+.sv-table__tr {
+  padding: 5px;
+  border: 0px;
+  &.expand {
+    cursor: pointer;
+  }
+  &.vs-change-color {
+    .sv-table__td {
+      background: -color('color', 0.1) !important;
+      color: -color('color', 1) !important;
+      &:hover {
+        background: -color('color', 0.2) !important;
+      }
+    }
+  }
+  &:first-of-type {
+    .sv-table__td {
+      &:last-child {
+        border-radius: 0px 0px 15px 0px;
+      }
+      &:first-child {
+        border-radius: 0px 0px 0px 15px;
+      }
+    }
+  }
+  &.isExpand:first-of-type {
+    .sv-table__td {
+      background: -color('gray-1') !important;
+      border-radius: 0px;
+    }
+  }
+  &.isExpand:not(:first-of-type) {
+    .sv-table__td {
+      background: -color('gray-1') !important;
+      &:last-child {
+        border-radius: 0px 15px 0px 0px;
+      }
+      &:first-child {
+        border-radius: 15px 0px 0px 0px;
+      }
+    }
+    + .sv-table__tr__expand {
+      td {
+        border-radius: 0px 0px 15px 15px !important;
+      }
+    }
+  }
+  &.selected {
+    .sv-table__td {
+      background: -color('color', 0.1) !important;
+      color: -color('color', 1) !important;
+    }
+  }
+  .sv-table__td {
+    background: -color('bg', 0.1);
+    color: -color('bg', 1);
+  }
+  &.vs-change-color {
+    &:hover {
+      .sv-table__td {
+        background: -color('color', 0.2) !important;
+      }
+    }
+  }
+  &:hover {
+    .sv-table__td {
+      background: -color('gray-1');
+    }
+  }
+}
+.sv-table__tr__expand {
+  transition: all 0.25s ease;
+  border: 0px;
+  td {
+    transition: all 0.25s ease;
+    padding: 0px;
+    background: -color('gray-1') !important;
+    border: 0px;
+    .sv-table__expand__td__content {
+      overflow: hidden;
+      display: block;
+      transition: all 0.25s ease;
+      &__sub {
+        padding: 10px 15px;
+        z-index: 1;
+        position: relative;
+      }
+    }
+  }
+}
+.fade-expand-enter-active,
+.fade-expand-leave-active {
+  transition: all 0.25s ease;
+}
+.fade-expand-enter,
+.fade-expand-leave-to {
+  opacity: 0;
+  td {
+    .sv-table__expand__td__content {
+      height: 0px !important;
+    }
+  }
+}

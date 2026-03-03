@@ -1,0 +1,127 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="SaxVue/Components/Feedback" />
+
+# Feedback Components
+
+Components for communicating status, alerts, and confirmations to the user.
+
+---
+
+## SvAlert
+
+A dismissable alert banner with pagination, progress, and multiple style variants.
+
+### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `value` | `boolean` | `true` | Visibility (`v-model`) |
+| `solid` | `boolean` | `false` | Solid/filled background |
+| `border` | `boolean` | `false` | Border-only variant |
+| `shadow` | `boolean` | `false` | Shadow variant |
+| `gradient` | `boolean` | `false` | Gradient background |
+| `flat` | `boolean` | `false` | Flat variant |
+| `relief` | `boolean` | `false` | Relief/raised variant |
+| `closable` | `boolean` | `false` | Show close button |
+| `hiddenContent` | `boolean` | `null` | Collapse/expand content area |
+| `progress` | `number \| string` | `0` | Progress bar (0–100) |
+| `page` | `number \| string` | `0` | Active page index for multi-page alerts |
+
+### Slots
+
+| Slot | Description |
+| --- | --- |
+| `default` | Alert body content |
+| `title` | Alert title |
+| `icon` | Leading icon |
+| `page-{n}` | Content for numbered pages (1-based) |
+| `footer` | Footer area below content |
+
+### Usage
+
+```html
+<sv-alert closable>
+  <template #title>Heads up!</template>
+  This is an informational alert.
+</sv-alert>
+
+<sv-alert danger solid>
+  <template #icon>⚠️</template>
+  Something went wrong. Please try again.
+</sv-alert>
+
+<sv-alert :progress="75" success>
+  Upload is 75% complete.
+</sv-alert>
+```
+
+---
+
+## SvDialog
+
+A modal dialog overlay with loading, scroll, blur, and close-prevention options.
+
+### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `value` | `boolean` | `false` | Visibility (`v-model`) |
+| `loading` | `boolean` | `false` | Loading overlay on the dialog |
+| `fullScreen` | `boolean` | `false` | Full-screen mode |
+| `notClose` | `boolean` | `false` | Hide the close button |
+| `preventClose` | `boolean` | `false` | Prevent closing on backdrop click / Esc |
+| `notPadding` | `boolean` | `false` | Remove inner padding |
+| `overflowHidden` | `boolean` | `false` | Hide body overflow when open |
+| `blur` | `boolean` | `false` | Blur the backdrop |
+| `square` | `boolean` | `false` | Square corners |
+| `autoWidth` | `boolean` | `false` | Auto-size to content width |
+| `scroll` | `boolean` | `false` | Scrollable content |
+| `notCenter` | `boolean` | `false` | Align to top instead of center |
+| `width` | `string` | `null` | Custom width (CSS value) |
+
+### Slots
+
+| Slot | Description |
+| --- | --- |
+| `default` | Dialog body content |
+| `header` | Dialog header |
+| `footer` | Dialog footer (actions area) |
+
+### Events
+
+| Event | Payload | Description |
+| --- | --- | --- |
+| `input` | `boolean` | Emitted when visibility changes |
+| `close` | — | Emitted when dialog is closed |
+
+### Usage
+
+```html
+<sv-dialog v-model="showDialog" blur>
+  <template #header><h3>Confirm Action</h3></template>
+  Are you sure you want to proceed?
+  <template #footer>
+    <sv-button @click="showDialog = false">Cancel</sv-button>
+    <sv-button danger @click="confirm">Confirm</sv-button>
+  </template>
+</sv-dialog>
+```
+
+---
+
+## SvTooltip
+
+A hover/focus tooltip rendered as a directive or wrapper component.
+
+### Usage
+
+```html
+<sv-tooltip>
+  <sv-button>Hover me</sv-button>
+  <template #tooltip>Tooltip content here</template>
+</sv-tooltip>
+```
+
+> **Note:** `SvTooltip` wraps its content and uses absolute positioning for the
+> tooltip bubble. See the interactive stories for positioning and variant examples.

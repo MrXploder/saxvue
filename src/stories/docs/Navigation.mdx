@@ -1,0 +1,153 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="SaxVue/Components/Navigation" />
+
+# Navigation Components
+
+Components for application navigation: navbar and sidebar.
+
+---
+
+## SvNavbar
+
+A responsive top navigation bar with left/center/right slots, scroll effects, and
+collapsible sections.
+
+### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `fixed` | `boolean` | `false` | Fixed positioning at top |
+| `shadow` | `boolean` | `false` | Always show shadow |
+| `shadowScroll` | `boolean` | `false` | Show shadow only after scrolling |
+| `hideScroll` | `boolean` | `false` | Hide navbar on scroll down, show on scroll up |
+| `paddingScroll` | `boolean` | `false` | Reduce padding on scroll |
+| `textWhite` | `boolean` | `false` | White text (for dark backgrounds) |
+| `square` | `boolean` | `false` | Square corners |
+| `notLine` | `boolean` | `false` | Hide the active-item underline |
+| `leftCollapsed` | `boolean` | `false` | Collapse left section on small screens |
+| `centerCollapsed` | `boolean` | `false` | Collapse center section on small screens |
+| `rightCollapsed` | `boolean` | `false` | Collapse right section on small screens |
+| `targetScroll` | `string` | `null` | CSS selector for the scroll container (default: `window`) |
+
+### Slots
+
+| Slot | Description |
+| --- | --- |
+| `left` | Left-aligned nav items |
+| `default` | Center-aligned nav items |
+| `right` | Right-aligned nav items |
+
+### Sub-components
+
+#### SvNavbarItem
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `active` | `boolean` | `false` | Active state (controls underline) |
+| `to` | `string` | — | Vue Router path |
+| `href` | `string` | — | External link |
+| `target` | `string` | `"_blank"` | Link target |
+| `id` | `string` | — | Unique identifier |
+
+#### SvNavbarGroup
+
+Groups nav items into a dropdown.
+
+### Usage
+
+```html
+<sv-navbar shadow>
+  <template #left>
+    <sv-navbar-item id="home" :active="active === 'home'">
+      Home
+    </sv-navbar-item>
+    <sv-navbar-item id="docs" :active="active === 'docs'">
+      Docs
+    </sv-navbar-item>
+  </template>
+
+  <template #right>
+    <sv-navbar-group>
+      <template #default>More</template>
+      <template #items>
+        <sv-navbar-item id="about">About</sv-navbar-item>
+        <sv-navbar-item id="contact">Contact</sv-navbar-item>
+      </template>
+    </sv-navbar-group>
+  </template>
+</sv-navbar>
+```
+
+---
+
+## SvSidebar
+
+A collapsible side navigation with grouped items, icons, and logo support.
+
+### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `value` | `string` | — | Currently selected item id (`v-model`) |
+| `open` | `boolean` | `false` | Sidebar visibility |
+| `reduce` | `boolean` | `false` | Collapsed/mini mode |
+| `hoverExpand` | `boolean` | `false` | Expand on hover when reduced |
+| `notShadow` | `boolean` | `false` | Remove shadow |
+| `square` | `boolean` | `false` | Square corners |
+| `textWhite` | `boolean` | `false` | White text |
+| `notLineActive` | `boolean` | `false` | Hide active line indicator |
+| `absolute` | `boolean` | `false` | Absolute positioning |
+| `right` | `boolean` | `false` | Position on right side |
+
+### Slots
+
+| Slot | Description |
+| --- | --- |
+| `logo` | Logo area at top of sidebar |
+| `default` | Sidebar items |
+| `footer` | Footer area at bottom |
+
+### Sub-components
+
+#### SvSidebarItem
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | — | Unique identifier for selection |
+| `to` | `string` | — | Vue Router path |
+| `href` | `string` | — | External link |
+| `arrow` | `boolean` | `false` | Show arrow indicator |
+
+**Slots:** `icon`, `default`, `arrow`
+
+#### SvSidebarGroup
+
+Collapsible group of sidebar items.
+
+**Slots:** `header`, `default`
+
+### Usage
+
+```html
+<sv-sidebar v-model="selected" :open="sidebarOpen">
+  <template #logo>
+    <strong>My App</strong>
+  </template>
+
+  <sv-sidebar-item id="dashboard">
+    <template #icon>📊</template>
+    Dashboard
+  </sv-sidebar-item>
+
+  <sv-sidebar-group>
+    <template #header>Settings</template>
+    <sv-sidebar-item id="profile">Profile</sv-sidebar-item>
+    <sv-sidebar-item id="billing">Billing</sv-sidebar-item>
+  </sv-sidebar-group>
+
+  <template #footer>
+    <sv-button block transparent>Logout</sv-button>
+  </template>
+</sv-sidebar>
+```

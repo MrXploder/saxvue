@@ -1,0 +1,190 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="SaxVue/Components/Forms" />
+
+# Form Components
+
+SaxVue provides a set of form components with consistent theming, validation states,
+and accessibility.
+
+---
+
+## SvInput
+
+A text input with floating labels, validation states, and icon support.
+
+### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `value` | `string` | `""` | Input value (use `v-model` via `@input`) |
+| `label` | `string` | `""` | Static label above the input |
+| `labelPlaceholder` | `string` | `""` | Floating label (acts as placeholder until focused) |
+| `color` | `string` | `null` | Custom border/label color |
+| `state` | `string` | `null` | Validation state: `"success"`, `"danger"`, `"warn"`, `"dark"`, `"primary"` |
+| `border` | `boolean` | `false` | Border-only variant |
+| `shadow` | `boolean` | `false` | Shadow variant |
+| `transparent` | `boolean` | `false` | Transparent background |
+| `textWhite` | `boolean` | `false` | White text (for dark backgrounds) |
+| `square` | `boolean` | `false` | Square corners |
+| `block` | `boolean` | `false` | Full width |
+| `iconAfter` | `boolean` | `false` | Place icon slot after the input |
+| `loading` | `boolean` | `false` | Loading state |
+| `visiblePassword` | `boolean` | `false` | Show password toggle |
+| `progress` | `number` | `0` | Progress bar (0–100), useful for password strength |
+
+### Slots
+
+| Slot | Description |
+| --- | --- |
+| `icon` | Icon rendered inside the input |
+| `message-success` | Success validation message |
+| `message-danger` | Danger validation message |
+| `message-warn` | Warning validation message |
+| `message-primary` | Primary info message |
+
+### Usage
+
+```html
+<sv-input label="Email" placeholder="you@example.com" />
+
+<sv-input label-placeholder="Password"
+          type="password"
+          :visible-password="true"
+          :progress="passwordStrength" />
+
+<sv-input state="danger">
+  <template #message-danger>This field is required</template>
+</sv-input>
+```
+
+---
+
+## SvCheckbox
+
+A checkbox with label support, indeterminate state, and line-through styling.
+
+### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `value` | `any` | `""` | Bound value (`v-model`) |
+| `val` | `any` | `""` | Value emitted when checked |
+| `notValue` | `any` | `""` | Value emitted when unchecked |
+| `indeterminate` | `boolean` | `false` | Indeterminate (mixed) state |
+| `lineThrough` | `boolean` | `false` | Strike-through label when checked |
+| `checked` | `boolean` | `false` | Default checked state |
+| `loading` | `boolean` | `false` | Loading spinner |
+| `labelBefore` | `boolean` | `false` | Place label before the checkbox |
+
+### Usage
+
+```html
+<sv-checkbox v-model="agreed" val="yes">I agree to the terms</sv-checkbox>
+
+<sv-checkbox indeterminate>Select all</sv-checkbox>
+
+<sv-checkbox line-through v-model="done">Task completed</sv-checkbox>
+```
+
+---
+
+## SvRadio
+
+A radio button component for single-choice selections.
+
+### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `value` | `any` | — | Currently selected value (`v-model`) |
+| `val` | `any` | — | This radio's value |
+| `name` | `string` | `null` | Radio group name |
+| `disabled` | `boolean` | `false` | Disabled state |
+| `loading` | `boolean` | `false` | Loading state |
+| `labelBefore` | `boolean` | `false` | Place label before the radio |
+
+### Usage
+
+```html
+<sv-radio v-model="plan" val="free">Free</sv-radio>
+<sv-radio v-model="plan" val="pro" primary>Pro</sv-radio>
+<sv-radio v-model="plan" val="enterprise" success>Enterprise</sv-radio>
+```
+
+---
+
+## SvSwitch
+
+A toggle switch for boolean or two-state values.
+
+### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `value` | `any` | `""` | Bound value (`v-model`) |
+| `val` | `any` | `""` | Value when on |
+| `notValue` | `any` | `""` | Value when off |
+| `loading` | `boolean` | `false` | Loading state |
+| `square` | `boolean` | `false` | Square shape |
+| `indeterminate` | `boolean` | `false` | Indeterminate state |
+| `icon` | `boolean` | `false` | Icon mode |
+
+### Slots
+
+| Slot | Description |
+| --- | --- |
+| `on` | Content shown when switch is on |
+| `off` | Content shown when switch is off |
+| `circle` | Custom circle/thumb content |
+
+### Usage
+
+```html
+<sv-switch v-model="darkMode">
+  <template #on>🌙</template>
+  <template #off>☀️</template>
+</sv-switch>
+```
+
+---
+
+## SvSelect
+
+A dropdown select with filtering, multi-select, and chip display.
+
+### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `value` | `any` | `null` | Selected value(s) (`v-model`) |
+| `multiple` | `boolean` | `false` | Allow multiple selections |
+| `filter` | `boolean` | `false` | Enable search/filter |
+| `placeholder` | `string` | `""` | Placeholder text |
+| `labelPlaceholder` | `string` | `""` | Floating label placeholder |
+| `label` | `string` | `""` | Static label |
+| `disabled` | `boolean` | `false` | Disabled state |
+| `collapseChips` | `boolean` | `false` | Collapse multi-select chips into count |
+| `loading` | `boolean` | `false` | Loading state |
+| `state` | `string` | `null` | Validation state |
+
+### Sub-components
+
+- **`<sv-option>`** — individual option: props `label`, `value`, `disabled`
+- **`<sv-option-group>`** — labeled group of options
+
+### Usage
+
+```html
+<sv-select v-model="country" placeholder="Select country">
+  <sv-option label="Chile" value="cl" />
+  <sv-option label="Argentina" value="ar" />
+  <sv-option label="Brazil" value="br" />
+</sv-select>
+
+<sv-select v-model="tags" multiple filter label="Tags">
+  <sv-option label="Vue" value="vue" />
+  <sv-option label="React" value="react" />
+  <sv-option label="Angular" value="angular" />
+</sv-select>
+```

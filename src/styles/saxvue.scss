@@ -1,0 +1,16 @@
+@use 'colors';
+@use 'vars';
+@use 'dark';
+@use 'reset';
+@use '../util/ripple/style';
+
+// body,table,td,tr;
+//   backface-visibility: hidden;
+
+.vs-remove-transition {
+  *,
+  *:after,
+  *:before {
+    transition: all 0s !important;
+  }
+}
