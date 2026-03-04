@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 ## [Unreleased]
 
+## [0.1.0] – 2026-03-04
+
+### Added
+
+- **First public release** of the SaxVue component library.
+- All components use the `sv*` naming convention (`sv-button`, `sv-input`, etc.).
+- Global helper property `$sv` available on every Vue instance after `app.use(SaxVue)`.
+- Layout grid system: `SvRow` / `SvCol` (`<sv-row>`, `<sv-col>` global components).
+
 ### Added
 
 - Renamed project from Vuesax to **Saxvue** (all references, filenames, banners, docs)
