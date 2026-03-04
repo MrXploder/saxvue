@@ -1,5 +1,9 @@
 # SaxVue
 
+**Actively maintained** — this is a living project, built because I love Vuesax and want it to thrive in Vue 3.
+
+> 💬 **Project status:** This is still baby steps and a **WIP**. Don’t expect perfection yet — I’m improving it little by little and would **really, really** love any help from the community.
+
 A Vue 3 UI component library. All components are globally available after `app.use(SaxVue)` and use the `sv-*` element naming convention.
 
 ## Install
