@@ -1,5 +1,7 @@
 # SaxVue
 
+<img src="assets/saxvue-preview.jpg" alt="SaxVue preview" width="900" />
+
 **Actively maintained** — this is a living project, built because I love Vuesax and want it to thrive in Vue 3.
 
 > 💬 **Project status:** This is still baby steps and a **WIP**. Don’t expect perfection yet — I’m improving it little by little and would **really, really** love any help from the community.
@@ -57,9 +59,9 @@ After `app.use(SaxVue)` every `sv-*` component is available globally — no per-
 
 ```vue
 <sv-select v-model="selected" label="Fruit">
-  <sv-option value="apple">Apple</sv-option>
-  <sv-option value="banana">Banana</sv-option>
-  <sv-option value="cherry">Cherry</sv-option>
+	<sv-option value="apple">Apple</sv-option>
+	<sv-option value="banana">Banana</sv-option>
+	<sv-option value="cherry">Cherry</sv-option>
 </sv-select>
 ```
 
@@ -75,13 +77,13 @@ After `app.use(SaxVue)` every `sv-*` component is available globally — no per-
 
 ```vue
 <sv-avatar>
-  <img src="/avatar.png" alt="User" />
+	<img src="/avatar.png" alt="User" />
 </sv-avatar>
 
 <sv-avatar-group max="3">
-  <sv-avatar v-for="u in users" :key="u.id">
-    <img :src="u.avatar" :alt="u.name" />
-  </sv-avatar>
+	<sv-avatar v-for="u in users" :key="u.id">
+		<img :src="u.avatar" :alt="u.name" />
+	</sv-avatar>
 </sv-avatar-group>
 ```
 
@@ -105,16 +107,16 @@ After `app.use(SaxVue)` every `sv-*` component is available globally — no per-
 
 ```vue
 <sv-table :data="rows" v-model:search="search">
-  <template #header>
-    <sv-th sort-key="name">Name</sv-th>
-    <sv-th sort-key="email">Email</sv-th>
-  </template>
-  <template #tbody="{ data }">
-    <sv-tr v-for="row in data" :key="row.id" :data="row">
-      <sv-td>{{ row.name }}</sv-td>
-      <sv-td>{{ row.email }}</sv-td>
-    </sv-tr>
-  </template>
+	<template #header>
+		<sv-th sort-key="name">Name</sv-th>
+		<sv-th sort-key="email">Email</sv-th>
+	</template>
+	<template #tbody="{ data }">
+		<sv-tr v-for="row in data" :key="row.id" :data="row">
+			<sv-td>{{ row.name }}</sv-td>
+			<sv-td>{{ row.email }}</sv-td>
+		</sv-tr>
+	</template>
 </sv-table>
 ```
 
@@ -122,12 +124,12 @@ After `app.use(SaxVue)` every `sv-*` component is available globally — no per-
 
 ```vue
 <sv-navbar>
-  <template #left>
-    <sv-navbar-group>
-      <sv-navbar-item to="/">Home</sv-navbar-item>
-      <sv-navbar-item to="/about">About</sv-navbar-item>
-    </sv-navbar-group>
-  </template>
+	<template #left>
+		<sv-navbar-group>
+			<sv-navbar-item to="/">Home</sv-navbar-item>
+			<sv-navbar-item to="/about">About</sv-navbar-item>
+		</sv-navbar-group>
+	</template>
 </sv-navbar>
 ```
 
@@ -135,10 +137,10 @@ After `app.use(SaxVue)` every `sv-*` component is available globally — no per-
 
 ```vue
 <sv-sidebar v-model="sidebarOpen">
-  <sv-sidebar-group>
-    <sv-sidebar-item>Dashboard</sv-sidebar-item>
-    <sv-sidebar-item>Settings</sv-sidebar-item>
-  </sv-sidebar-group>
+	<sv-sidebar-group>
+		<sv-sidebar-item>Dashboard</sv-sidebar-item>
+		<sv-sidebar-item>Settings</sv-sidebar-item>
+	</sv-sidebar-group>
 </sv-sidebar>
 ```
 
@@ -146,12 +148,12 @@ After `app.use(SaxVue)` every `sv-*` component is available globally — no per-
 
 ```vue
 <sv-card>
-  <template #title>Card title</template>
-  <template #text>Card body content</template>
-  <template #buttons>
-    <sv-button flat>Cancel</sv-button>
-    <sv-button color="primary">OK</sv-button>
-  </template>
+	<template #title>Card title</template>
+	<template #text>Card body content</template>
+	<template #buttons>
+		<sv-button flat>Cancel</sv-button>
+		<sv-button color="primary">OK</sv-button>
+	</template>
 </sv-card>
 ```
 
@@ -161,9 +163,9 @@ After `app.use(SaxVue)` every `sv-*` component is available globally — no per-
 
 ```vue
 <sv-row justify="space-between" align="stretch" style="gap: 12px">
-  <sv-col w="4">Column 1</sv-col>
-  <sv-col w="4">Column 2</sv-col>
-  <sv-col w="4">Column 3</sv-col>
+	<sv-col w="4">Column 1</sv-col>
+	<sv-col w="4">Column 2</sv-col>
+	<sv-col w="4">Column 3</sv-col>
 </sv-row>
 ```
 
