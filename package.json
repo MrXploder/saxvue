@@ -22,6 +22,9 @@
     },
     "./dist/*": "./dist/*"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "sideEffects": [
     "*.scss",
     "*.css"
