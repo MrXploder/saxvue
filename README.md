@@ -5,11 +5,11 @@ A Vue 3 UI component library. All components are globally available after `app.u
 ## Install
 
 ```bash
-npm install saxvue
+npm install @mrxploder/saxvue
 # or
-pnpm add saxvue
+pnpm add @mrxploder/saxvue
 # or
-yarn add saxvue
+yarn add @mrxploder/saxvue
 ```
 
 ## Setup
@@ -21,8 +21,8 @@ Register the plugin in your app entry point:
 import { createApp } from 'vue';
 import App from './App.vue';
 
-import SaxVue from 'saxvue';
-import 'saxvue/dist/base.css';
+import SaxVue from '@mrxploder/saxvue';
+import '@mrxploder/saxvue/dist/base.css';
 
 const app = createApp(App);
 app.use(SaxVue);
@@ -214,8 +214,8 @@ this.$sv.setTheme('light');
 ## Tree-shaking (per-component imports)
 
 ```ts
-import svButton from 'saxvue/dist/svButton/index.js';
-import svInput from 'saxvue/dist/svInput/index.js';
+import svButton from '@mrxploder/saxvue/dist/svButton/index.js';
+import svInput from '@mrxploder/saxvue/dist/svInput/index.js';
 
 app.use(svButton);
 app.use(svInput);
