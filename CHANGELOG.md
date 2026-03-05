@@ -12,16 +12,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 - Added 130+ demo SFC files with live component previews and automated demo injection
 - Added `docs:dev`, `docs:build`, `docs:preview` npm scripts
 - Added `vitepress` as a dev dependency
+- Copied legacy VuePress public images (avatars and foto images) into the VitePress `docs/public/` folder and updated demo pages to reference the local assets instead of external image providers
+- Added a small CLI entry point to `run.ts` (alpha extraction tool) so it can be invoked with `npx tsx run.ts <white.png> <black.png> <out.png>`
+- Added `.prettierignore` to protect `README.md` from Prettier rewriting during automated formatting
 
 ### Fixed
 
 - **SCSS private function rename** — renamed `-color()`, `-var()`, `-rgba()` to `sv-color()`, `sv-var()`, `sv-rgba()` across 28 SCSS files (200+ call sites); functions prefixed with `-` were treated as private members under Dart Sass's `@use` module system, breaking compilation
 - **Sass `global-builtin` deprecation** — added `@use 'sass:string'` and replaced `unquote()` with `string.unquote()` in `_mixins.scss`
 - **Sass `legacy-js-api` deprecation** — configured `css.preprocessorOptions.scss.api: 'modern'` and `sass.api: 'modern'` in VitePress config
+- **svSelect class rendering** — fixed `[object Object]` class output by replacing incorrect `className` usage with proper `class: [...]` arrays in `src/components/svSelect/Base/svSelect.ts` so label, placeholder and select container classes render correctly
+- **Docs assets & logo** — replaced VitePress docs logo with `saxvue-logo.svg` and updated legacy VuePress public/logo references to use `saxvue-logo.png` (legacy `logo2.png` replaced). Demo navbars and examples now show the SaxVue logo
 
 ### Changed
 
 - Removed hardcoded `max-width: 350px` from `.sv-card` base styles for fluid-width cards
+- Documentation pages: swapped external image URLs (picsum.photos, unsplash, avatars.githubusercontent.com) to local `docs/public/` assets for offline stability and consistent visuals
+- `run.ts` alpha extraction tool: added CLI argument handling and (follow-up) will resize inputs if dimensions mismatch to avoid processing errors
 
 ## [0.1.0] – 2026-03-04
 
