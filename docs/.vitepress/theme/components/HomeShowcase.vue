@@ -921,10 +921,10 @@ function handleBlurDrop() {
   position: absolute;
   transform: scale(0.3);
   opacity: 0;
-  font-size: 2.5rem;
+  font-size: 9rem;
   z-index: 20;
-  width: 80px;
-  height: 80px;
+  width: 200px;
+  height: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -943,33 +943,21 @@ function handleBlurDrop() {
 }
 .con-logo i {
   z-index: 30;
-  font-size: 2rem;
 }
 .con-logo img {
   width: 50%;
   z-index: 100;
 }
 .con-logo.vuesax-logo {
-  border-radius: 25px;
-  top: -40px;
-  right: 100px;
+  border-radius: 50px;
 }
 .con-logo.discord-logo {
-  width: 70px;
-  height: 70px;
-  border-radius: 20px 20px 3px 20px;
-  top: -20px;
-  right: 250px;
-  animation-duration: 25s;
-  animation-direction: reverse;
+  width: 180px;
+  height: 180px;
+  border-radius: 40px 40px 5px 40px;
 }
 .con-logo.discord-logo i {
-  transform: translate(2px);
-}
-.con-logo.github-logo {
-  top: -10px;
-  right: 400px;
-  animation-duration: 18s;
+  transform: translate(5px);
 }
 .logo-wave {
   width: 0px;
