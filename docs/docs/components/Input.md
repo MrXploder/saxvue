@@ -175,6 +175,51 @@ Add a shadow to the input.
 
 </card>
 
+<card>
+
+## Message
+
+Use named slots `message-success`, `message-danger`, and `message-warn` to show validation messages below the input.
+
+<template #example>
+<ClientOnly><InputMessage /></ClientOnly>
+</template>
+
+```html
+<sv-input v-model="v1" placeholder="Success">
+  <template #message-success>The email is valid</template>
+</sv-input>
+<sv-input v-model="v2" placeholder="Danger">
+  <template #message-danger>Required</template>
+</sv-input>
+<sv-input v-model="v3" placeholder="Warning">
+  <template #message-warn>The email already exists</template>
+</sv-input>
+```
+
+</card>
+
+<card>
+
+## Input Types
+
+The `type` prop passes through to the native input element, supporting all HTML input types.
+
+<template #example>
+<ClientOnly><InputTypes /></ClientOnly>
+</template>
+
+```html
+<sv-input type="text" placeholder="Text" />
+<sv-input type="password" placeholder="Password" />
+<sv-input type="search" placeholder="Search" />
+<sv-input type="url" placeholder="Url" />
+<sv-input type="time" placeholder="Time" />
+<sv-input type="date" placeholder="Date" />
+```
+
+</card>
+
 ## API
 
 | Property            | Type      | Description                                    | Default   |

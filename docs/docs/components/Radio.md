@@ -77,6 +77,30 @@ Add a loading state.
 
 </card>
 
+<card>
+
+## Icon
+
+Use the `#icon` slot to show an icon inside the radio button.
+
+<template #example>
+<ClientOnly><RadioIcons /></ClientOnly>
+</template>
+
+```html
+<sv-radio v-model="picked" val="1">
+  Label<template #icon><i class="bx bx-yen"></i></template>
+</sv-radio>
+<sv-radio v-model="picked" val="2">
+  Won<template #icon><i class="bx bx-won"></i></template>
+</sv-radio>
+<sv-radio v-model="picked" val="3">
+  Euro<template #icon><i class="bx bx-euro"></i></template>
+</sv-radio>
+```
+
+</card>
+
 ## API
 
 | Property       | Type                | Description            | Default   |

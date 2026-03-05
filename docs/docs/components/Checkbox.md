@@ -66,6 +66,22 @@ const active = ref(true);
 
 <card>
 
+## String Value
+
+Use the `val` prop with a string to bind a specific string value to the checkbox model.
+
+<template #example>
+<ClientOnly><CheckboxStringVal /></ClientOnly>
+</template>
+
+```html
+<sv-checkbox val="automatically" v-model="option">Save data automatically</sv-checkbox>
+```
+
+</card>
+
+<card>
+
 ## Array Value
 
 Use an array to collect multiple selected values.

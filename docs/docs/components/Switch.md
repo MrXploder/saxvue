@@ -130,6 +130,47 @@ Show an indeterminate state.
 
 </card>
 
+<card>
+
+## Array Value
+
+Use the `val` prop with an array model to toggle values in and out of an array.
+
+<template #example>
+<ClientOnly><SwitchArray /></ClientOnly>
+</template>
+
+```html
+<sv-switch val="html" v-model="options">Html</sv-switch>
+<sv-switch val="css" v-model="options">Css</sv-switch>
+<sv-switch val="javascript" v-model="options">Javascript</sv-switch>
+<sv-switch val="vue" v-model="options">Vue</sv-switch>
+```
+
+</card>
+
+<card>
+
+## Example
+
+Real-world example combining switch with different content per state.
+
+<template #example>
+<ClientOnly><SwitchExample /></ClientOnly>
+</template>
+
+```html
+<sv-switch v-model="notifications">Email messages</sv-switch>
+<sv-switch v-model="theme">
+  <template #circle>
+    <i v-if="!theme" class="bx bxs-moon"></i>
+    <i v-else class="bx bxs-sun"></i>
+  </template>
+</sv-switch>
+```
+
+</card>
+
 ## API
 
 | Property        | Type      | Description         | Default   |

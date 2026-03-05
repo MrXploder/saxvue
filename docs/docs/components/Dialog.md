@@ -225,6 +225,70 @@ Prevent body scroll when dialog is open.
 
 </card>
 
+<card>
+
+## Type
+
+Use the `type` prop to create alert, confirm, or prompt dialogs with appropriate button layouts.
+
+<template #example>
+<ClientOnly><DialogType /></ClientOnly>
+</template>
+
+```html
+<sv-button @click="type = 'alert'; active = true">Alert</sv-button>
+<sv-button @click="type = 'confirm'; active = true">Confirm</sv-button>
+<sv-button @click="type = 'prompt'; active = true">Prompt</sv-button>
+<sv-dialog :type="type" v-model="active">
+  <template #header><h4>Dialog {{ type }}</h4></template>
+  <p>This is a dialog of type: {{ type }}</p>
+</sv-dialog>
+```
+
+</card>
+
+<card>
+
+## Nested Dialogs
+
+Dialogs can be nested inside each other.
+
+<template #example>
+<ClientOnly><DialogNested /></ClientOnly>
+</template>
+
+```html
+<sv-dialog v-model="active">
+  <template #header><h4>First Dialog</h4></template>
+  <sv-button @click="inner = true">Open Inner Dialog</sv-button>
+  <sv-dialog v-model="inner">
+    <template #header><h4>Inner Dialog</h4></template>
+    <p>This is a nested dialog.</p>
+  </sv-dialog>
+</sv-dialog>
+```
+
+</card>
+
+<card>
+
+## Prevent Close
+
+Use `prevent-close` to disable closing the dialog by clicking the overlay. The user must use the close button.
+
+<template #example>
+<ClientOnly><DialogPreventClose /></ClientOnly>
+</template>
+
+```html
+<sv-dialog prevent-close v-model="active">
+  <template #header><h4>Prevent close on overlay</h4></template>
+  <p>Clicking the overlay will not close this dialog. Use the X button.</p>
+</sv-dialog>
+```
+
+</card>
+
 ## API
 
 | Property          | Type      | Description                 | Default |

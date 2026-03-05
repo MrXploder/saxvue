@@ -188,6 +188,42 @@ Group avatars together with `<sv-avatar-group>`.
 
 </card>
 
+<card>
+
+## Loading
+
+Add the `loading` prop to show a loading state on the avatar.
+
+<template #example>
+<ClientOnly><AvatarLoading /></ClientOnly>
+</template>
+
+```html
+<sv-avatar loading><i class="bx bx-user"></i></sv-avatar>
+<sv-avatar loading success><template #text>SV</template></sv-avatar>
+```
+
+</card>
+
+<card>
+
+## Icons
+
+Avatars can contain any boxicon as their content.
+
+<template #example>
+<ClientOnly><AvatarIcons /></ClientOnly>
+</template>
+
+```html
+<sv-avatar><i class="bx bx-user"></i></sv-avatar>
+<sv-avatar><i class="bx bx-home-alt"></i></sv-avatar>
+<sv-avatar><i class="bx bx-bell"></i></sv-avatar>
+<sv-avatar><i class="bx bx-calendar"></i></sv-avatar>
+```
+
+</card>
+
 ## API
 
 ### sv-avatar
