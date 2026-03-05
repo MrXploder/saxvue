@@ -454,13 +454,15 @@ export default defineComponent({
       const labelVNode = h(
         'label',
         {
-          class: 'sv-select__label',
+          class: [
+            'sv-select__label',
+            {
+              'sv-select__label--placeholder': props.labelPlaceholder,
+              'sv-select__label--label': props.label,
+              'sv-select__label--hidden': !!props.value,
+            },
+          ],
           for: uid,
-          className: {
-            'sv-select__label--placeholder': props.labelPlaceholder,
-            'sv-select__label--label': props.label,
-            'sv-select__label--hidden': !!props.value,
-          },
         },
         [props.labelPlaceholder || props.label],
       );
@@ -468,12 +470,14 @@ export default defineComponent({
       const placeholderVNode = h(
         'label',
         {
-          class: 'sv-select__label',
+          class: [
+            'sv-select__label',
+            {
+              'sv-select__label--hidden': !!props.value || !!textFilter.value,
+            },
+          ],
           ref: placeholderRef,
           for: uid,
-          className: {
-            'sv-select__label--hidden': !!props.value || !!textFilter.value,
-          },
         },
         [props.placeholder],
       );
@@ -488,14 +492,16 @@ export default defineComponent({
       const selectContent = h(
         'div',
         {
-          class: 'sv-select',
+          class: [
+            'sv-select',
+            {
+              [`sv-select--state-${props.state}`]: !!props.state,
+              'sv-select--disabled': props.disabled,
+              activeOptions: activeOptions.value,
+              loading: props.loading,
+            },
+          ],
           ref: selectRef,
-          className: {
-            [`sv-select--state-${props.state}`]: true,
-            'sv-select--disabled': props.disabled,
-            activeOptions: activeOptions.value,
-            loading: props.loading,
-          },
           onMouseleave: (evt: MouseEvent) => {
             if (evt.relatedTarget !== optionsRef.value) {
               targetSelectInput.value = false;
