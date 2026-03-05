@@ -1,0 +1,7 @@
+# Ignore README to prevent formatting corruption
+README.md
+
+# Build outputs
+dist/
+storybook-static/
+node_modules/
