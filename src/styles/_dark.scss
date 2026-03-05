@@ -15,23 +15,23 @@
     &.sv-component-dark {
       .sv-pagination__active {
         --sv-color: 255, 255, 255;
-        color: -color('gray-3');
+        color: sv-color('gray-3');
       }
     }
   }
   .sv-button {
     &.sv-component-dark {
       &.sv-button--transparent {
-        color: -color('text') !important;
+        color: sv-color('text') !important;
 
         &:hover {
           &:before {
-            background: -color('color', 0.2);
+            background: sv-color('color', 0.2);
           }
         }
         &.sv-button--active {
           &:before {
-            background: -color('color', -var('background-opacity'));
+            background: sv-color('color', sv-var('background-opacity'));
           }
         }
       }
@@ -60,8 +60,8 @@
     }
     &.sv-alert {
       --sv-color: 0, 0, 0 !important;
-      background: -color('color', 1) !important;
-      color: -color('text', 1) !important;
+      background: sv-color('color', 1) !important;
+      color: sv-color('text', 1) !important;
     }
   }
 }

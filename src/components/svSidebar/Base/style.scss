@@ -17,14 +17,14 @@
   max-width: 260px;
   height: 100vh;
   border-radius: 0px 30px 30px 0px;
-  color: -color('text');
-  box-shadow: 0px 0px 25px 0px -rgba(0, 0, 0, -var('shadow-opacity'));
+  color: sv-color('text');
+  box-shadow: 0px 0px 25px 0px sv-rgba(0, 0, 0, sv-var('shadow-opacity'));
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   flex-direction: column;
   z-index: 21000;
-  background: -color('background');
+  background: sv-color('background');
   transition: all 0.25s ease;
   transform: translate(-110%);
   &.right {

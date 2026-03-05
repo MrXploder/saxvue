@@ -34,7 +34,7 @@
       position: absolute;
       left: 0px;
       top: 0px;
-      background: -color('color', 0.3);
+      background: sv-color('color', 0.3);
       width: 4px;
       height: 100%;
       opacity: 0;
@@ -44,7 +44,7 @@
       z-index: 60;
     }
     .sv-sidebar__item {
-      background: -color('background');
+      background: sv-color('background');
     }
   }
   > .sv-sidebar__group__header {

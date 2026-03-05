@@ -16,7 +16,7 @@
         .sv-card__text {
           transform: translate(0);
           opacity: 1;
-          box-shadow: 0px 0px 30px 0px -rgba(0, 0, 0, -var('shadow-opacity'));
+          box-shadow: 0px 0px 30px 0px sv-rgba(0, 0, 0, sv-var('shadow-opacity'));
         }
         .sv-card__img {
           border-radius: 6px 40px 6px 40px;
@@ -34,8 +34,8 @@
         z-index: 20;
       }
       &__text {
-        background: -color('background', 1);
-        box-shadow: 0px 0px 0px 0px -rgba(0, 0, 0, -var('shadow-opacity'));
+        background: sv-color('background', 1);
+        box-shadow: 0px 0px 0px 0px sv-rgba(0, 0, 0, sv-var('shadow-opacity'));
         border-radius: 6px 20px 6px 20px;
         margin-top: -50px;
         z-index: 10;
@@ -76,7 +76,7 @@
         bottom: auto;
       }
       &__text {
-        background: -color('background', 0.8);
+        background: sv-color('background', 0.8);
         position: absolute;
         bottom: 0px;
         backdrop-filter: saturate(180%) blur(20px);
@@ -154,7 +154,7 @@
       &__text {
         position: absolute;
         bottom: 0px;
-        background: -color('background', 0.9);
+        background: sv-color('background', 0.9);
         padding-top: 30px;
         border-radius: 0px 0px 20px 20px;
         background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.5) 100%);
@@ -171,7 +171,7 @@
   &.type-1 {
     .sv-card {
       &:hover {
-        box-shadow: 0px 0px 0px 0px -rgba(0, 0, 0, -var('shadow-opacity'));
+        box-shadow: 0px 0px 0px 0px sv-rgba(0, 0, 0, sv-var('shadow-opacity'));
         transform: translate(0, 5px);
         .sv-card__img {
           img {
@@ -183,11 +183,10 @@
   }
 }
 .sv-card {
-  background: -color('background');
-  color: -color('text');
+  background: sv-color('background');
+  color: sv-color('text');
   width: 100%;
-  max-width: 350px;
-  box-shadow: 0px 5px 20px 0px -rgba(0, 0, 0, -var('shadow-opacity'));
+  box-shadow: 0px 5px 20px 0px sv-rgba(0, 0, 0, sv-var('shadow-opacity'));
   border-radius: 20px;
   transition: all 0.25s ease;
   cursor: pointer;

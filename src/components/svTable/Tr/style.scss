@@ -14,10 +14,10 @@
   }
   &.vs-change-color {
     .sv-table__td {
-      background: -color('color', 0.1) !important;
-      color: -color('color', 1) !important;
+      background: sv-color('color', 0.1) !important;
+      color: sv-color('color', 1) !important;
       &:hover {
-        background: -color('color', 0.2) !important;
+        background: sv-color('color', 0.2) !important;
       }
     }
   }
@@ -33,13 +33,13 @@
   }
   &.isExpand:first-of-type {
     .sv-table__td {
-      background: -color('gray-1') !important;
+      background: sv-color('gray-1') !important;
       border-radius: 0px;
     }
   }
   &.isExpand:not(:first-of-type) {
     .sv-table__td {
-      background: -color('gray-1') !important;
+      background: sv-color('gray-1') !important;
       &:last-child {
         border-radius: 0px 15px 0px 0px;
       }
@@ -55,24 +55,24 @@
   }
   &.selected {
     .sv-table__td {
-      background: -color('color', 0.1) !important;
-      color: -color('color', 1) !important;
+      background: sv-color('color', 0.1) !important;
+      color: sv-color('color', 1) !important;
     }
   }
   .sv-table__td {
-    background: -color('bg', 0.1);
-    color: -color('bg', 1);
+    background: sv-color('bg', 0.1);
+    color: sv-color('bg', 1);
   }
   &.vs-change-color {
     &:hover {
       .sv-table__td {
-        background: -color('color', 0.2) !important;
+        background: sv-color('color', 0.2) !important;
       }
     }
   }
   &:hover {
     .sv-table__td {
-      background: -color('gray-1');
+      background: sv-color('gray-1');
     }
   }
 }
@@ -82,7 +82,7 @@
   td {
     transition: all 0.25s ease;
     padding: 0px;
-    background: -color('gray-1') !important;
+    background: sv-color('gray-1') !important;
     border: 0px;
     .sv-table__expand__td__content {
       overflow: hidden;

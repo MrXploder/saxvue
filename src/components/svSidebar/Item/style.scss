@@ -13,7 +13,7 @@
   align-items: center;
   justify-content: flex-start;
   position: relative;
-  color: -color('text');
+  color: sv-color('text');
   border: 0px;
   &.hasIcon {
     padding: 0px;
@@ -32,7 +32,7 @@
     top: 0px;
     width: 10px;
     height: 100%;
-    background: -color('color');
+    background: sv-color('color');
     border-radius: 0px 20px 20px 0px;
     transform: translate(-6px);
     transition: all 0.25s ease;
@@ -43,8 +43,8 @@
   }
   &.active {
     opacity: 1;
-    // background: -color('background', .1) !important;
-    color: -color('color');
+    // background: sv-color('background', .1) !important;
+    color: sv-color('color');
     &:after {
       transform: translate(0px);
     }
@@ -57,7 +57,7 @@
     justify-content: center;
     font-size: 1.2rem;
     z-index: 50;
-    background: -color('background');
+    background: sv-color('background');
   }
   &:hover:not(.hasIcon) {
     opacity: 1;

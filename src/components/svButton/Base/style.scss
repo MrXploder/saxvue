@@ -3,8 +3,8 @@
 
 .sv-button {
   border: 0px;
-  margin: -var(button-margin);
-  border-radius: -var(button-border-radius);
+  margin: sv-var(button-margin);
+  border-radius: sv-var(button-border-radius);
   transition: all 0.25s ease;
   position: relative;
   user-select: none;
@@ -19,7 +19,7 @@
   box-sizing: border-box;
   &.sv-component-dark {
     &.sv-button--transparent {
-      color: -color('text') !important;
+      color: sv-color('text') !important;
     }
   }
   &--fff {
@@ -28,7 +28,7 @@
     }
   }
   &__content {
-    padding: -var(button-padding);
+    padding: sv-var(button-padding);
     width: 100%;
     display: flex;
     align-items: center;
@@ -129,7 +129,7 @@
       position: absolute;
       width: 100%;
       height: 100%;
-      background: -color('color', 0.4);
+      background: sv-color('color', 0.4);
       top: 0px;
       left: 0px;
       z-index: 1200;
@@ -150,7 +150,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: -color('color', 0.8);
+    background: sv-color('color', 0.8);
     border-radius: inherit;
     &:after {
       content: '';
@@ -230,60 +230,60 @@
   // Type Button Style;
 }
 .sv-button--default {
-  background: -color(color, 1);
+  background: sv-color(color, 1);
   color: #fff;
   &.sv-button--active {
-    box-shadow: 0px 10px 20px -10px -color(color, 1);
+    box-shadow: 0px 10px 20px -10px sv-color(color, 1);
     transform: translate(0, -3px);
   }
   &:hover {
-    box-shadow: 0px 10px 20px -10px -color(color, 1);
+    box-shadow: 0px 10px 20px -10px sv-color(color, 1);
     transform: translate(0, -3px);
   }
 }
 .sv-button--flat {
-  background: -color(color, 0.15);
-  color: -color(color, 1);
+  background: sv-color(color, 0.15);
+  color: sv-color(color, 1);
   &.sv-button--dark {
-    color: -color(text, 1);
+    color: sv-color(text, 1);
   }
   &:hover {
-    background: -color(color, 0.25);
+    background: sv-color(color, 0.25);
   }
   &:focus {
     color: #fff;
-    background: -color(color, 1);
+    background: sv-color(color, 1);
     transition: all 0.25s ease, background 0.25s ease 0.25s;
   }
   &.sv-button--active {
-    background: -color(color, 1);
+    background: sv-color(color, 1);
     color: #fff;
   }
 }
 .sv-button--floating {
-  background: -color(color, 1);
+  background: sv-color(color, 1);
   color: #fff;
-  box-shadow: 0px 8px 20px -6px -color(color, 1);
+  box-shadow: 0px 8px 20px -6px sv-color(color, 1);
   transform: translate(0, -3px);
   &:hover {
-    box-shadow: 0px 8px 20px -6px -color(color, 1);
+    box-shadow: 0px 8px 20px -6px sv-color(color, 1);
     transform: translate(0, -6px);
   }
   &:focus {
     transform: translate(0, 0px);
-    box-shadow: 0px 0px 0px 0px -color(color, 1);
+    box-shadow: 0px 0px 0px 0px sv-color(color, 1);
   }
   &.sv-button--active {
     transform: translate(0, 0px);
-    box-shadow: 0px 0px 0px 0px -color(color, 1);
+    box-shadow: 0px 0px 0px 0px sv-color(color, 1);
   }
 }
 .sv-button--border {
-  background: -color(color, 0);
-  color: -color(color, 1);
+  background: sv-color(color, 0);
+  color: sv-color(color, 1);
   &:before {
     content: '';
-    border: 2px solid -color(color, 1);
+    border: 2px solid sv-color(color, 1);
     position: absolute;
     top: 0px;
     left: 0px;
@@ -297,20 +297,20 @@
   }
   &:hover {
     &:before {
-      border: 2px solid -color(color, 0.5);
+      border: 2px solid sv-color(color, 0.5);
     }
   }
   &:focus {
     color: #fff;
-    background: -color(color, 1);
+    background: sv-color(color, 1);
   }
   &.sv-button--active {
-    background: -color(color, 1);
+    background: sv-color(color, 1);
     color: #fff;
   }
 }
 .sv-button--gradient {
-  background: -color('color');
+  background: sv-color('color');
   color: #fff;
   overflow: hidden;
   &.sv-button--primary,
@@ -321,7 +321,7 @@
   }
   &::before {
     content: '';
-    background: linear-gradient(30deg, -color('color', 0) 33%, -color('color', 1) 100%);
+    background: linear-gradient(30deg, sv-color('color', 0) 33%, sv-color('color', 1) 100%);
     position: absolute;
     top: 0px;
     left: 0px;
@@ -336,7 +336,7 @@
   }
   &:hover {
     transform: translate(0, -3px);
-    box-shadow: 0px 10px 20px -10px -color('color', 0.7);
+    box-shadow: 0px 10px 20px -10px sv-color('color', 0.7);
     &::before {
       opacity: 0;
       // transform: translate(50%, -50%);
@@ -348,7 +348,7 @@
   }
 }
 .sv-button--relief {
-  background: -color('color');
+  background: sv-color('color');
   color: #fff;
   overflow: hidden;
   transform: translate(0) scale(1, 1);
@@ -372,7 +372,7 @@
     transition: all 0.4s ease;
     z-index: -1;
     filter: contrast(2) grayscale(0.4);
-    border-bottom: 3px solid -color('color');
+    border-bottom: 3px solid sv-color('color');
     box-sizing: border-box;
   }
   &:active {
@@ -381,7 +381,7 @@
       padding-bottom: 6px;
     }
     &::before {
-      border-bottom: 0px solid -color('color');
+      border-bottom: 0px solid sv-color('color');
     }
   }
   &.sv-button--active {
@@ -390,18 +390,18 @@
       padding-bottom: 6px;
     }
     &::before {
-      border-bottom: 0px solid -color('color');
+      border-bottom: 0px solid sv-color('color');
     }
   }
 }
 .sv-button--transparent {
   background: transparent;
-  color: -color('color');
+  color: sv-color('color');
   overflow: hidden;
   &::before {
     content: '';
-    background: -color('color', 0.1);
-    // background: -color('color', -var('background-opacity'));
+    background: sv-color('color', 0.1);
+    // background: sv-color('color', sv-var('background-opacity'));
     position: absolute;
     bottom: 0px;
     left: 0px;
@@ -428,28 +428,28 @@
   }
   &.sv-button--active {
     &::before {
-      background: -color('color', 0.2);
+      background: sv-color('color', 0.2);
       opacity: 1;
       transform: scale(1);
     }
   }
 }
 .sv-button--shadow {
-  background: -color('background');
-  color: -color('text');
+  background: sv-color('background');
+  color: sv-color('text');
   overflow: hidden;
-  box-shadow: 0px 0px 0px 0px -rgba(0, 0, 0, -var(shadow-opacity));
+  box-shadow: 0px 0px 0px 0px sv-rgba(0, 0, 0, sv-var(shadow-opacity));
   &:active:not(.sv-button--active) {
     transform: translate(0, -1px);
-    box-shadow: 0px 5px 15px 0px -rgba(0, 0, 0, -var(shadow-opacity)) !important;
+    box-shadow: 0px 5px 15px 0px sv-rgba(0, 0, 0, sv-var(shadow-opacity)) !important;
   }
   &:hover {
     transform: translate(0, -3px);
-    box-shadow: 0px 8px 25px 0px -rgba(0, 0, 0, -var(shadow-opacity));
+    box-shadow: 0px 8px 25px 0px sv-rgba(0, 0, 0, sv-var(shadow-opacity));
   }
   &.sv-button--active {
     transform: translate(0, -3px);
-    box-shadow: 0px 8px 25px 0px -rgba(0, 0, 0, -var(shadow-opacity));
+    box-shadow: 0px 8px 25px 0px sv-rgba(0, 0, 0, sv-var(shadow-opacity));
   }
 }
 @keyframes btnload {

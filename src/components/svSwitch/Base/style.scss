@@ -20,7 +20,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: -color('gray-3');
+  background: sv-color('gray-3');
   transition: all 0.25s ease;
   overflow: hidden;
   &--icon {
@@ -66,7 +66,7 @@
     position: absolute;
     width: calc(100% - 8px);
     height: calc(100% - 8px);
-    border: 3px dashed -color('color');
+    border: 3px dashed sv-color('color');
     z-index: 200;
     border-radius: 50%;
     border-top: 3px solid transparent;
@@ -83,7 +83,7 @@
     position: absolute;
     width: calc(100% - 8px);
     height: calc(100% - 8px);
-    border: 3px solid -color('color');
+    border: 3px solid sv-color('color');
     z-index: 200;
     border-radius: 50%;
     border-top: 3px solid transparent;
@@ -113,7 +113,7 @@
     }
   }
   &:hover {
-    background: -color('gray-4');
+    background: sv-color('gray-4');
   }
   &:active {
     transform: scale(0.9);
@@ -122,7 +122,7 @@
     width: 100%;
     height: auto;
     position: absolute;
-    background: -color('color');
+    background: sv-color('color');
     border-radius: inherit;
     z-index: 2;
     transition: all 0.25s ease-out;
@@ -137,7 +137,7 @@
     padding: 5px;
     padding-left: 25px;
     transition: all 0.25s ease 0.05s;
-    color: -color('text');
+    color: sv-color('text');
     z-index: 9;
     display: flex;
     align-items: center;
@@ -158,13 +158,13 @@
   &__circle {
     width: 20px;
     height: 20px;
-    background: -color('background');
+    background: sv-color('background');
     border-radius: 20px;
     transition: all 0.25s ease;
     position: absolute;
     z-index: 10;
     left: 4px;
-    color: -color('text');
+    color: sv-color('text');
     display: flex;
     align-items: center;
     justify-content: center;
@@ -223,8 +223,8 @@
       }
       ~ .sv-switch__circle {
         left: calc(100% - 24px);
-        box-shadow: -5px 0px 25px 0px -color('background', 0.6);
-        color: -color('color');
+        box-shadow: -5px 0px 25px 0px sv-color('background', 0.6);
+        color: sv-color('color');
       }
     }
   }

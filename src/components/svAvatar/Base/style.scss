@@ -12,7 +12,7 @@
   &.vs-change-color-badge {
     .sv-avatar__badge {
       .sv-avatar__points__point {
-        background: -color('background');
+        background: sv-color('background');
       }
     }
   }
@@ -77,7 +77,7 @@
     .sv-avatar {
       width: calc(100% - 4px);
       height: calc(100% - 4px);
-      border: 2px solid -color('background');
+      border: 2px solid sv-color('background');
       margin: 2px;
     }
     &:after {
@@ -90,28 +90,28 @@
       border-radius: inherit;
       background-color: #ffe53b;
       z-index: -1;
-      background: -color('color');
+      background: sv-color('color');
     }
   }
   &.sv-component--is-color {
     .sv-avatar {
-      color: -color('background');
+      color: sv-color('background');
     }
     .sv-avatar__points {
       .sv-avatar__points__point {
-        background: -color('background');
+        background: sv-color('background');
       }
     }
   }
 }
 .sv-avatar {
-  background: -color('color');
+  background: sv-color('color');
   color: #fff;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: -color('text');
+  color: sv-color('text');
   border-radius: inherit;
   width: 100%;
   height: 100%;
@@ -194,15 +194,15 @@
     position: absolute;
     width: 13px;
     height: 13px;
-    background: -color('badge');
+    background: sv-color('badge');
     border-radius: 50%;
-    border: 2px solid -color('background') !important;
+    border: 2px solid sv-color('background') !important;
     right: -4px;
     bottom: -4px;
     font-size: 0.6rem;
     font-weight: bold;
     z-index: 200;
-    color: -color('text');
+    color: sv-color('text');
     &.isSlot,
     &.writing {
       width: auto;
@@ -212,7 +212,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      color: -color('background');
+      color: sv-color('background');
       line-height: 0.9rem;
       padding: 0px 3px;
       min-height: 18px;
@@ -240,7 +240,7 @@
     &__point {
       width: 5px;
       height: 5px;
-      background: -color('text');
+      background: sv-color('text');
       margin: 0px 2px;
       border-radius: 50%;
       &:nth-child(1) {
@@ -275,7 +275,7 @@
     width: auto;
     height: auto;
     min-height: 90%;
-    background: -color('gray-3');
+    background: sv-color('gray-3');
     top: 50%;
     transform: translate(0, -50%);
     right: -20px;
