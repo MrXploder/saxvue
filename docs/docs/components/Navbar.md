@@ -142,6 +142,50 @@ Add a shadow.
 
 </card>
 
+<card>
+
+## Group
+
+Use `sv-navbar-group` to create dropdown menus inside the navbar.
+
+<template #example>
+<ClientOnly><NavbarGroup /></ClientOnly>
+</template>
+
+```html
+<sv-navbar v-model="active">
+  <sv-navbar-group>
+    Docs
+    <template #items>
+      <sv-navbar-item id="guide">Guide</sv-navbar-item>
+      <sv-navbar-item id="docs">Documents</sv-navbar-item>
+    </template>
+  </sv-navbar-group>
+  <sv-navbar-item id="license">License</sv-navbar-item>
+</sv-navbar>
+```
+
+</card>
+
+<card>
+
+## Padding Scroll
+
+Use `padding-scroll` and `target-scroll` to reduce navbar padding when the target element is scrolled.
+
+<template #example>
+<ClientOnly><NavbarPaddingScroll /></ClientOnly>
+</template>
+
+```html
+<sv-navbar padding-scroll target-scroll="#my-content" v-model="active">
+  <sv-navbar-item id="guide">Guide</sv-navbar-item>
+  <sv-navbar-item id="docs">Documents</sv-navbar-item>
+</sv-navbar>
+```
+
+</card>
+
 ## API
 
 ### sv-navbar

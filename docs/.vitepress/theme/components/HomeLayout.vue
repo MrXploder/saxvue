@@ -16,8 +16,26 @@
         <p class="description">We love what we do. Let us help you do what <b>You love</b>.</p>
 
         <div class="hero-buttons">
-          <a class="btn-primary" href="/saxvue/docs/guide/">Get Started</a>
-          <a class="btn-outline btn-discord" target="_blank" href="https://discord.gg/6AZNXEa">
+          <a
+            class="btn-primary"
+            href="/saxvue/docs/guide/"
+            @mouseenter="
+              activeLogo = 'vuesax';
+              expand = true;
+            "
+            @mouseleave="clearLogo"
+            >Get Started</a
+          >
+          <a
+            class="btn-outline btn-discord"
+            target="_blank"
+            href="https://discord.gg/6AZNXEa"
+            @mouseenter="
+              activeLogo = 'discord';
+              expand = true;
+            "
+            @mouseleave="clearLogo"
+          >
             <i class="bx bxl-discord" />
             Discord
           </a>
@@ -25,6 +43,11 @@
             class="btn-outline btn-github"
             target="_blank"
             href="https://github.com/MrXploder/saxvue"
+            @mouseenter="
+              activeLogo = 'github';
+              expand = true;
+            "
+            @mouseleave="clearLogo"
           >
             <i class="bx bxl-github" />
           </a>
@@ -32,34 +55,15 @@
       </div>
 
       <div class="hero-showcase">
-        <HomeShowcase />
+        <HomeShowcase :active-logo="activeLogo" :expand="expand" />
       </div>
     </section>
 
     <!-- Feature 1: Reusable Components -->
     <section class="sv-feature">
       <div class="feature-visual">
-        <div class="feature-placeholder feature-placeholder--1">
-          <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
-            <rect
-              x="20"
-              y="20"
-              width="360"
-              height="260"
-              rx="20"
-              fill="rgba(26,92,255,0.05)"
-              stroke="rgba(26,92,255,0.15)"
-              stroke-width="2"
-            />
-            <rect x="50" y="60" width="120" height="40" rx="10" fill="rgba(26,92,255,0.2)" />
-            <rect x="50" y="120" width="180" height="12" rx="6" fill="rgba(26,92,255,0.1)" />
-            <rect x="50" y="145" width="140" height="12" rx="6" fill="rgba(26,92,255,0.07)" />
-            <rect x="50" y="185" width="100" height="36" rx="12" fill="rgba(26,92,255,1)" />
-            <rect x="230" y="60" width="120" height="120" rx="15" fill="rgba(26,92,255,0.08)" />
-            <circle cx="290" cy="100" r="25" fill="rgba(26,92,255,0.15)" />
-            <rect x="260" y="140" width="60" height="10" rx="5" fill="rgba(26,92,255,0.1)" />
-          </svg>
-        </div>
+        <img class="light-img" src="/vuesax-white-1.svg" alt="Reusable Components" />
+        <img class="dark-img" src="/vuesax-dark-1.svg" alt="Reusable Components" />
       </div>
       <div class="feature-text">
         <h2><b>Reusable Components</b> and easy to implement</h2>
@@ -74,36 +78,8 @@
     <!-- Feature 2: Responsive -->
     <section class="sv-feature reverse">
       <div class="feature-visual">
-        <div class="feature-placeholder feature-placeholder--2">
-          <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
-            <rect
-              x="80"
-              y="30"
-              width="240"
-              height="160"
-              rx="12"
-              fill="rgba(26,92,255,0.05)"
-              stroke="rgba(26,92,255,0.15)"
-              stroke-width="2"
-            />
-            <rect x="95" y="50" width="70" height="120" rx="8" fill="rgba(26,92,255,0.1)" />
-            <rect x="175" y="50" width="130" height="55" rx="8" fill="rgba(26,92,255,0.08)" />
-            <rect x="175" y="115" width="60" height="55" rx="8" fill="rgba(26,92,255,0.12)" />
-            <rect x="245" y="115" width="60" height="55" rx="8" fill="rgba(26,92,255,0.06)" />
-            <rect
-              x="140"
-              y="220"
-              width="120"
-              height="50"
-              rx="8"
-              fill="rgba(26,92,255,0.05)"
-              stroke="rgba(26,92,255,0.15)"
-              stroke-width="2"
-            />
-            <rect x="150" y="230" width="100" height="8" rx="4" fill="rgba(26,92,255,0.12)" />
-            <rect x="150" y="245" width="70" height="8" rx="4" fill="rgba(26,92,255,0.08)" />
-          </svg>
-        </div>
+        <img class="light-img" src="/vuesax-white-2.svg" alt="Responsive Design" />
+        <img class="dark-img" src="/vuesax-dark-2.svg" alt="Responsive Design" />
       </div>
       <div class="feature-text">
         <h2>Do you need support for applications or <b>Responsive Pages</b>?</h2>
@@ -128,18 +104,9 @@
       </header>
       <div class="uses-grid">
         <div v-for="tech in techs" :key="tech.name" class="use-item">
-          <div
-            style="
-              width: 50px;
-              height: 50px;
-              background: rgba(26, 92, 255, 0.08);
-              border-radius: 12px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-            "
-          >
-            <i :class="tech.icon" style="font-size: 1.5rem; color: rgba(26, 92, 255, 0.6)"></i>
+          <div class="use-img-container">
+            <img :class="{ 'light-img': tech.img2 }" :src="tech.img" :alt="tech.name" />
+            <img v-if="tech.img2" class="dark-img" :src="tech.img2" :alt="tech.name" />
           </div>
           <p>{{ tech.name }}</p>
         </div>
@@ -149,27 +116,8 @@
     <!-- Feature 3: Help create projects -->
     <section class="sv-feature">
       <div class="feature-visual">
-        <div class="feature-placeholder feature-placeholder--3">
-          <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
-            <rect
-              x="40"
-              y="40"
-              width="320"
-              height="220"
-              rx="16"
-              fill="rgba(26,92,255,0.04)"
-              stroke="rgba(26,92,255,0.12)"
-              stroke-width="2"
-            />
-            <rect x="60" y="70" width="80" height="25" rx="12" fill="rgba(26,92,255,1)" />
-            <rect x="150" y="70" width="80" height="25" rx="12" fill="rgba(26,92,255,0.15)" />
-            <rect x="60" y="115" width="280" height="10" rx="5" fill="rgba(26,92,255,0.08)" />
-            <rect x="60" y="135" width="200" height="10" rx="5" fill="rgba(26,92,255,0.06)" />
-            <rect x="60" y="165" width="130" height="30" rx="10" fill="rgba(26,92,255,0.1)" />
-            <rect x="200" y="165" width="130" height="30" rx="10" fill="rgba(26,92,255,0.07)" />
-            <rect x="60" y="210" width="90" height="30" rx="10" fill="rgba(26,92,255,0.9)" />
-          </svg>
-        </div>
+        <img class="light-img" src="/vuesax-white-4.svg" alt="Create Projects" />
+        <img class="dark-img" src="/vuesax-dark-4.svg" alt="Create Projects" />
       </div>
       <div class="feature-text">
         <h2>
@@ -188,24 +136,8 @@
     <!-- Feature 4: Unique design -->
     <section class="sv-feature reverse">
       <div class="feature-visual">
-        <div class="feature-placeholder feature-placeholder--4">
-          <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
-            <circle
-              cx="200"
-              cy="150"
-              r="120"
-              fill="rgba(26,92,255,0.04)"
-              stroke="rgba(26,92,255,0.1)"
-              stroke-width="2"
-            />
-            <circle cx="200" cy="150" r="80" fill="rgba(26,92,255,0.06)" />
-            <circle cx="200" cy="150" r="40" fill="rgba(26,92,255,0.15)" />
-            <circle cx="200" cy="150" r="15" fill="rgba(26,92,255,1)" />
-            <rect x="100" y="40" width="50" height="20" rx="10" fill="rgba(26,92,255,0.15)" />
-            <rect x="280" y="80" width="60" height="20" rx="10" fill="rgba(26,92,255,0.1)" />
-            <rect x="60" y="200" width="70" height="20" rx="10" fill="rgba(26,92,255,0.12)" />
-          </svg>
-        </div>
+        <img class="light-img" src="/vuesax-white-3.svg" alt="Unique Design" />
+        <img class="dark-img" src="/vuesax-dark-3.svg" alt="Unique Design" />
       </div>
       <div class="feature-text">
         <h2><b>Unique and beautiful</b> design</h2>
@@ -251,16 +183,28 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue';
 import HomeShowcase from './HomeShowcase.vue';
 
+const activeLogo = ref('');
+const expand = ref(false);
+
+function clearLogo() {
+  activeLogo.value = '';
+  expand.value = false;
+}
+
 const techs = [
-  { name: 'Vue 3', icon: 'bx bxl-vuejs' },
-  { name: 'TypeScript', icon: 'bx bxl-typescript' },
-  { name: 'JavaScript', icon: 'bx bxl-javascript' },
-  { name: 'Sass', icon: 'bx bxl-sass' },
-  { name: 'Webpack', icon: 'bx bx-package' },
-  { name: 'Jest', icon: 'bx bx-test-tube' },
-  { name: 'Storybook', icon: 'bx bx-book-open' },
-  { name: 'VitePress', icon: 'bx bx-file' },
+  { name: 'Vuejs', img: '/use/vuejs-vuesax-1.png' },
+  { name: 'Javascript', img: '/use/js-javaScript-vuesax.png' },
+  { name: 'Typescript', img: '/use/typescript-vuesax.png' },
+  { name: 'Sass', img: '/use/sass-vuesax-4.png' },
+  { name: 'Vuepress', img: '/use/vuepress-vuesax-5.png' },
+  { name: 'Babel', img: '/use/babel-vuesax-6.png' },
+  { name: 'Jest', img: '/use/jest-vuesax-8-w.svg', img2: '/use/jest-vuesax-8.svg' },
+  { name: 'Boxicons', img: '/use/boxicons-vuesax-10.png', img2: '/use/boxicons-vuesax-9.png' },
+  { name: 'Adobe XD', img: '/use/adobe-xd-1.svg' },
+  { name: 'Webpack', img: '/use/webpack-vuesax-13.png', img2: '/use/webpack-vuesax-12.png' },
+  { name: 'Illustrator', img: '/use/illustrator-vuesax-11.png' },
 ];
 </script>

@@ -83,6 +83,10 @@ export default defineConfig({
           },
         ],
       },
+      {
+        text: 'License',
+        link: '/docs/license',
+      },
     ],
 
     sidebar: {
@@ -132,6 +136,13 @@ export default defineConfig({
           collapsed: false,
           items: [
             { text: 'Grid', link: '/docs/layout/' },
+          ],
+        },
+        {
+          text: 'More',
+          collapsed: false,
+          items: [
+            { text: 'License', link: '/docs/license' },
           ],
         },
       ],

@@ -10,6 +10,8 @@ Add SaxVue to your Nuxt 3 project:
 npm install @mrxploder/saxvue
 ```
 
+<img src="/nuxt-ui-vuesax.png" alt="Nuxt UI framework selection" />
+
 </card>
 
 <card>
@@ -59,6 +61,10 @@ Try adding a simple component like [SvButton](/docs/components/):
 }
 </style>
 ```
+
+And if we see the page we find something like this:
+
+<img src="/nuxt-test-page.png" alt="Nuxt test page result" />
 
 </card>
 

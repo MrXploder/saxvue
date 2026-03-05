@@ -173,7 +173,7 @@ Show loading state on specific page items.
 
 ## Slot
 
-Customize pagination content using the `#default` slot.
+Customize pagination content using the `#default` slot to render a custom element in place of the active page button.
 
 <template #example>
 <ClientOnly><PaginationInfinite /></ClientOnly>
@@ -183,6 +183,38 @@ Customize pagination content using the `#default` slot.
 <sv-pagination v-model="page" :length="20">
   <sv-button>{{ page }} / 20</sv-button>
 </sv-pagination>
+```
+
+</card>
+
+<card>
+
+## Infinite
+
+Use the `infinite` prop so that clicking the last arrow wraps back to page 1 (and vice-versa).
+
+<template #example>
+<ClientOnly><PaginationInfinite /></ClientOnly>
+</template>
+
+```html
+<sv-pagination v-model="page" infinite :length="20" />
+```
+
+</card>
+
+<card>
+
+## Progress
+
+Use the `progress` prop to display a progress bar below the pagination that reflects the current page position.
+
+<template #example>
+<ClientOnly><PaginationProgress /></ClientOnly>
+</template>
+
+```html
+<sv-pagination v-model="page" :length="10" progress />
 ```
 
 </card>

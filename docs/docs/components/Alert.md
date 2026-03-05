@@ -253,6 +253,46 @@ Add a footer using the `#footer` slot.
 
 </card>
 
+<card>
+
+## Animate
+
+Toggle the alert visibility with a button to see the open/close animation.
+
+<template #example>
+<ClientOnly><AlertAnimate /></ClientOnly>
+</template>
+
+```html
+<sv-button flat @click="active = !active">Toggle Alert</sv-button>
+<sv-alert closable v-model="active">
+  <template #title>SaxVue Framework</template>
+  SaxVue is a UI component framework built with Vue.js.
+</sv-alert>
+```
+
+</card>
+
+<card>
+
+## Time Close
+
+Use the `progress` prop combined with a timer to auto-close the alert with a progress bar.
+
+<template #example>
+<ClientOnly><AlertTime /></ClientOnly>
+</template>
+
+```html
+<sv-button flat @click="active = true">Open Alert 6s</sv-button>
+<sv-alert :progress="progress" v-model="active">
+  <template #title>SaxVue Framework</template>
+  This alert will close after 6 seconds with a progress indicator.
+</sv-alert>
+```
+
+</card>
+
 ## API
 
 | Property         | Type      | Values                                         | Description                | Default   |

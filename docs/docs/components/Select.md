@@ -165,6 +165,29 @@ Show validation states.
 
 </card>
 
+<card>
+
+## Message
+
+Use the `message-success`, `message-danger`, and `message-warn` slots to show validation messages below the select.
+
+<template #example>
+<ClientOnly><SelectMessage /></ClientOnly>
+</template>
+
+```html
+<sv-select placeholder="Success" v-model="v1">
+  <template #message-success>Option Valid</template>
+  <sv-option label="SaxVue" value="1">SaxVue</sv-option>
+</sv-select>
+<sv-select placeholder="Danger" v-model="v2">
+  <template #message-danger>Required</template>
+  <sv-option label="Vue" value="2">Vue</sv-option>
+</sv-select>
+```
+
+</card>
+
 ## API
 
 ### sv-select

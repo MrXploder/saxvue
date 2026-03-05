@@ -178,6 +178,62 @@ Use white text (useful with colored backgrounds).
 
 </card>
 
+<card>
+
+## Group
+
+Use `sv-sidebar-group` to create collapsible groups of sidebar items.
+
+<template #example>
+<ClientOnly><SidebarGroup /></ClientOnly>
+</template>
+
+```html
+<sv-sidebar v-model="active" open>
+  <sv-sidebar-item id="home">
+    <template #icon><i class="bx bx-home"></i></template>
+    Home
+  </sv-sidebar-item>
+  <sv-sidebar-group>
+    <template #header>
+      <sv-sidebar-item arrow>
+        <template #icon><i class="bx bx-group"></i></template>
+        Social media
+      </sv-sidebar-item>
+    </template>
+    <sv-sidebar-item id="instagram">Instagram</sv-sidebar-item>
+    <sv-sidebar-item id="twitter">Twitter</sv-sidebar-item>
+  </sv-sidebar-group>
+</sv-sidebar>
+```
+
+</card>
+
+<card>
+
+## Open
+
+Use `v-model:open` together with a navbar button to toggle the sidebar from outside.
+
+<template #example>
+<ClientOnly><SidebarOpen /></ClientOnly>
+</template>
+
+```html
+<sv-navbar>
+  <template #left>
+    <sv-button @click="open = !open" flat icon>
+      <i class="bx bx-menu"></i>
+    </sv-button>
+  </template>
+</sv-navbar>
+<sv-sidebar absolute v-model="active" v-model:open="open">
+  <!-- sidebar items -->
+</sv-sidebar>
+```
+
+</card>
+
 ## API
 
 ### sv-sidebar

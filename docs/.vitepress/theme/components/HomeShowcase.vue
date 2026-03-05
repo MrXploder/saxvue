@@ -1,10 +1,42 @@
 <template>
-  <div class="con-components">
+  <div
+    :class="[
+      'con-components',
+      {
+        'btn-hover': expand,
+        'vuesax-hover': activeLogo === 'vuesax',
+        'discord-hover': activeLogo === 'discord',
+        'github-hover': activeLogo === 'github',
+      },
+    ]"
+  >
+    <!-- Floating logos -->
+    <div class="con-logo vuesax-logo">
+      <img class="light-img" src="/vuesax-only.png" alt="SaxVue" />
+      <img class="dark-img" src="/vuesax-only-b.png" alt="SaxVue" />
+      <div class="logo-wave logo-wave--1"></div>
+      <div class="logo-wave logo-wave--2"></div>
+      <div class="logo-wave logo-wave--3"></div>
+    </div>
+    <div class="con-logo discord-logo">
+      <i class="bx bxl-discord"></i>
+      <div class="logo-wave logo-wave--1"></div>
+      <div class="logo-wave logo-wave--2"></div>
+      <div class="logo-wave logo-wave--3"></div>
+    </div>
+    <div class="con-logo github-logo">
+      <i class="bx bxl-github"></i>
+      <div class="logo-wave logo-wave--1"></div>
+      <div class="logo-wave logo-wave--2"></div>
+      <div class="logo-wave logo-wave--3"></div>
+    </div>
+
     <div class="content-components">
       <!-- Component 1: Avatar card -->
       <div class="component1">
         <sv-avatar size="80" badge badge-color="danger">
-          <img src="/avatars/avatar-3.png" alt="User" />
+          <img class="light-img" src="/foto1.png" alt="User" />
+          <img class="dark-img" src="/foto12.png" alt="User" />
           <template #badge>8</template>
         </sv-avatar>
         <div class="con-text">
@@ -19,9 +51,8 @@
 
       <!-- Component 2: Logo placeholder -->
       <div class="component2">
-        <div class="logo-inner">
-          <span>Sv</span>
-        </div>
+        <img class="light-img" src="/vuesax-only.png" alt="SaxVue" />
+        <img class="dark-img" src="/vuesax-only-b.png" alt="SaxVue" />
       </div>
 
       <!-- Component 3: Switches -->
@@ -33,7 +64,8 @@
       <!-- Component 4: Product card -->
       <div class="component4">
         <div class="product-img">
-          <i class="bx bx-leaf" style="font-size: 3rem; color: rgba(var(--sv-primary), 0.4)"></i>
+          <img class="light-img" src="/foto3.png" alt="Product" />
+          <img class="dark-img" src="/foto10.png" alt="Product" />
         </div>
         <h4>Potted cactus</h4>
         <sv-button block>Button</sv-button>
@@ -43,7 +75,7 @@
       <div class="component5">
         <i class="bx bxs-star"></i>
         <div class="con-img">
-          <img src="https://vuejs.org/images/logo.png" alt="Vue" />
+          <img src="/vue-logo.png" alt="Vue" />
         </div>
         <h4>Vuejs Components</h4>
         <p>Framework components for VueJS. Create instances quickly with a few lines of code.</p>
@@ -61,7 +93,8 @@
       <div class="component7">
         <div class="con-img">
           <i class="bx bx-video"></i>
-          <div class="img-placeholder"></div>
+          <img class="light-img" src="/foto4.png" alt="Media" />
+          <img class="dark-img" src="/foto11.png" alt="Media" />
         </div>
         <header>
           <sv-button icon dark shadow>
@@ -90,7 +123,8 @@
           <i class="bx bxs-heart"></i>
         </div>
         <div class="con-img">
-          <div class="img-placeholder music-bg"></div>
+          <img class="light-img" src="/foto2.jpg" alt="Music" />
+          <img class="dark-img" src="/foto13.png" alt="Music" />
           <div class="play">
             <i class="bx bxs-right-arrow"></i>
           </div>
@@ -102,13 +136,13 @@
           </div>
           <div class="con-avatars">
             <sv-avatar size="40" circle>
-              <img src="/avatars/avatar-1.png" alt="User" />
+              <img src="/foto9.png" alt="User" />
             </sv-avatar>
             <sv-avatar size="40" circle primary>
-              <img src="/avatars/avatar-2.png" alt="User" />
+              <img src="/foto8.png" alt="User" />
             </sv-avatar>
             <sv-avatar size="40" circle>
-              <img src="/avatars/avatar-4.png" alt="User" />
+              <img src="/foto7.png" alt="User" />
             </sv-avatar>
           </div>
         </footer>
@@ -180,7 +214,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from 'vue';
+import { ref, reactive, computed } from 'vue';
+
+const props = defineProps<{
+  activeLogo?: string;
+  expand?: boolean;
+}>();
 
 const switch1 = ref(false);
 const switch2 = ref(true);
@@ -319,19 +358,11 @@ function handleBlurDrop() {
   box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.1);
   transform: translate(0, 7px);
 }
-.component2 .logo-inner {
+.component2 img {
   width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(var(--sv-primary), 0.06);
-  border-radius: inherit;
-}
-.component2 .logo-inner span {
-  font-size: 2.2rem;
-  font-weight: 800;
-  color: rgba(var(--sv-primary), 1);
+  object-fit: contain;
+  padding: 25px;
 }
 
 /* Component 3: Switches */
@@ -373,11 +404,17 @@ function handleBlurDrop() {
   width: 120px;
   height: 120px;
   border-radius: 30px;
-  background: rgba(var(--sv-primary), 0.06);
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.25s ease;
+}
+.component4 .product-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
 }
 .component4:hover .product-img {
   transform: scale(1.2) translate(0px, -10px);
@@ -521,10 +558,10 @@ function handleBlurDrop() {
   font-size: 1.2rem;
   z-index: 5;
 }
-.component7 .con-img .img-placeholder {
+.component7 .con-img img {
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(var(--sv-primary), 0.3), rgba(var(--sv-primary), 0.15));
+  object-fit: cover;
 }
 .component7 header {
   display: flex;
@@ -604,13 +641,10 @@ function handleBlurDrop() {
   justify-content: center;
   cursor: pointer;
 }
-.component8 .con-img .music-bg {
+.component8 .con-img img {
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(var(--sv-primary), 0.4), rgba(100, 50, 200, 0.3));
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  object-fit: cover;
 }
 .component8 .con-img .play {
   width: 60px;
@@ -870,7 +904,163 @@ function handleBlurDrop() {
   }
 }
 
+/* Floating logos */
+@keyframes waveslogo {
+  0% {
+    width: 0px;
+    height: 0px;
+    opacity: 1;
+  }
+  100% {
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+  }
+}
+.con-logo {
+  position: absolute;
+  transform: scale(0.3);
+  opacity: 0;
+  font-size: 9rem;
+  z-index: 20;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.04);
+  transition: all 0.25s ease;
+}
+.con-logo::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--sv-theme-layout);
+  z-index: 20;
+}
+.con-logo i {
+  z-index: 30;
+}
+.con-logo img {
+  width: 50%;
+  z-index: 100;
+}
+.con-logo.vuesax-logo {
+  border-radius: 50px;
+}
+.con-logo.discord-logo {
+  width: 180px;
+  height: 180px;
+  border-radius: 40px 40px 5px 40px;
+}
+.con-logo.discord-logo i {
+  transform: translate(5px);
+}
+.logo-wave {
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  background: transparent;
+  border-radius: inherit;
+  z-index: 10;
+}
+.logo-wave--1 {
+  animation: waveslogo 0.7s ease infinite;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+}
+.logo-wave--2 {
+  animation: waveslogo 1.4s linear infinite;
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+}
+.logo-wave--3 {
+  animation: waveslogo 1.75s ease infinite;
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.1);
+}
+
+/* Show floating logos on hero button hover */
+.con-components.btn-hover.vuesax-hover .vuesax-logo {
+  transform: scale(1);
+  opacity: 1;
+}
+.con-components.btn-hover.discord-hover .discord-logo {
+  transform: scale(1);
+  opacity: 1;
+}
+.con-components.btn-hover.github-hover .github-logo {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Spread components outward when hero button is hovered */
+.con-components.btn-hover .component1 {
+  top: -100px !important;
+  left: -100px !important;
+  transform: translate(-100px, -100px) !important;
+}
+.con-components.btn-hover .component2 {
+  top: -70px !important;
+  left: 430px !important;
+}
+.con-components.btn-hover .component3 {
+  top: -75px !important;
+  left: 680px !important;
+}
+.con-components.btn-hover .component4 {
+  top: 60px !important;
+  left: 748px !important;
+}
+.con-components.btn-hover .component5 {
+  top: 15px !important;
+  left: 920px !important;
+}
+.con-components.btn-hover .component6 {
+  top: 330px !important;
+  left: 960px !important;
+}
+.con-components.btn-hover .component7 {
+  top: 450px !important;
+  left: 810px !important;
+}
+.con-components.btn-hover .component8 {
+  top: 20px !important;
+  left: 120px !important;
+  z-index: 10;
+}
+.con-components.btn-hover .component9 {
+  top: 660px !important;
+  left: 490px !important;
+}
+.con-components.btn-hover .component10 {
+  top: 650px !important;
+  left: 320px !important;
+}
+.con-components.btn-hover .component11 {
+  top: 710px !important;
+  left: 10px !important;
+}
+.con-components.btn-hover .component12 {
+  top: 560px !important;
+  left: -90px !important;
+}
+.con-components.btn-hover .component13 {
+  top: 160px !important;
+  left: -150px !important;
+  z-index: 20;
+}
+
 /* Dark mode overrides */
+:global(.dark) .light-img {
+  display: none !important;
+}
+.dark-img {
+  display: none !important;
+}
+:global(.dark) .dark-img {
+  display: block !important;
+}
 :global(.dark) .component1,
 :global(.dark) .component2,
 :global(.dark) .component4,
@@ -890,5 +1080,13 @@ function handleBlurDrop() {
 }
 :global(.dark) .component8 .con-icon {
   background: var(--sv-theme-bg2);
+}
+:global(.dark) .con-logo::after {
+  background: var(--sv-theme-bg2);
+}
+:global(.dark) .logo-wave--1,
+:global(.dark) .logo-wave--2,
+:global(.dark) .logo-wave--3 {
+  box-shadow: 0px 0px 10px 0px rgba(255, 255, 255, 0.25);
 }
 </style>

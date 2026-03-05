@@ -181,6 +181,75 @@ Add pagination to the table.
 
 </card>
 
+<card>
+
+## State
+
+Add color-coded state to rows using `danger`, `success`, `primary`, or `warn` props on `sv-tr`.
+
+<template #example>
+<ClientOnly><TableState /></ClientOnly>
+</template>
+
+```html
+<sv-tr :danger="row.id == 3" :success="row.id == 5" :primary="row.id == 8">
+  <sv-td>{{ row.name }}</sv-td>
+</sv-tr>
+```
+
+</card>
+
+<card>
+
+## Edit
+
+Use the `edit` prop on `sv-td` to make cells clickable for editing. Typically opens a dialog.
+
+<template #example>
+<ClientOnly><TableEdit /></ClientOnly>
+</template>
+
+```html
+<sv-td edit @click="openEdit(row, 'name')">{{ row.name }}</sv-td>
+```
+
+</card>
+
+<card>
+
+## Miscellaneous
+
+A full-featured table combining search, sort, checkbox selection, expand rows, inline edit, and pagination.
+
+<template #example>
+<ClientOnly><TableMiscellaneous /></ClientOnly>
+</template>
+
+```html
+<sv-table v-model="selected">
+  <template #header>
+    <sv-input v-model="search" border placeholder="Search" block />
+  </template>
+  <template #thead>
+    <sv-tr>
+      <sv-th><sv-checkbox v-model="allCheck" /></sv-th>
+      <sv-th sort @click="users = $sv.sortData($event, users, 'name')">Name</sv-th>
+    </sv-tr>
+  </template>
+  <template #tbody>
+    <sv-tr v-for="(tr, i) in $sv.getPage(users, page, 5)" :data="tr">
+      <sv-td checkbox><sv-checkbox :val="tr" v-model="selected" /></sv-td>
+      <sv-td>{{ tr.name }}</sv-td>
+    </sv-tr>
+  </template>
+  <template #footer>
+    <sv-pagination v-model="page" :length="$sv.getLength(users, 5)" />
+  </template>
+</sv-table>
+```
+
+</card>
+
 ## API
 
 ### sv-table

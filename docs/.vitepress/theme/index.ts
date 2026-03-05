@@ -10,6 +10,8 @@ import Card from './components/Card.vue';
 import HomeLayout from './components/HomeLayout.vue';
 import DocsWarn from './components/DocsWarn.vue';
 import Coloren from './components/Coloren.vue';
+import Badge from './components/Badge.vue';
+import Icons from './components/Icons.vue';
 
 // All demo components
 import * as demos from './components/demos/index';
@@ -25,6 +27,8 @@ const theme: Theme = {
     app.component('HomeLayout', HomeLayout);
     app.component('DocsWarn', DocsWarn);
     app.component('Coloren', Coloren);
+    app.component('badge', Badge);
+    app.component('Icons', Icons);
 
     // Register all demo components globally
     for (const [name, component] of Object.entries(demos)) {
