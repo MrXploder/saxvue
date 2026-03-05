@@ -6,7 +6,7 @@
           <h3>Pot with a plant</h3>
         </template>
         <template #img>
-          <img :src="`https://picsum.photos/400/200?random=${card}`" alt="card image" />
+          <img :src="`/foto${card + 4}.png`" alt="card image" />
         </template>
         <template #text>
           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>

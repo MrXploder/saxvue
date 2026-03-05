@@ -5,7 +5,7 @@
         <h3>Live a life of madness</h3>
       </template>
       <template #img>
-        <img src="https://picsum.photos/400/200?random=1" alt="card image" />
+        <img src="/foto8.png" alt="card image" />
       </template>
       <template #text>
         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>

@@ -7,7 +7,7 @@
       <i class="bx bx-user"></i>
     </sv-avatar>
     <sv-avatar>
-      <img src="https://avatars.githubusercontent.com/u/1?v=4" alt="Avatar" />
+      <img src="/avatars/avatar-1.png" alt="Avatar" />
     </sv-avatar>
   </div>
 </template>

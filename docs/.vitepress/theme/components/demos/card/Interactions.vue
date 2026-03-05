@@ -2,7 +2,7 @@
   <div style="display: flex; justify-content: center">
     <sv-card>
       <template #title><h3>Interactive Card</h3></template>
-      <template #img><img src="https://picsum.photos/400/200?random=15" alt="card" /></template>
+      <template #img><img src="/foto11.png" alt="card" /></template>
       <template #text><p>Hover to see interactions</p></template>
       <template #interactions>
         <sv-button icon flat danger>
