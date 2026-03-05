@@ -1,6 +1,6 @@
 # SaxVue# SaxVue
 
-<img src="assets/saxvue-preview.jpg" alt="SaxVue preview" width="900" /><img src="assets/saxvue-preview.jpg" alt="SaxVue preview" width="900" />
+<img src="assets/saxvue-preview.jpg" alt="SaxVue preview" width="900" />
 
 **Actively maintained** — this is a living project, built because I love Vuesax and want it to thrive in Vue 3.**Actively maintained** — this is a living project, built because I love Vuesax and want it to thrive in Vue 3.
 
