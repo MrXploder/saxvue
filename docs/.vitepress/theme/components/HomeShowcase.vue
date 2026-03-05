@@ -1,5 +1,15 @@
 <template>
-  <div class="con-components">
+  <div
+    :class="[
+      'con-components',
+      {
+        'btn-hover': expand,
+        'vuesax-hover': activeLogo === 'vuesax',
+        'discord-hover': activeLogo === 'discord',
+        'github-hover': activeLogo === 'github',
+      },
+    ]"
+  >
     <!-- Floating logos -->
     <div class="con-logo vuesax-logo">
       <img class="light-img" src="/vuesax-only.png" alt="SaxVue" />
@@ -204,7 +214,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from 'vue';
+import { ref, reactive, computed } from 'vue';
+
+const props = defineProps<{
+  activeLogo?: string;
+  expand?: boolean;
+}>();
 
 const switch1 = ref(false);
 const switch2 = ref(true);
@@ -904,6 +919,8 @@ function handleBlurDrop() {
 }
 .con-logo {
   position: absolute;
+  transform: scale(0.3);
+  opacity: 0;
   font-size: 2.5rem;
   z-index: 20;
   width: 80px;
@@ -914,7 +931,6 @@ function handleBlurDrop() {
   border-radius: 50%;
   box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.04);
   transition: all 0.25s ease;
-  animation: componentAnimate 20s infinite ease;
 }
 .con-logo::after {
   content: '';
@@ -974,6 +990,20 @@ function handleBlurDrop() {
 .logo-wave--3 {
   animation: waveslogo 1.75s ease infinite;
   box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.1);
+}
+
+/* Show floating logos on hero button hover */
+.con-components.btn-hover.vuesax-hover .vuesax-logo {
+  transform: scale(1);
+  opacity: 1;
+}
+.con-components.btn-hover.discord-hover .discord-logo {
+  transform: scale(1);
+  opacity: 1;
+}
+.con-components.btn-hover.github-hover .github-logo {
+  transform: scale(1);
+  opacity: 1;
 }
 
 /* Dark mode overrides */

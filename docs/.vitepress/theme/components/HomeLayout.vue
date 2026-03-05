@@ -16,8 +16,26 @@
         <p class="description">We love what we do. Let us help you do what <b>You love</b>.</p>
 
         <div class="hero-buttons">
-          <a class="btn-primary" href="/saxvue/docs/guide/">Get Started</a>
-          <a class="btn-outline btn-discord" target="_blank" href="https://discord.gg/6AZNXEa">
+          <a
+            class="btn-primary"
+            href="/saxvue/docs/guide/"
+            @mouseenter="
+              activeLogo = 'vuesax';
+              expand = true;
+            "
+            @mouseleave="clearLogo"
+            >Get Started</a
+          >
+          <a
+            class="btn-outline btn-discord"
+            target="_blank"
+            href="https://discord.gg/6AZNXEa"
+            @mouseenter="
+              activeLogo = 'discord';
+              expand = true;
+            "
+            @mouseleave="clearLogo"
+          >
             <i class="bx bxl-discord" />
             Discord
           </a>
@@ -25,6 +43,11 @@
             class="btn-outline btn-github"
             target="_blank"
             href="https://github.com/MrXploder/saxvue"
+            @mouseenter="
+              activeLogo = 'github';
+              expand = true;
+            "
+            @mouseleave="clearLogo"
           >
             <i class="bx bxl-github" />
           </a>
@@ -32,7 +55,7 @@
       </div>
 
       <div class="hero-showcase">
-        <HomeShowcase />
+        <HomeShowcase :active-logo="activeLogo" :expand="expand" />
       </div>
     </section>
 
@@ -160,7 +183,16 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue';
 import HomeShowcase from './HomeShowcase.vue';
+
+const activeLogo = ref('');
+const expand = ref(false);
+
+function clearLogo() {
+  activeLogo.value = '';
+  expand.value = false;
+}
 
 const techs = [
   { name: 'Vuejs', img: '/use/vuejs-vuesax-1.png' },
