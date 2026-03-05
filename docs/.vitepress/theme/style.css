@@ -379,10 +379,36 @@ body {
   object-fit: contain;
 }
 
+.sv-uses .uses-grid .use-item .use-img-container {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sv-uses .uses-grid .use-item .use-img-container img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.06));
+}
+
 .sv-uses .uses-grid .use-item p {
   font-size: 0.75rem;
   opacity: 0.7;
   margin: 0;
+}
+
+/* ───── Light / Dark image switching ───── */
+.dark-img {
+  display: none !important;
+}
+.dark .light-img {
+  display: none !important;
+}
+.dark .dark-img {
+  display: block !important;
 }
 
 /* ───── Footer ───── */
