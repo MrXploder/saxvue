@@ -1006,6 +1006,63 @@ function handleBlurDrop() {
   opacity: 1;
 }
 
+/* Spread components outward when hero button is hovered */
+.con-components.btn-hover .component1 {
+  top: -100px !important;
+  left: -100px !important;
+  transform: translate(-100px, -100px) !important;
+}
+.con-components.btn-hover .component2 {
+  top: -70px !important;
+  left: 430px !important;
+}
+.con-components.btn-hover .component3 {
+  top: -75px !important;
+  left: 680px !important;
+}
+.con-components.btn-hover .component4 {
+  top: 60px !important;
+  left: 748px !important;
+}
+.con-components.btn-hover .component5 {
+  top: 15px !important;
+  left: 920px !important;
+}
+.con-components.btn-hover .component6 {
+  top: 330px !important;
+  left: 960px !important;
+}
+.con-components.btn-hover .component7 {
+  top: 450px !important;
+  left: 810px !important;
+}
+.con-components.btn-hover .component8 {
+  top: 20px !important;
+  left: 120px !important;
+  z-index: 10;
+}
+.con-components.btn-hover .component9 {
+  top: 660px !important;
+  left: 490px !important;
+}
+.con-components.btn-hover .component10 {
+  top: 650px !important;
+  left: 320px !important;
+}
+.con-components.btn-hover .component11 {
+  top: 710px !important;
+  left: 10px !important;
+}
+.con-components.btn-hover .component12 {
+  top: 560px !important;
+  left: -90px !important;
+}
+.con-components.btn-hover .component13 {
+  top: 160px !important;
+  left: -150px !important;
+  z-index: 20;
+}
+
 /* Dark mode overrides */
 :global(.dark) .light-img {
   display: none !important;
