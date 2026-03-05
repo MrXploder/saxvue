@@ -43,7 +43,7 @@
     left: 0px;
     width: 100%;
     height: 100%;
-    background: -color('color', 1);
+    background: sv-color('color', 1);
     transform: scale(0.5);
     border-radius: inherit;
     opacity: 0;
@@ -60,7 +60,7 @@
     border-radius: inherit;
     transition: all 0.25s ease;
     z-index: -1;
-    border: 2px solid -color('gray-4', 1);
+    border: 2px solid sv-color('gray-4', 1);
     box-sizing: border-box;
   }
   .sv-icon-check {
@@ -85,27 +85,27 @@
   }
   &:active {
     ~ .sv-checkbox-mask {
-      background: -color('gray-4', 1) !important;
+      background: sv-color('gray-4', 1) !important;
     }
   }
   &:hover {
     ~ .sv-checkbox-mask {
-      background: -color('gray-3', 1);
+      background: sv-color('gray-3', 1);
       &:before {
-        border: 2px solid -color('gray-4', 0);
+        border: 2px solid sv-color('gray-4', 0);
       }
-      // border: 2px solid -color('gray-3', 1);
+      // border: 2px solid sv-color('gray-3', 1);
     }
   }
   &:checked {
     &:hover {
       ~ .sv-checkbox-mask {
-        box-shadow: 0px 3px 15px 0px -color('color', 0.35);
+        box-shadow: 0px 3px 15px 0px sv-color('color', 0.35);
       }
     }
     ~ .sv-checkbox-mask {
-      // border: 2px solid -color('color', 1) !important;
-      box-shadow: 0px 0px 0px 0px -color('color', 0.35);
+      // border: 2px solid sv-color('color', 1) !important;
+      box-shadow: 0px 0px 0px 0px sv-color('color', 0.35);
       i:not(.sv-icon-check) {
         opacity: 1;
         transform: scale(1);
@@ -153,7 +153,7 @@
     position: absolute;
     width: 0px;
     height: 2px;
-    background: -color('text', 0.6);
+    background: sv-color('text', 0.6);
     content: '';
     transition: all 0.25s ease;
   }
@@ -183,7 +183,7 @@
       background: transparent !important;
       &:before {
         border-radius: 50%;
-        border: 2px solid -color('color', 1) !important;
+        border: 2px solid sv-color('color', 1) !important;
         border-top: 2px solid transparent !important;
         animation: rotateCheckboxLoading 0.6s linear infinite;
         opacity: 1 !important;
@@ -198,7 +198,7 @@
     background: transparent !important;
     &:before {
       border-radius: 50%;
-      border: 2px solid -color('gray-4', 1) !important;
+      border: 2px solid sv-color('gray-4', 1) !important;
       border-top: 2px solid transparent !important;
       animation: rotateCheckboxLoading 0.6s linear infinite;
     }

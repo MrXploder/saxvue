@@ -6,6 +6,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 ## [Unreleased]
 
+### Added
+
+- **VitePress documentation site** — full docs at `/saxvue/` with guide pages (Introduction, Getting Started, Configuration, Nuxt integration), theme/colors page, 17 component pages (Button, Alert, Avatar, Card, Checkbox, Dialog, Input, Navbar, Pagination, Radio, Select, Sidebar, Switch, Table, Tooltip, Grid), license page, and homepage with interactive component showcase
+- Added 130+ demo SFC files with live component previews and automated demo injection
+- Added `docs:dev`, `docs:build`, `docs:preview` npm scripts
+- Added `vitepress` as a dev dependency
+
+### Fixed
+
+- **SCSS private function rename** — renamed `-color()`, `-var()`, `-rgba()` to `sv-color()`, `sv-var()`, `sv-rgba()` across 28 SCSS files (200+ call sites); functions prefixed with `-` were treated as private members under Dart Sass's `@use` module system, breaking compilation
+- **Sass `global-builtin` deprecation** — added `@use 'sass:string'` and replaced `unquote()` with `string.unquote()` in `_mixins.scss`
+- **Sass `legacy-js-api` deprecation** — configured `css.preprocessorOptions.scss.api: 'modern'` and `sass.api: 'modern'` in VitePress config
+
+### Changed
+
+- Removed hardcoded `max-width: 350px` from `.sv-card` base styles for fluid-width cards
+
 ## [0.1.0] – 2026-03-04
 
 ### Added

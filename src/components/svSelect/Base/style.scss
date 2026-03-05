@@ -3,17 +3,17 @@
 
 @mixin state($color) {
   .sv-select__input {
-    // border: 2px solid -color($color,.5);
-    background: -color($color, 0.05);
-    color: -color($color, 1);
+    // border: 2px solid sv-color($color,.5);
+    background: sv-color($color, 0.05);
+    color: sv-color($color, 1);
     &:hover {
-      // border: 2px solid -color($color, 0);
-      color: -color('text', 1);
+      // border: 2px solid sv-color($color, 0);
+      color: sv-color('text', 1);
     }
   }
   .sv-select__chips {
-    background: -color($color, 0.05);
-    color: -color($color, 1);
+    background: sv-color($color, 0.05);
+    color: sv-color($color, 1);
     &:hover {
       &:after {
         opacity: 0;
@@ -26,25 +26,25 @@
       position: absolute;
       top: 0px;
       left: 0px;
-      border: 2px solid -color($color, 0.5);
+      border: 2px solid sv-color($color, 0.5);
       border-radius: inherit;
       transition: all 0.25s ease;
     }
   }
   .sv-select__label {
-    color: -color($color, 1);
+    color: sv-color($color, 1);
   }
   .sv-select__icon {
-    color: -color($color, 1);
-    background: -color($color, 0.1);
-    box-shadow: -15px 10px 10px -10px -color($color, 0.1);
+    color: sv-color($color, 1);
+    background: sv-color($color, 0.1);
+    box-shadow: -15px 10px 10px -10px sv-color($color, 0.1);
   }
   .sv-icon-arrow {
     &:after {
-      background: -color($color, 1);
+      background: sv-color($color, 1);
     }
     &:before {
-      background: -color($color, 1);
+      background: sv-color($color, 1);
     }
   }
 }
@@ -55,10 +55,10 @@
   opacity: 0;
   transform: translate(0, -10px);
   transition: all 0.25s ease;
-  box-shadow: 0px 0px 0px 0px -rgba(0, 0, 0, -var(shadow-opacity));
+  box-shadow: 0px 0px 0px 0px sv-rgba(0, 0, 0, sv-var(shadow-opacity));
   &:after {
     opacity: 0 !important;
-    box-shadow: 0px 0px 0px 0px -rgba(0, 0, 0, -var(shadow-opacity));
+    box-shadow: 0px 0px 0px 0px sv-rgba(0, 0, 0, sv-var(shadow-opacity));
   }
 }
 .sv-select-leave-active {
@@ -68,13 +68,13 @@
   opacity: 0;
   transform: translate(0, -10px);
   transition: all 0.25s ease;
-  box-shadow: 0px 0px 0px 0px -rgba(0, 0, 0, -var(shadow-opacity));
+  box-shadow: 0px 0px 0px 0px sv-rgba(0, 0, 0, sv-var(shadow-opacity));
   &.top {
     transform: translate(0, 10px) !important;
   }
   &:after {
     opacity: 0 !important;
-    box-shadow: 0px 0px 0px 0px -rgba(0, 0, 0, -var(shadow-opacity));
+    box-shadow: 0px 0px 0px 0px sv-rgba(0, 0, 0, sv-var(shadow-opacity));
   }
 }
 .sv-select-content {
@@ -123,7 +123,7 @@
       .sv-select__input,
       .sv-select__chips {
         border-radius: 0px 0px 12px 12px !important;
-        box-shadow: 0px -5px 25px -4px -rgba(0, 0, 0, -var(shadow-opacity)) !important;
+        box-shadow: 0px -5px 25px -4px sv-rgba(0, 0, 0, sv-var(shadow-opacity)) !important;
       }
     }
   }
@@ -150,17 +150,17 @@
     }
     .sv-select__input {
       border-radius: 12px 12px 0px 0px;
-      background: -color('background');
-      box-shadow: 0px 5px 25px -4px -rgba(0, 0, 0, -var(shadow-opacity));
+      background: sv-color('background');
+      box-shadow: 0px 5px 25px -4px sv-rgba(0, 0, 0, sv-var(shadow-opacity));
       transform: translate(0, -4px);
       transition: all 0.25s ease, height 0s;
       border: 2px solid transparent;
-      color: -color('text', 1);
+      color: sv-color('text', 1);
     }
     .sv-select__chips {
       border-radius: 12px 12px 0px 0px;
-      background: -color('background');
-      box-shadow: 0px 5px 25px -4px -rgba(0, 0, 0, -var(shadow-opacity));
+      background: sv-color('background');
+      box-shadow: 0px 5px 25px -4px sv-rgba(0, 0, 0, sv-var(shadow-opacity));
       transform: translate(0, -4px);
       transition: all 0.25s ease, height 0s;
       &:after {
@@ -187,8 +187,8 @@
     border-radius: 12px;
     cursor: pointer;
     transition: all 0.25s ease, height 0s;
-    background: -color('gray-2');
-    color: -color('text');
+    background: sv-color('gray-2');
+    color: sv-color('text');
     min-height: 38px;
     padding-right: 30px;
     width: 100%;
@@ -202,8 +202,8 @@
     }
     &:focus {
       border-radius: 12px 12px 0px 0px;
-      background: -color('background');
-      box-shadow: 0px 5px 25px -4px -rgba(0, 0, 0, -var(shadow-opacity));
+      background: sv-color('background');
+      box-shadow: 0px 5px 25px -4px sv-rgba(0, 0, 0, sv-var(shadow-opacity));
       transform: translate(0, -4px);
       transition: all 0.25s ease;
       ~ .sv-select__label--placeholder {
@@ -216,8 +216,8 @@
       }
     }
     &:hover {
-      background: -color('background');
-      box-shadow: 0px 5px 25px -4px -rgba(0, 0, 0, -var(shadow-opacity));
+      background: sv-color('background');
+      box-shadow: 0px 5px 25px -4px sv-rgba(0, 0, 0, sv-var(shadow-opacity));
       transform: translate(0, -4px);
       ~ .sv-select__label {
         margin-top: -4px;
@@ -232,7 +232,7 @@
     height: auto;
     position: absolute;
     left: 0px;
-    background: -color('gray-2');
+    background: sv-color('gray-2');
     z-index: 300;
     border-radius: 12px;
     display: flex;
@@ -247,14 +247,14 @@
     padding-right: 26px;
     &:focus {
       border-radius: 12px 12px 0px 0px;
-      background: -color('background');
-      box-shadow: 0px 5px 25px -4px -rgba(0, 0, 0, -var(shadow-opacity));
+      background: sv-color('background');
+      box-shadow: 0px 5px 25px -4px sv-rgba(0, 0, 0, sv-var(shadow-opacity));
       transform: translate(0, -4px);
       transition: all 0.25s ease;
     }
     &:hover {
-      background: -color('background');
-      box-shadow: 0px 5px 25px -4px -rgba(0, 0, 0, -var(shadow-opacity));
+      background: sv-color('background');
+      box-shadow: 0px 5px 25px -4px sv-rgba(0, 0, 0, sv-var(shadow-opacity));
       transform: translate(0, -4px);
       transition: all 0.25s ease;
       ~ .sv-icon-arrow {
@@ -273,13 +273,13 @@
       margin: 2px 3px;
       min-width: 30px;
       &::placeholder {
-        color: -color('text', 0.4);
+        color: sv-color('text', 0.4);
       }
     }
     &__chip {
       flex: 0 1 auto;
       position: relative;
-      background: -color('background');
+      background: sv-color('background');
       border-radius: 10px;
       display: flex;
       align-items: center;
@@ -288,9 +288,9 @@
       margin: 2px 3px;
       padding-right: 10px;
       font-size: 0.84rem;
-      border: 2px solid -color('gray-2');
+      border: 2px solid sv-color('gray-2');
       box-sizing: border-box;
-      color: -color('text');
+      color: sv-color('text');
       &.isCollapse {
         padding-right: 6px !important;
       }
@@ -300,7 +300,7 @@
         right: -4px;
         width: 15px;
         height: 15px;
-        background: -color('gray-4');
+        background: sv-color('gray-4');
         display: flex;
         align-items: center;
         justify-content: center;
@@ -309,7 +309,7 @@
         cursor: pointer;
         transition: all 0.25s ease;
         &:hover {
-          background: -color('danger');
+          background: sv-color('danger');
           .sv-icon-close {
             --sv-color: var(--sv-background);
             &:after {
@@ -333,14 +333,14 @@
     --sv-color: var(--sv-primary);
     position: absolute;
     z-index: 99999;
-    background: -color('background');
+    background: sv-color('background');
     padding: 5px;
     border-radius: 0px 0px 12px 12px;
     overflow: hidden;
-    box-shadow: 0px 10px 20px -5px -rgba(0, 0, 0, -var(shadow-opacity));
+    box-shadow: 0px 10px 20px -5px sv-rgba(0, 0, 0, sv-var(shadow-opacity));
     &.top {
       border-radius: 12px 12px 0px 0px;
-      box-shadow: 0px -10px 20px -5px -rgba(0, 0, 0, -var(shadow-opacity));
+      box-shadow: 0px -10px 20px -5px sv-rgba(0, 0, 0, sv-var(shadow-opacity));
       &:after {
         top: auto;
         bottom: -10px;
@@ -354,8 +354,8 @@
       margin-left: 10%;
       left: 0px;
       height: 10px;
-      background: -color('background');
-      box-shadow: 0px 0px 20px 0px -rgba(0, 0, 0, -var(shadow-opacity));
+      background: sv-color('background');
+      box-shadow: 0px 0px 20px 0px sv-rgba(0, 0, 0, sv-var(shadow-opacity));
       z-index: 200;
       transition: all 0.25s ease 0.05s;
       opacity: 1;
@@ -381,7 +381,7 @@
         background: transparent;
       }
       &::-webkit-scrollbar-thumb {
-        background: -color('gray-3');
+        background: sv-color('gray-3');
         border-radius: 5px;
       }
     }
@@ -438,7 +438,7 @@
       position: absolute;
       width: 100%;
       height: 100%;
-      border: 2px solid -color('primary', 1);
+      border: 2px solid sv-color('primary', 1);
       border-radius: inherit;
       border-top: 2px solid transparent;
       border-left: 2px solid transparent;
@@ -453,7 +453,7 @@
       position: absolute;
       width: 100%;
       height: 100%;
-      border: 2px dashed -color('primary', 1);
+      border: 2px dashed sv-color('primary', 1);
       border-radius: inherit;
       border-top: 2px solid transparent;
       border-left: 2px solid transparent;
@@ -473,19 +473,19 @@
     transition: all 0.25s ease;
     overflow: hidden;
     &--success {
-      color: -color('success', 1);
+      color: sv-color('success', 1);
     }
     &--danger {
-      color: -color('danger', 1);
+      color: sv-color('danger', 1);
     }
     &--warn {
-      color: -color('warn', 1);
+      color: sv-color('warn', 1);
     }
     &--dark {
-      color: -color('dark', 1);
+      color: sv-color('dark', 1);
     }
     &--primary {
-      color: -color('primary', 1);
+      color: sv-color('primary', 1);
     }
   }
 }
@@ -495,13 +495,13 @@
       --sv-color: 0, 0, 0 !important;
       .sv-select__option {
         &:hover {
-          background: -color('color', 0.2);
-          color: -color('text');
+          background: sv-color('color', 0.2);
+          color: sv-color('text');
         }
       }
       .activeOption {
-        color: -color('text');
-        background: -color('color', 0.6);
+        color: sv-color('text');
+        background: sv-color('color', 0.6);
       }
     }
   }

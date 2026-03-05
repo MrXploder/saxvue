@@ -1,7 +1,7 @@
 @use '../../../styles/mixins' as *;
 .sv-select__option-group {
   padding-left: 10px;
-  border-bottom: 2px solid -color('gray-1');
+  border-bottom: 2px solid sv-color('gray-1');
   position: relative;
   overflow: hidden;
   transition: all 0.25s ease;
@@ -9,7 +9,7 @@
     border: 0px;
   }
   &.hiddenOptionGroup {
-    border-bottom: 0px solid -color('gray-1');
+    border-bottom: 0px solid sv-color('gray-1');
     // display: none;
     // visibility: hidden;
     // opacity: 0;

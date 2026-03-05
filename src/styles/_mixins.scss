@@ -1,13 +1,15 @@
+@use 'sass:string';
+
 // get color var css;
-@function -color($color, $alpha: 1) {
-  @return unquote('rgba(var(--sv-#{$color}), #{$alpha})');
+@function sv-color($color, $alpha: 1) {
+  @return string.unquote('rgba(var(--sv-#{$color}), #{$alpha})');
 }
 
-@function -var($var) {
-  @return unquote('var(--sv-#{$var})');
+@function sv-var($var) {
+  @return string.unquote('var(--sv-#{$var})');
 }
 
 // Plain CSS rgba() that Sass won't intercept — for use with CSS custom property alpha
-@function -rgba($r, $g, $b, $a) {
-  @return unquote('rgba(#{$r},#{$g},#{$b}, #{$a})');
+@function sv-rgba($r, $g, $b, $a) {
+  @return string.unquote('rgba(#{$r},#{$g},#{$b}, #{$a})');
 }

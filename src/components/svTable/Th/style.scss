@@ -10,7 +10,7 @@
       pointer-events: none;
     }
     &:hover {
-      background: -color('gray-3');
+      background: sv-color('gray-3');
     }
   }
   &[data-sort-type='asc'] {

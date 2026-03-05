@@ -6,9 +6,9 @@
   text-align: left;
   background: transparent;
   transition: all 0.25s ease;
-  color: -color('text');
+  color: sv-color('text');
   border-radius: 5px;
-  box-shadow: 0px 0px 0px 0px -rgba(0, 0, 0, -var(shadow-opacity));
+  box-shadow: 0px 0px 0px 0px sv-rgba(0, 0, 0, sv-var(shadow-opacity));
   margin: 2px 0px;
   display: flex;
   align-items: cneter;
@@ -34,7 +34,7 @@
       padding-left: 0px;
     }
     &.isHover {
-      background: -color('gray-2') !important;
+      background: sv-color('gray-2') !important;
     }
     &:disabled {
       .sv-checkbox-content {
@@ -61,17 +61,17 @@
     }
   }
   &.isHover {
-    background: -color('gray-2');
+    background: sv-color('gray-2');
   }
   &.activeOption {
-    background: -color('color', 0.05);
-    color: -color('color', 1);
+    background: sv-color('color', 0.05);
+    color: sv-color('color', 1);
     pointer-events: none;
   }
   // &:last-child;
   //   border-radius: 0px 0px 12px 12px;
   &:hover:not(:disabled) {
-    color: -color('color');
+    color: sv-color('color');
     padding-left: 14px;
   }
 }

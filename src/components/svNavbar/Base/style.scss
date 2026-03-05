@@ -9,9 +9,9 @@
   left: 0px;
   width: 100%;
   border-radius: 0px 0px 15px 15px;
-  background: -color('color');
+  background: sv-color('color');
   transition: all 0.25s ease;
-  color: -color('text');
+  color: sv-color('text');
   &.paddingScroll:not(.paddingScrollActive) {
     padding-top: 20px;
     padding-bottom: 20px;
@@ -38,7 +38,7 @@
   }
   &.shadow,
   &.shadowActive {
-    box-shadow: 0px 5px 25px 0px -rgba(0, 0, 0, -var('shadow-opacity'));
+    box-shadow: 0px 5px 25px 0px sv-rgba(0, 0, 0, sv-var('shadow-opacity'));
   }
   &.hidden {
     transform: translate(0, -100%);
@@ -73,7 +73,7 @@
     left: 0px;
     bottom: 0px;
     width: 100px;
-    background: -color('text');
+    background: sv-color('text');
     height: 3px;
     transition: all 0.25s ease;
     &.notTransition {

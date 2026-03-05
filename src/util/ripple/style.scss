@@ -22,10 +22,10 @@
     position: absolute;
     transform: translate(-50%, -50%);
     transition: all 0.5s ease;
-    background: radial-gradient(circle, -color(color, 0.05), -color(color, 0.6));
+    background: radial-gradient(circle, sv-color(color, 0.05), sv-color(color, 0.6));
 
     &--solid {
-      background: -color(color, 1);
+      background: sv-color(color, 1);
       opacity: 1;
     }
   }
@@ -37,7 +37,7 @@
     position: absolute;
     transform: translate(-50%, -50%);
     transition: all 0.5s ease;
-    background-image: radial-gradient(circle, -color(color, 0.5), -color(color, 0));
+    background-image: radial-gradient(circle, sv-color(color, 0.5), sv-color(color, 0));
   }
   .vs-ripple-cut-1 {
     width: 0px;
