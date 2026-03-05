@@ -34,7 +34,7 @@
       </sv-sidebar-item>
       <template #footer>
         <sv-avatar>
-          <i class="bx bx-user"></i>
+          <img src="/avatars/avatar-5.png" alt="User" />
         </sv-avatar>
       </template>
     </sv-sidebar>

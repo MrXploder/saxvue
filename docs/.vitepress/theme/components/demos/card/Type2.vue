@@ -5,7 +5,7 @@
         <h3>Change destiny</h3>
       </template>
       <template #img>
-        <img src="https://picsum.photos/400/200?random=6" alt="card image" />
+        <img src="/foto7.png" alt="card image" />
       </template>
       <template #text>
         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>

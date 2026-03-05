@@ -4,7 +4,7 @@
       <template #text>SV</template>
     </sv-avatar>
     <sv-avatar history success>
-      <img src="https://picsum.photos/50/50?random=30" alt="avatar" />
+      <img src="/avatars/avatar-7.png" alt="avatar" />
     </sv-avatar>
     <sv-avatar history danger>
       <i class="bx bx-user"></i>

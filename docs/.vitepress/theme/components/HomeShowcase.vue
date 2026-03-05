@@ -4,7 +4,7 @@
       <!-- Component 1: Avatar card -->
       <div class="component1">
         <sv-avatar size="80" badge badge-color="danger">
-          <i class="bx bx-user" style="font-size: 2rem"></i>
+          <img src="/avatars/avatar-3.png" alt="User" />
           <template #badge>8</template>
         </sv-avatar>
         <div class="con-text">
@@ -102,13 +102,13 @@
           </div>
           <div class="con-avatars">
             <sv-avatar size="40" circle>
-              <i class="bx bx-user" style="font-size: 1rem"></i>
+              <img src="/avatars/avatar-1.png" alt="User" />
             </sv-avatar>
             <sv-avatar size="40" circle primary>
-              <i class="bx bx-user" style="font-size: 1rem"></i>
+              <img src="/avatars/avatar-2.png" alt="User" />
             </sv-avatar>
             <sv-avatar size="40" circle>
-              <i class="bx bx-user" style="font-size: 1rem"></i>
+              <img src="/avatars/avatar-4.png" alt="User" />
             </sv-avatar>
           </div>
         </footer>
