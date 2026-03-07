@@ -139,10 +139,4 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 
 package-lock.json
-storybook-static/*
-storybook-static/
-
-# Storybook visual regression diff output (keep baselines, ignore diffs)
-.storybook/snapshots/__diff_output__/
-
 legacy/*

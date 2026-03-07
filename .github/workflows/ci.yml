@@ -30,12 +30,3 @@ jobs:
 
       - name: Production build
         run: npm run build
-
-      - name: Build Storybook
-        run: npm run storybook:build
-
-      - name: Install Playwright browsers
-        run: npx playwright install --with-deps chromium
-
-      - name: Visual regression tests
-        run: npm run test:storybook:ci

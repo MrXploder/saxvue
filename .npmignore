@@ -1,8 +1,6 @@
 src/
 test/
 build/
-.storybook/
-storybook-static/
 coverage/
 .github/
 node_modules/

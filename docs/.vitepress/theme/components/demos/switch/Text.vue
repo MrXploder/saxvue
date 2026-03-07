@@ -12,8 +12,16 @@
     >
   </div>
 </template>
-<script>
-export default {
-  data: () => ({ active: false, active2: false, active3: false }),
-};
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+
+export default defineComponent({
+  setup() {
+    const active = ref(false);
+    const active2 = ref(false);
+    const active3 = ref(false);
+
+    return { active, active2, active3 };
+  },
+});
 </script>

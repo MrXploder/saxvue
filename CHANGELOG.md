@@ -42,7 +42,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 ### Added
 
 - Renamed project from Vuesax to **Saxvue** (all references, filenames, banners, docs)
-- Migrated Storybook from Webpack 5 to **Vite** (Storybook 8.6)
 - Migrated all components to shared `vsColorProps` + `useVsComponent()` composable
 - Added **Poppins** as default font family
 - Added full **unit test suite** — 384 tests across 18 suites (Jest + @vue/test-utils)
@@ -53,15 +52,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 - Added `.nvmrc` pinning Node 18
 - Added `exports` map in `package.json` for modern bundler resolution
 - Added `peerDependencies` for `vue ^3.0.0`
-- Added **"Show Code"** toggle to every Storybook story
-- Added all shadow props default to `true` in Storybook stories
 - Added ESLint configuration (`.eslintrc.cjs`) with `@typescript-eslint`
 - Added proper type declarations for `$vs` global and component exports
 - Migrated all 35 SCSS files from `@import` to `@use` (zero Sass deprecation warnings)
 - Added `-rgba()` Sass helper in `_mixins.scss` for CSS custom property compatibility
-- Added **Storybook visual regression tests** — 22 snapshot tests via `@storybook/test-runner` + `jest-image-snapshot`
-- Added `test:storybook` and `test:storybook:ci` npm scripts for visual regression
-- Added visual regression step to GitHub Actions CI (build Storybook → Playwright → snapshot compare)
 - Extended `lint` / `lint:fix` scripts to include `test/` directory
 - Added ESLint `overrides` for test files (Jest env globals, relaxed `no-explicit-any`)
 - Added **Husky + lint-staged** pre-commit hook (ESLint fix + Prettier on staged files)
@@ -75,7 +69,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 - Replaced 300× `setTimeout` polling loops with Vue `nextTick()` calls
 - Replaced raw `addEventListener` with lifecycle-scoped handlers
 - Consolidated duplicate color logic into `useVsComponent` composable
-- Updated Sass deprecation silencing in Storybook config (`legacy-js-api`, `import`)
 - Removed `src/` from `files` in `package.json` (consumers should use `dist/` only)
 
 ### Removed

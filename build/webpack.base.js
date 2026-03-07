@@ -28,25 +28,6 @@ module.exports = {
         ],
       },
       {
-        test: /\.sass$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          "css-loader",
-          "postcss-loader",
-          {
-            loader: "sass-loader",
-            options: {
-              implementation: require("sass"),
-              sassOptions: {
-                // fiber: require('fibers'),
-                indentedSyntax: true,
-                outputStyle: "expanded",
-              },
-            },
-          },
-        ],
-      },
-      {
         test: /\.scss$/,
         use: [
           MiniCssExtractPlugin.loader,
