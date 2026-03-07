@@ -278,14 +278,15 @@ function handleBlurDrop() {
 
 /* Container */
 .con-components {
-  width: 60%;
+  width: 90%;
+  max-width: 900px;
   position: absolute;
-  right: 0;
+  left: 50%;
   height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: scale(0.8);
+  transform: scale(0.8) translateX(-50%);
   z-index: 100;
 }
 .content-components {
@@ -919,7 +920,9 @@ function handleBlurDrop() {
 }
 .con-logo {
   position: absolute;
-  transform: scale(0.3);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0.3);
   opacity: 0;
   font-size: 9rem;
   z-index: 20;
@@ -982,15 +985,21 @@ function handleBlurDrop() {
 
 /* Show floating logos on hero button hover */
 .con-components.btn-hover.vuesax-hover .vuesax-logo {
-  transform: scale(1);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(1);
   opacity: 1;
 }
 .con-components.btn-hover.discord-hover .discord-logo {
-  transform: scale(1);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(1);
   opacity: 1;
 }
 .con-components.btn-hover.github-hover .github-logo {
-  transform: scale(1);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(1);
   opacity: 1;
 }
 

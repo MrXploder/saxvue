@@ -49,6 +49,22 @@ Colors can be in any valid CSS format: HEX, RGB, or named colors.
 
 <card>
 
+## Typography
+
+SaxVue components inherit `font-family` from your app’s root styles. Set your global font on `:root` or `body`, and all components will follow it automatically.
+
+If you prefer a CSS variable override, set `--sv-font-family` anywhere in your cascade (for example, on `:root`):
+
+```css
+:root {
+  --sv-font-family: 'Inter', system-ui, sans-serif;
+}
+```
+
+</card>
+
+<card>
+
 ## Global Functions
 
 After installing SaxVue, global functions are available on the Vue instance via `$sv`:
