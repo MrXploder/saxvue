@@ -7,8 +7,15 @@
     <sv-switch :loading="activeLoading" v-model="active2" />
   </div>
 </template>
-<script>
-export default {
-  data: () => ({ activeLoading: true, active2: false }),
-};
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+
+export default defineComponent({
+  setup() {
+    const activeLoading = ref(true);
+    const active2 = ref(false);
+
+    return { activeLoading, active2 };
+  },
+});
 </script>

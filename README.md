@@ -22,7 +22,6 @@ All components are globally available after `app.use(SaxVue)` and use the `sv-*`
 - **Tree-shakeable** — import the full bundle or individual components
 - **TypeScript** — full type declarations included
 - **Zero `.vue` SFCs** — all components use `defineComponent()` + `h()` render functions
-- **Storybook 8** — component development and visual testing
 - **VitePress docs** — 17 component pages, 130+ interactive demos, guide & theme pages
 
 ---
@@ -395,14 +394,9 @@ npm run docs:dev          # Dev server -> http://localhost:5173/saxvue/
 npm run docs:build        # Static build
 npm run docs:preview      # Preview static build
 
-# Component development (Storybook)
-npm run storybook:dev     # Storybook dev server -> http://localhost:6006
-npm run storybook:build   # Static storybook build
-
 # Testing
 npm test                  # Jest unit tests
 npm run test:coverage     # Jest with coverage report
-npm run test:storybook    # Visual regression tests
 
 # Build and quality
 npm run build             # Production build -> dist/

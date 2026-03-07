@@ -2,7 +2,7 @@
 
 ## What This Is
 
-Vue 3 UI component library (fork of SaxVue, renamed **SaxVue**). Ships as a UMD bundle consumed via `app.use(SaxVue)`. Storybook 7 is the development/demo environment.
+Vue 3 UI component library (fork of Vuesax, renamed **SaxVue**). Ships as a UMD bundle consumed via `app.use(SaxVue)`. VitePress is the development/demo environment.
 
 ## Architecture
 
@@ -13,7 +13,7 @@ src/components/svButton/
   Base/
     index.ts      ← plugin wrapper: imports style.scss, sets component.install, re-exports
     SvButton.ts   ← defineComponent() with render-function (h()), NOT SFC
-    style.sass    ← component-scoped styles (indented SASS syntax)
+    style.scss    ← component-scoped styles (SCSS syntax)
   group/          ← optional sub-components (Group, Item, Option, etc.)
 ```
 
@@ -57,31 +57,29 @@ All configs merge from `build/webpack.base.js`. Vue is externalized. Component e
 
 ## Developer Commands
 
-| Command                   | Purpose                                         |
-| ------------------------- | ----------------------------------------------- |
-| `npm run storybook:dev`   | Storybook dev server on port 6006               |
-| `npm run storybook:build` | Static storybook build                          |
-| `npm run build`           | Full production build → `dist/`                 |
-| `npm run lint:fix`        | ESLint auto-fix (`.ts`/`.tsx`/`.vue` in `src/`) |
-| `npm test`                | Jest (test files in `test/`)                    |
-| `npm run test:types`      | Type-check `types/` declarations                |
+| Command              | Purpose                                         |
+| -------------------- | ----------------------------------------------- |
+| `npm run build`      | Full production build → `dist/`                 |
+| `npm run lint:fix`   | ESLint auto-fix (`.ts`/`.tsx`/`.vue` in `src/`) |
+| `npm test`           | Jest (test files in `test/`)                    |
+| `npm run test:types` | Type-check `types/` declarations                |
 
 ## Conventions & Rules
 
 - **No SFCs** — all components are `defineComponent()` + `h()` render functions in `.ts` files.
-- **Styles:** SASS indented syntax (`.sass`) for component styles, SCSS (`.scss`) for global/theme styles.
+- **Styles:** SCSS syntax (`.scss`) for component styles, SCSS (`.scss`) for global/theme styles.
 - **Naming:** component folders `vs<Name>/`, component files `vs<Name>.ts`, registered as `Vs<Name>` (e.g. `SvButton`).
 - **Props pattern:** color props come from `...svColorProps` (spread from `src/mixins/component.ts`). **Never duplicate them manually** — always spread the shared object. Use `useSvComponent(props)` in `setup()` when you need reactive `getColor`/`isColor`/`isColorDark`.
 - **Sub-components** go in sibling folders (`Group/`, `Item/`, `Option/`) under the parent component directory.
-- **Stories** live in `src/stories/` using CSF3 format with `@storybook/vue3` types. Title format: `"SaxVue/<Category>"`.
+- **Docs demos** live under `docs/.vitepress/theme/components/demos/` and component docs live in `docs/docs/`.
 - **Barrel exports:** `src/components/index.ts` re-exports every component; add new components there and in `build/components/components.json`.
 
 ## Adding a New Component
 
 1. Create `src/components/vsNewThing/Base/vsNewThing.ts` — `defineComponent` + `h()` render function, spread `...svColorProps` in props, call `useSvComponent(props)` in setup
-2. Create `src/components/vsNewThing/Base/style.sass` — component styles
+2. Create `src/components/vsNewThing/Base/style.scss` — component styles
 3. Create `src/components/vsNewThing/Base/index.ts` — import style, set `.install`, export
 4. Add export to `src/components/index.ts`
 5. Add entry to `build/components/components.json`
-6. Add story in `src/stories/` following existing CSF3 patterns
+6. Add demo usage in `docs/.vitepress/theme/components/demos/` and document it in `docs/docs/`
 7. Add type declaration in `types/components/`

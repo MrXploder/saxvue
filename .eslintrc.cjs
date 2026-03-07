@@ -17,7 +17,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:vue/vue3-recommended',
   ],
-  ignorePatterns: ['dist/', 'storybook-static/', 'types/', 'build/', 'node_modules/'],
+  ignorePatterns: ['dist/', 'types/', 'build/', 'node_modules/'],
   rules: {
     'vue/multi-word-component-names': 'off',
     '@typescript-eslint/no-explicit-any': 'error',

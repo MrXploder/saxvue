@@ -7,35 +7,43 @@
     </sv-row>
   </div>
 </template>
-<script>
-export default {
-  data: () => ({
-    num: 2,
-    num2: 8,
-    interval: null,
-  }),
-  mounted() {
-    this.interval = setInterval(() => {
-      if (this.num === 2) {
-        this.num = 4;
-        this.num2 = 4;
-      } else if (this.num === 4) {
-        this.num = 1;
-        this.num2 = 10;
-      } else if (this.num === 1) {
-        this.num = 5;
-        this.num2 = 2;
-      } else if (this.num === 5) {
-        this.num = 2;
-        this.num2 = 8;
-      }
-    }, 2000);
+
+<script lang="ts">
+import { defineComponent, ref, onMounted, onBeforeUnmount } from 'vue';
+
+export default defineComponent({
+  setup() {
+    const num = ref(2);
+    const num2 = ref(8);
+    let interval: number | null = null;
+
+    onMounted(() => {
+      interval = setInterval(() => {
+        if (num.value === 2) {
+          num.value = 4;
+          num2.value = 4;
+        } else if (num.value === 4) {
+          num.value = 1;
+          num2.value = 10;
+        } else if (num.value === 1) {
+          num.value = 5;
+          num2.value = 2;
+        } else if (num.value === 5) {
+          num.value = 2;
+          num2.value = 8;
+        }
+      }, 2000);
+    });
+
+    onBeforeUnmount(() => {
+      if (interval) clearInterval(interval);
+    });
+
+    return { num, num2 };
   },
-  beforeUnmount() {
-    clearInterval(this.interval);
-  },
-};
+});
 </script>
+
 <style scoped>
 .grid-demo {
   border-radius: 12px;

@@ -33,8 +33,17 @@
     </ul>
   </div>
 </template>
-<script>
-export default {
-  data: () => ({ a1: true, a2: false, a3: false, a4: true }),
-};
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+
+export default defineComponent({
+  setup() {
+    const a1 = ref(true);
+    const a2 = ref(false);
+    const a3 = ref(false);
+    const a4 = ref(true);
+
+    return { a1, a2, a3, a4 };
+  },
+});
 </script>

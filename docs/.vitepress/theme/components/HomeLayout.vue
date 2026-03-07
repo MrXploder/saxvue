@@ -198,7 +198,7 @@ const techs = [
   { name: 'Vuejs', img: '/use/vuejs-vuesax-1.png' },
   { name: 'Javascript', img: '/use/js-javaScript-vuesax.png' },
   { name: 'Typescript', img: '/use/typescript-vuesax.png' },
-  { name: 'Sass', img: '/use/sass-vuesax-4.png' },
+  { name: 'SCSS', img: '/use/sass-vuesax-4.png' },
   { name: 'Vuepress', img: '/use/vuepress-vuesax-5.png' },
   { name: 'Babel', img: '/use/babel-vuesax-6.png' },
   { name: 'Jest', img: '/use/jest-vuesax-8-w.svg', img2: '/use/jest-vuesax-8.svg' },
