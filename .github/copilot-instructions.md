@@ -21,7 +21,7 @@ src/components/svButton/
 
 ### Plugin entry (`src/index.ts`)
 
-Registers all components and layouts via `app.use()`, attaches `$vs` global helper (`defineSaxVueFunctions.ts`), and applies theme options (`defineSaxVueOptions.ts`).
+Registers all components and layouts via `app.use()`, attaches `$sv` global helper (`defineSaxVueFunctions.ts`), and applies theme options (`defineSaxVueOptions.ts`).
 
 ### Color system (`src/util/index.ts`)
 
@@ -38,7 +38,7 @@ Registers all components and layouts via `app.use()`, attaches `$vs` global help
 
 ### Global functions (`src/functions/`)
 
-`$vs.loading()`, `$vs.notification()`, `$vs.toggleTheme()`, `$vs.setColor()`, plus table helpers — all mounted on `app.config.globalProperties.$vs`.
+`$sv.loading()`, `$sv.notification()`, `$sv.toggleTheme()`, `$sv.setColor()`, plus table helpers — all mounted on `app.config.globalProperties.$sv`.
 
 ### Icons (`src/icons/`)
 

@@ -114,7 +114,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 - `babel.config.js` to fix production build (was missing, causing build failures)
 - `exports` map in `package.json` for modern bundler resolution and `peerDependencies` for `vue ^3.0.0`
 - ESLint configuration with `@typescript-eslint`; `lint`/`lint:fix` scripts covering `src/` and `test/`
-- Proper TypeScript declarations for `$vs` global and all component exports
+- Proper TypeScript declarations for `$sv` global and all component exports
 - All 35 SCSS files migrated from `@import` to `@use` (zero Sass deprecation warnings)
 - `-rgba()` Sass helper in `_mixins.scss` for CSS custom property compatibility
 - Husky + lint-staged pre-commit hook (ESLint fix + Prettier on staged files)
