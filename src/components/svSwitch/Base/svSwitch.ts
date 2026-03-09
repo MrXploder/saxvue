@@ -13,6 +13,7 @@ export default defineComponent({
     indeterminate: { type: Boolean, default: false },
     icon: { type: Boolean, default: false },
   },
+  emits: ['update:modelValue', 'change'],
   setup(props, { emit, slots, attrs }) {
     const inst = getCurrentInstance();
     const { getColor } = useSvComponent(props);

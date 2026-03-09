@@ -30,7 +30,7 @@ export default defineComponent({
     state: { type: String, default: null },
     block: { type: Boolean, default: false },
   },
-  emits: ['input', 'change', 'blur', 'focus'],
+  emits: ['update:modelValue', 'change', 'blur', 'focus'],
   setup(props, { slots, attrs, emit }) {
     const renderSelect = ref(false);
     const activeOptions = ref(false);

@@ -16,6 +16,7 @@ export default defineComponent({
     loading: { type: Boolean, default: false },
     labelBefore: { type: Boolean, default: false },
   },
+  emits: ['update:modelValue', 'mousedown', 'blur'],
   setup(props, { emit, slots, attrs }) {
     const inst = getCurrentInstance();
     const uid = inst ? `vs-${inst.uid}` : `vs-${Math.random().toString(36).slice(2)}`;

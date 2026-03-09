@@ -31,6 +31,7 @@ export default defineComponent({
     width: { type: String, default: null },
     routerClose: { type: Boolean, default: false },
   },
+  emits: ['update:modelValue', 'close'],
   setup(props, { slots, emit }) {
     const rebound = ref(false);
     const dialogContentRef = ref<HTMLElement | null>(null);

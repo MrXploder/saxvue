@@ -28,6 +28,7 @@ export default defineComponent({
     right: { type: Boolean, default: false },
     background: { type: String, default: 'background' },
   },
+  emits: ['update:modelValue', 'update:open'],
   setup(props, { emit, slots, attrs }) {
     const rootRef = ref<HTMLElement | null>(null);
     const staticWidth = ref<number>(260);
