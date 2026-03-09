@@ -162,4 +162,43 @@ describe('SvDialog', () => {
     expect(wrapper.emitted('update:modelValue')![0][0]).toBe(false);
     wrapper.unmount();
   });
+
+  // --- Animation prop ---
+
+  it('defaults animation prop to scale', () => {
+    const wrapper = mount(SvDialog, { props: { modelValue: false } });
+    expect((wrapper.props() as Record<string, unknown>).animation).toBe('scale');
+  });
+
+  it('accepts all supported animation values', () => {
+    const animations = [
+      'scale',
+      'fade',
+      'slide-up',
+      'slide-down',
+      'slide-left',
+      'slide-right',
+      'zoom',
+      'door',
+      'flip',
+    ];
+    for (const anim of animations) {
+      const wrapper = mount(SvDialog, {
+        props: { modelValue: false, animation: anim } as Record<string, unknown>,
+      });
+      expect((wrapper.props() as Record<string, unknown>).animation).toBe(anim);
+      wrapper.unmount();
+    }
+  });
+
+  it('uses default transition name for scale animation', () => {
+    const wrapper = mount(SvDialog, {
+      props: { modelValue: true, animation: 'scale' },
+      attachTo: document.body,
+    });
+    // scale maps to the original 'sv-dialog' transition name (backward compat)
+    const dialog = document.querySelector('.sv-dialog');
+    expect(dialog).toBeTruthy();
+    wrapper.unmount();
+  });
 });

@@ -1,5 +1,16 @@
 import type { DefineComponent } from 'vue';
 
+export type SvDialogAnimation =
+  | 'scale'
+  | 'fade'
+  | 'slide-up'
+  | 'slide-down'
+  | 'slide-left'
+  | 'slide-right'
+  | 'zoom'
+  | 'door'
+  | 'flip';
+
 export interface SvDialogProps {
   /** v-model — controls dialog visibility */
   modelValue?: boolean;
@@ -16,6 +27,11 @@ export interface SvDialogProps {
   notCenter?: boolean;
   width?: string | null;
   routerClose?: boolean;
+  /**
+   * Opening / closing animation style.
+   * @default 'scale'
+   */
+  animation?: SvDialogAnimation;
   // color props
   color?: string | null;
   primary?: boolean;

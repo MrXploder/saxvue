@@ -1,6 +1,7 @@
 @use '../../../styles/mixins' as *;
 @use 'root';
 
+// ─── Default: scale (rebound) animation ─────────────────────────
 .sv-dialog-enter-active {
   transition: all 0.25s ease;
   .sv-dialog {
@@ -15,6 +16,7 @@
     transition: all 0.15s ease;
   }
 }
+.sv-dialog-enter-from,
 .sv-dialog-enter,
 .sv-dialog-leave-to {
   opacity: 0;
@@ -52,6 +54,214 @@
   }
   100% {
     transform: scale(1);
+  }
+}
+
+// ─── Fade ────────────────────────────────────────────────────────
+.sv-dialog-fade-enter-active,
+.sv-dialog-fade-leave-active {
+  transition: opacity 0.3s ease;
+  .sv-dialog {
+    transition: opacity 0.3s ease;
+  }
+}
+.sv-dialog-fade-enter-from,
+.sv-dialog-fade-leave-to {
+  opacity: 0;
+}
+
+// ─── Slide Up ────────────────────────────────────────────────────
+.sv-dialog-slide-up-enter-active {
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  .sv-dialog {
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+.sv-dialog-slide-up-leave-active {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  .sv-dialog {
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+.sv-dialog-slide-up-enter-from,
+.sv-dialog-slide-up-leave-to {
+  opacity: 0;
+  .sv-dialog {
+    transform: translateY(60px);
+  }
+}
+
+// ─── Slide Down ──────────────────────────────────────────────────
+.sv-dialog-slide-down-enter-active {
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  .sv-dialog {
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+.sv-dialog-slide-down-leave-active {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  .sv-dialog {
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+.sv-dialog-slide-down-enter-from,
+.sv-dialog-slide-down-leave-to {
+  opacity: 0;
+  .sv-dialog {
+    transform: translateY(-60px);
+  }
+}
+
+// ─── Slide Left ──────────────────────────────────────────────────
+.sv-dialog-slide-left-enter-active {
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  .sv-dialog {
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+.sv-dialog-slide-left-leave-active {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  .sv-dialog {
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+.sv-dialog-slide-left-enter-from,
+.sv-dialog-slide-left-leave-to {
+  opacity: 0;
+  .sv-dialog {
+    transform: translateX(-60px);
+  }
+}
+
+// ─── Slide Right ─────────────────────────────────────────────────
+.sv-dialog-slide-right-enter-active {
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  .sv-dialog {
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+.sv-dialog-slide-right-leave-active {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  .sv-dialog {
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+.sv-dialog-slide-right-enter-from,
+.sv-dialog-slide-right-leave-to {
+  opacity: 0;
+  .sv-dialog {
+    transform: translateX(60px);
+  }
+}
+
+// ─── Zoom ────────────────────────────────────────────────────────
+.sv-dialog-zoom-enter-active {
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  .sv-dialog {
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+}
+.sv-dialog-zoom-leave-active {
+  transition: all 0.2s ease-in;
+  .sv-dialog {
+    transition: all 0.2s ease-in;
+  }
+}
+.sv-dialog-zoom-enter-from,
+.sv-dialog-zoom-leave-to {
+  opacity: 0;
+  .sv-dialog {
+    transform: scale(0.3);
+  }
+}
+
+// ─── Door (3D perspective rotate) ───────────────────────────────
+.sv-dialog-door-enter-active {
+  transition: opacity 0.35s ease;
+  perspective: 1200px;
+  .sv-dialog {
+    animation: doorOpen 0.45s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+}
+.sv-dialog-door-leave-active {
+  transition: opacity 0.25s ease;
+  perspective: 1200px;
+  .sv-dialog {
+    animation: doorClose 0.3s ease-in forwards;
+  }
+}
+.sv-dialog-door-enter-from,
+.sv-dialog-door-leave-to {
+  opacity: 0;
+}
+@keyframes doorOpen {
+  0% {
+    transform: rotateY(-90deg);
+    transform-origin: left center;
+    opacity: 0;
+  }
+  100% {
+    transform: rotateY(0deg);
+    transform-origin: left center;
+    opacity: 1;
+  }
+}
+@keyframes doorClose {
+  0% {
+    transform: rotateY(0deg);
+    transform-origin: left center;
+    opacity: 1;
+  }
+  100% {
+    transform: rotateY(90deg);
+    transform-origin: left center;
+    opacity: 0;
+  }
+}
+
+// ─── Flip (3D flip X-axis) ──────────────────────────────────────
+.sv-dialog-flip-enter-active {
+  transition: opacity 0.35s ease;
+  perspective: 1200px;
+  .sv-dialog {
+    animation: flipIn 0.45s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+}
+.sv-dialog-flip-leave-active {
+  transition: opacity 0.25s ease;
+  perspective: 1200px;
+  .sv-dialog {
+    animation: flipOut 0.3s ease-in forwards;
+  }
+}
+.sv-dialog-flip-enter-from,
+.sv-dialog-flip-leave-to {
+  opacity: 0;
+}
+@keyframes flipIn {
+  0% {
+    transform: rotateX(-80deg);
+    opacity: 0;
+  }
+  60% {
+    transform: rotateX(10deg);
+    opacity: 1;
+  }
+  80% {
+    transform: rotateX(-5deg);
+  }
+  100% {
+    transform: rotateX(0deg);
+  }
+}
+@keyframes flipOut {
+  0% {
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: rotateX(80deg);
+    opacity: 0;
   }
 }
 .sv-dialog-content {

@@ -2,15 +2,28 @@ import {
   defineComponent,
   h,
   ref,
+  computed,
   onMounted,
   onBeforeUnmount,
   nextTick,
   watch,
   getCurrentInstance,
+  type PropType,
 } from 'vue';
 import SvIconsClose from '../../../icons/close';
 import { insertBody } from '../../../util/index';
 import { svColorProps, useSvComponent } from '../../../mixins/component';
+
+export type SvDialogAnimation =
+  | 'scale'
+  | 'fade'
+  | 'slide-up'
+  | 'slide-down'
+  | 'slide-left'
+  | 'slide-right'
+  | 'zoom'
+  | 'door'
+  | 'flip';
 
 export default defineComponent({
   name: 'SvDialog',
@@ -30,6 +43,10 @@ export default defineComponent({
     notCenter: { type: Boolean, default: false },
     width: { type: String, default: null },
     routerClose: { type: Boolean, default: false },
+    animation: {
+      type: String as PropType<SvDialogAnimation>,
+      default: 'scale',
+    },
   },
   emits: ['update:modelValue', 'close'],
   setup(props, { slots, emit }) {
@@ -82,6 +99,10 @@ export default defineComponent({
 
     const inst = getCurrentInstance();
     const { getColor } = useSvComponent(props);
+
+    const transitionName = computed(() =>
+      props.animation === 'scale' ? 'sv-dialog' : `sv-dialog-${props.animation}`,
+    );
 
     return () => {
       const header = h('header', { class: 'sv-dialog__header' }, [
@@ -166,7 +187,7 @@ export default defineComponent({
         [dialog],
       );
 
-      return h('transition', { name: 'sv-dialog' }, [props.modelValue && dialogContent]);
+      return h('transition', { name: transitionName.value }, [props.modelValue && dialogContent]);
     };
   },
 });
