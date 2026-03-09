@@ -6,72 +6,128 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 ## [Unreleased]
 
+---
+
+## [0.7.0] – 2026-03-08
+
 ### Added
 
-- **VitePress documentation site** — full docs at `/saxvue/` with guide pages (Introduction, Getting Started, Configuration, Nuxt integration), theme/colors page, 17 component pages (Button, Alert, Avatar, Card, Checkbox, Dialog, Input, Navbar, Pagination, Radio, Select, Sidebar, Switch, Table, Tooltip, Grid), license page, and homepage with interactive component showcase
-- Added 130+ demo SFC files with live component previews and automated demo injection
-- Added `docs:dev`, `docs:build`, `docs:preview` npm scripts
-- Added `vitepress` as a dev dependency
-- Copied legacy VuePress public images (avatars and foto images) into the VitePress `docs/public/` folder and updated demo pages to reference the local assets instead of external image providers
-- Added a small CLI entry point to `run.ts` (alpha extraction tool) so it can be invoked with `npx tsx run.ts <white.png> <black.png> <out.png>`
-- Added `.prettierignore` to protect `README.md` from Prettier rewriting during automated formatting
+- **Light / Dark theme system** — CSS custom properties (`--sv-background`, `--sv-text`, `--sv-gray-1..4`, `--sv-dark`) defined in `:root` for the light defaults; `[vs-theme='dark']` attribute already in `_dark.scss` activates dark values
+- **`$sv.setTheme(theme)`** — forces `'dark'` or `'light'` by toggling the `vs-theme` attribute on `<body>`; no `localStorage` or `sessionStorage` involved
+- **`$sv.toggleTheme()`** — convenience wrapper that reads the current attribute and flips it; returns the newly active theme string
+- Smooth CSS transition on `body` (`background-color` and `color`, 0.25 s ease) when switching themes
+- **Boxicons** bundled as a direct dependency and imported into the base stylesheet — icon classes (`bx bx-*`) are available out of the box without extra CDN links
+
+### Changed
+
+- `src/functions/toggleTheme/index.ts` fully rewritten: removed all `localStorage`, `window.matchMedia`, and storage reads; logic is now pure DOM attribute manipulation
+- `src/styles/_vars.scss`: added light-mode colour tokens alongside the existing root variables
+- `src/styles/_reset.scss`: removed hardcoded Google Fonts import; `[class*='vs-']` now falls back to `inherit` for `font-family`; added `body` transition rule
 
 ### Fixed
 
-- **SCSS private function rename** — renamed `-color()`, `-var()`, `-rgba()` to `sv-color()`, `sv-var()`, `sv-rgba()` across 28 SCSS files (200+ call sites); functions prefixed with `-` were treated as private members under Dart Sass's `@use` module system, breaking compilation
+- Native HTML elements (`button`, `input`, `textarea`, `select`, `a`) now explicitly inherit `font-family` from the cascade instead of using the browser default
+
+---
+
+## [0.6.0] – 2026-03-07
+
+### Added
+
+- **Font inheritance from `:root`** — `--sv-font-family` defaults to `inherit` so every SaxVue component respects whatever `font-family` the host application sets on `:root` or `body`; developers can override via `--sv-font-family` CSS variable
+- **Typography section** in the Configuration guide documenting font inheritance and the `--sv-font-family` override
+
+### Removed
+
+- Removed hardcoded Google Fonts (Poppins) `@import` from the base reset stylesheet
+
+---
+
+## [0.5.0] – 2026-03-07
+
+### Added
+
+- **Boxicons** added as a production dependency (`^2.1.4`)
+- Boxicons CSS bundled into `saxvue.scss` so icon classes are available automatically after `import '@mrxploder/saxvue/dist/saxvue.css'`
+
+---
+
+## [0.4.0] – 2026-03-07
+
+### Fixed
+
+- Native HTML elements (`button`, `input`, `textarea`, `select`, `a`) now carry `font-family: inherit` in the base reset, so they pick up the application's root font
+
+---
+
+## [0.3.0] – 2026-03-04
+
+### Changed
+
+- Removed Storybook and cleaned project configuration
+- Updated docs layout (hero showcase positioning, floating logo centering)
+- Added docs Configuration guide (colors table, global functions reference)
+- Fixed floating logos: hidden by default, shown on hero button hover; centering matches legacy behavior
+
+### Fixed
+
+- Hero showcase: replaced all placeholder images with real legacy images
+- Docs logo: replaced legacy VuePress logo with `saxvue-logo.svg`
+
+---
+
+## [0.2.0] – 2026-03-04
+
+### Added
+
+- **VitePress documentation site** — guide pages (Getting Started, Configuration, Nuxt), theme/colors page, 17 component pages, license page, and interactive homepage showcase
+- 130+ demo SFC files with live component previews and automated demo injection
+- `docs:dev`, `docs:build`, `docs:preview` npm scripts and `vitepress` dev dependency
+- Legacy VuePress public images (avatars, fotos) migrated into `docs/public/`; demo pages updated to reference local assets
+- `.prettierignore` to prevent Prettier from rewriting `README.md` during pre-commit hooks
+
+### Fixed
+
+- **SCSS private function rename** — renamed `-color()`, `-var()`, `-rgba()` to `sv-color()`, `sv-var()`, `sv-rgba()` across 28 SCSS files (200+ call sites); Dart Sass `@use` module system treated `-` prefix as private, breaking compilation
 - **Sass `global-builtin` deprecation** — added `@use 'sass:string'` and replaced `unquote()` with `string.unquote()` in `_mixins.scss`
-- **Sass `legacy-js-api` deprecation** — configured `css.preprocessorOptions.scss.api: 'modern'` and `sass.api: 'modern'` in VitePress config
-- **svSelect class rendering** — fixed `[object Object]` class output by replacing incorrect `className` usage with proper `class: [...]` arrays in `src/components/svSelect/Base/svSelect.ts` so label, placeholder and select container classes render correctly
-- **Docs assets & logo** — replaced VitePress docs logo with `saxvue-logo.svg` and updated legacy VuePress public/logo references to use `saxvue-logo.png` (legacy `logo2.png` replaced). Demo navbars and examples now show the SaxVue logo
+- **Sass `legacy-js-api` deprecation** — set `scss.api: 'modern'` in VitePress config
+- **`svSelect` class rendering** — replaced incorrect `className` usage with proper `class: [...]` arrays in `svSelect.ts` to fix `[object Object]` class output
+- **Docs logo** — replaced VitePress docs logo with `saxvue-logo.svg`; demo navbars updated accordingly
 
 ### Changed
 
 - Removed hardcoded `max-width: 350px` from `.sv-card` base styles for fluid-width cards
-- Documentation pages: swapped external image URLs (picsum.photos, unsplash, avatars.githubusercontent.com) to local `docs/public/` assets for offline stability and consistent visuals
-- `run.ts` alpha extraction tool: added CLI argument handling and (follow-up) will resize inputs if dimensions mismatch to avoid processing errors
+- External image URLs (picsum, unsplash, avatars.githubusercontent.com) replaced with local `docs/public/` assets for offline stability
+
+---
 
 ## [0.1.0] – 2026-03-04
 
 ### Added
 
-- **First public release** of the SaxVue component library.
-- All components use the `sv*` naming convention (`sv-button`, `sv-input`, etc.).
-- Global helper property `$sv` available on every Vue instance after `app.use(SaxVue)`.
-- Layout grid system: `SvRow` / `SvCol` (`<sv-row>`, `<sv-col>` global components).
-
-### Added
-
-- Renamed project from Vuesax to **Saxvue** (all references, filenames, banners, docs)
-- Migrated all components to shared `vsColorProps` + `useVsComponent()` composable
-- Added **Poppins** as default font family
-- Added full **unit test suite** — 384 tests across 18 suites (Jest + @vue/test-utils)
-- Added **code coverage** reporting with minimum thresholds
-- Added `babel.config.js` to fix production build (was missing, causing build failures)
-- Added **GitHub Actions CI** workflow (lint → test → type-check → build)
-- Added `.npmignore` to exclude dev-only files from published package
-- Added `.nvmrc` pinning Node 18
-- Added `exports` map in `package.json` for modern bundler resolution
-- Added `peerDependencies` for `vue ^3.0.0`
-- Added ESLint configuration (`.eslintrc.cjs`) with `@typescript-eslint`
-- Added proper type declarations for `$vs` global and component exports
-- Migrated all 35 SCSS files from `@import` to `@use` (zero Sass deprecation warnings)
-- Added `-rgba()` Sass helper in `_mixins.scss` for CSS custom property compatibility
-- Extended `lint` / `lint:fix` scripts to include `test/` directory
-- Added ESLint `overrides` for test files (Jest env globals, relaxed `no-explicit-any`)
-- Added **Husky + lint-staged** pre-commit hook (ESLint fix + Prettier on staged files)
-- Added **MDX component documentation** — Getting Started guide + per-category prop tables and usage examples (Buttons, Forms, Data Display, Feedback, Navigation, Layout)
-- Added `verify:treeshake` npm script — verifies per-component import sizes vs full bundle
-- Added `build/verify-treeshake.js` script for tree-shaking verification
+- **First public release** of the SaxVue component library (fork of Vuesax, renamed Saxvue)
+- All components use the `sv*` naming convention (`sv-button`, `sv-input`, etc.) and are registered via `app.use(SaxVue)`
+- Global helper property `$sv` on every Vue instance (`$sv.loading()`, `$sv.notification()`, `$sv.setColor()`, `$sv.toggleTheme()`)
+- Layout grid system: `SvRow` / `SvCol` (`<sv-row>`, `<sv-col>` global components)
+- Shared `svColorProps` spread + `useSvComponent()` composable used by every component
+- Full unit test suite — 384 tests across 18 suites (Jest + @vue/test-utils) with coverage reporting
+- `babel.config.js` to fix production build (was missing, causing build failures)
+- `exports` map in `package.json` for modern bundler resolution and `peerDependencies` for `vue ^3.0.0`
+- ESLint configuration with `@typescript-eslint`; `lint`/`lint:fix` scripts covering `src/` and `test/`
+- Proper TypeScript declarations for `$vs` global and all component exports
+- All 35 SCSS files migrated from `@import` to `@use` (zero Sass deprecation warnings)
+- `-rgba()` Sass helper in `_mixins.scss` for CSS custom property compatibility
+- Husky + lint-staged pre-commit hook (ESLint fix + Prettier on staged files)
+- `build/verify-treeshake.js` and `verify:treeshake` npm script for per-component tree-shake verification
+- Package published under `@mrxploder/saxvue` with `publishConfig.access: 'public'`
 
 ### Changed
 
-- Set `@typescript-eslint/no-explicit-any` to `"error"` — eliminated all 387 `any` usages
-- Replaced 300× `setTimeout` polling loops with Vue `nextTick()` calls
-- Replaced raw `addEventListener` with lifecycle-scoped handlers
-- Consolidated duplicate color logic into `useVsComponent` composable
-- Removed `src/` from `files` in `package.json` (consumers should use `dist/` only)
+- Eliminated all 387 `any` usages (ESLint `no-explicit-any: error`)
+- Replaced 300+ `setTimeout` polling loops with Vue `nextTick()` calls
+- Removed `src/` from `files` in `package.json` (consumers use `dist/` only)
 
 ### Removed
 
 - Removed dead code, unused variables, and legacy placeholder tests
-- Removed `tslint.json` dependency (superseded by ESLint)
+- Removed `tslint.json` (superseded by ESLint)
