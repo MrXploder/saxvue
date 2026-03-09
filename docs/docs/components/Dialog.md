@@ -289,22 +289,95 @@ Use `prevent-close` to disable closing the dialog by clicking the overlay. The u
 
 </card>
 
+<card>
+
+## Animation
+
+Use the `animation` prop to change how the dialog enters and exits. There are **9 built-in animations**. The default is `scale` which preserves the original rebound behavior.
+
+<template #example>
+<ClientOnly><DialogAnimation /></ClientOnly>
+</template>
+
+```vue
+<template>
+  <sv-button v-for="anim in animations" :key="anim" @click="openDialog(anim)">
+    {{ anim }}
+  </sv-button>
+
+  <sv-dialog v-model="active" :animation="currentAnimation">
+    <template #header>
+      <h4>
+        Animation: <b>{{ currentAnimation }}</b>
+      </h4>
+    </template>
+    <p>
+      This dialog uses the <code>{{ currentAnimation }}</code> animation.
+    </p>
+    <template #footer>
+      <sv-button @click="active = false">Close</sv-button>
+    </template>
+  </sv-dialog>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const active = ref(false);
+const currentAnimation = ref('scale');
+const animations = [
+  'scale',
+  'fade',
+  'slide-up',
+  'slide-down',
+  'slide-left',
+  'slide-right',
+  'zoom',
+  'door',
+  'flip',
+];
+
+function openDialog(anim) {
+  currentAnimation.value = anim;
+  active.value = true;
+}
+</script>
+```
+
+### Animation values
+
+| Value         | Description                               |
+| ------------- | ----------------------------------------- |
+| `scale`       | Rebound scale bounce _(default)_          |
+| `fade`        | Simple opacity fade                       |
+| `slide-up`    | Slides in from below                      |
+| `slide-down`  | Slides in from above                      |
+| `slide-left`  | Slides in from the left                   |
+| `slide-right` | Slides in from the right                  |
+| `zoom`        | Elastic zoom from small to full size      |
+| `door`        | 3D perspective rotate like a door opening |
+| `flip`        | 3D flip on the X-axis with a bounce       |
+
+</card>
+
 ## API
 
-| Property          | Type      | Description                 | Default |
-| ----------------- | --------- | --------------------------- | ------- |
-| `v-model`         | `Boolean` | Dialog visibility           | `false` |
-| `color`           | `String`  | Dialog color                | —       |
-| `not-close`       | `Boolean` | Prevent outside-click close | `false` |
-| `scroll`          | `Boolean` | Enable scroll               | `false` |
-| `loading`         | `Boolean` | Loading state               | `false` |
-| `full-screen`     | `Boolean` | Full screen mode            | `false` |
-| `blur`            | `Boolean` | Blur background             | `false` |
-| `square`          | `Boolean` | Square corners              | `false` |
-| `not-padding`     | `Boolean` | Remove padding              | `false` |
-| `overflow-hidden` | `Boolean` | Prevent body scroll         | `false` |
-| `auto-width`      | `Boolean` | Auto-size to content        | `false` |
-| `width`           | `String`  | Custom width                | —       |
+| Property          | Type      | Description                 | Default   |
+| ----------------- | --------- | --------------------------- | --------- |
+| `v-model`         | `Boolean` | Dialog visibility           | `false`   |
+| `color`           | `String`  | Dialog color                | —         |
+| `animation`       | `String`  | Open/close animation style  | `'scale'` |
+| `not-close`       | `Boolean` | Prevent outside-click close | `false`   |
+| `scroll`          | `Boolean` | Enable scroll               | `false`   |
+| `loading`         | `Boolean` | Loading state               | `false`   |
+| `full-screen`     | `Boolean` | Full screen mode            | `false`   |
+| `blur`            | `Boolean` | Blur background             | `false`   |
+| `square`          | `Boolean` | Square corners              | `false`   |
+| `not-padding`     | `Boolean` | Remove padding              | `false`   |
+| `overflow-hidden` | `Boolean` | Prevent body scroll         | `false`   |
+| `auto-width`      | `Boolean` | Auto-size to content        | `false`   |
+| `width`           | `String`  | Custom width                | —         |
+| `prevent-close`   | `Boolean` | Disable overlay close       | `false`   |
 
 ### Slots
 

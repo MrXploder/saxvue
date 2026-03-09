@@ -92,6 +92,7 @@ export { default as DialogScroll } from './dialog/Scroll.vue';
 export { default as DialogNotPadding } from './dialog/NotPadding.vue';
 export { default as DialogOverflowHidden } from './dialog/OverflowHidden.vue';
 export { default as DialogNested } from './dialog/Nested.vue';
+export { default as DialogAnimation } from './dialog/Animation.vue';
 
 // Grid demos
 export { default as GridDefault } from './grid/Default.vue';
