@@ -25,51 +25,51 @@ describe('SvCheckbox', () => {
   // --- Checked state ---
 
   it('applies checked class when value is true (boolean)', () => {
-    const wrapper = mount(SvCheckbox, { props: { value: true as unknown as string } });
+    const wrapper = mount(SvCheckbox, { props: { modelValue: true as unknown as string } });
     expect(wrapper.find('.sv-checkbox--checked').exists()).toBe(true);
   });
 
   it('does not apply checked class when value is false', () => {
-    const wrapper = mount(SvCheckbox, { props: { value: false as unknown as string } });
+    const wrapper = mount(SvCheckbox, { props: { modelValue: false as unknown as string } });
     expect(wrapper.find('.sv-checkbox--checked').exists()).toBe(false);
   });
 
   // --- Emit toggle ---
 
   it('emits input with false when value is true (boolean toggle)', async () => {
-    const wrapper = mount(SvCheckbox, { props: { value: true as unknown as string } });
+    const wrapper = mount(SvCheckbox, { props: { modelValue: true as unknown as string } });
     const input = wrapper.find('input.sv-checkbox');
     await input.trigger('input');
-    expect(wrapper.emitted('input')).toBeTruthy();
-    expect(wrapper.emitted('input')![0][0]).toBe(false);
+    expect(wrapper.emitted('update:modelValue')).toBeTruthy();
+    expect(wrapper.emitted('update:modelValue')![0][0]).toBe(false);
   });
 
   it('emits input with true when value is false (boolean toggle)', async () => {
-    const wrapper = mount(SvCheckbox, { props: { value: false as unknown as string } });
+    const wrapper = mount(SvCheckbox, { props: { modelValue: false as unknown as string } });
     const input = wrapper.find('input.sv-checkbox');
     await input.trigger('input');
-    expect(wrapper.emitted('input')).toBeTruthy();
-    expect(wrapper.emitted('input')![0][0]).toBe(true);
+    expect(wrapper.emitted('update:modelValue')).toBeTruthy();
+    expect(wrapper.emitted('update:modelValue')![0][0]).toBe(true);
   });
 
   // --- String value mode ---
 
   it('emits val when value is empty string and val is set', async () => {
-    const wrapper = mount(SvCheckbox, { props: { value: '', val: 'option1' } });
+    const wrapper = mount(SvCheckbox, { props: { modelValue: '', val: 'option1' } });
     await wrapper.find('input.sv-checkbox').trigger('input');
-    expect(wrapper.emitted('input')![0][0]).toBe('option1');
+    expect(wrapper.emitted('update:modelValue')![0][0]).toBe('option1');
   });
 
   it('emits null when value matches val (deselect)', async () => {
-    const wrapper = mount(SvCheckbox, { props: { value: 'option1', val: 'option1' } });
+    const wrapper = mount(SvCheckbox, { props: { modelValue: 'option1', val: 'option1' } });
     await wrapper.find('input.sv-checkbox').trigger('input');
-    expect(wrapper.emitted('input')![0][0]).toBeNull();
+    expect(wrapper.emitted('update:modelValue')![0][0]).toBeNull();
   });
 
   it('emits notValue when value matches val and notValue is provided', async () => {
-    const wrapper = mount(SvCheckbox, { props: { value: 'a', val: 'a', notValue: 'b' } });
+    const wrapper = mount(SvCheckbox, { props: { modelValue: 'a', val: 'a', notValue: 'b' } });
     await wrapper.find('input.sv-checkbox').trigger('input');
-    expect(wrapper.emitted('input')![0][0]).toBe('b');
+    expect(wrapper.emitted('update:modelValue')![0][0]).toBe('b');
   });
 
   // --- Props ---

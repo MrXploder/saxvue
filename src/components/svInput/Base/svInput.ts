@@ -4,7 +4,7 @@ import { getColor } from '../../../util/index';
 export default defineComponent({
   name: 'SvInput',
   props: {
-    value: { default: '' },
+    modelValue: { default: '' },
     labelPlaceholder: { default: '' },
     label: { default: '' },
     block: { type: Boolean, default: false },
@@ -20,7 +20,7 @@ export default defineComponent({
     textWhite: { type: Boolean, default: false },
     square: { type: Boolean, default: false },
   },
-  emits: ['input', 'click-icon'],
+  emits: ['update:modelValue', 'click-icon'],
   setup(props, { slots, attrs, emit }) {
     const instance = getCurrentInstance();
     const uid = instance ? instance.uid : Math.random().toString(36).slice(2);
@@ -62,7 +62,8 @@ export default defineComponent({
         : null;
     };
 
-    const onInput = (evt: Event) => emit('input', (evt.target as HTMLInputElement).value);
+    const onInput = (evt: Event) =>
+      emit('update:modelValue', (evt.target as HTMLInputElement).value);
     const onClickIcon = (evt: Event) => emit('click-icon', (evt.target as HTMLInputElement).value);
 
     return () => {
@@ -76,7 +77,7 @@ export default defineComponent({
               'sv-input--has-icon--after': !!props.iconAfter,
             },
           ],
-          value: props.value,
+          value: props.modelValue,
           id: getId(),
           placeholder: '',
           type: props.visiblePassword ? 'text' : (attrs as Record<string, unknown>).type,
@@ -93,7 +94,7 @@ export default defineComponent({
             {
               'sv-input__label--placeholder': props.labelPlaceholder,
               'sv-input__label--hidden':
-                props.value !== '' ||
+                props.modelValue !== '' ||
                 (attrs as Record<string, unknown>).type == 'date' ||
                 (attrs as Record<string, unknown>).type == 'time',
               'sv-input__label--label': props.label,
@@ -111,7 +112,7 @@ export default defineComponent({
         'label',
         {
           for: getId(),
-          class: ['sv-input__label', { 'sv-input__label--hidden': props.value !== '' }],
+          class: ['sv-input__label', { 'sv-input__label--hidden': props.modelValue !== '' }],
         },
         [String((attrs as Record<string, unknown>).placeholder || '')],
       );

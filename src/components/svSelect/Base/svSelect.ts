@@ -18,7 +18,7 @@ export default defineComponent({
   name: 'SvSelect',
   props: {
     ...svColorProps,
-    value: { default: null },
+    modelValue: { default: null },
     multiple: { type: Boolean, default: false },
     filter: { type: Boolean, default: false },
     placeholder: { type: String, default: '' },
@@ -67,13 +67,13 @@ export default defineComponent({
 
     const clickOption = (value: string | number, label: string) => {
       if (props.multiple) {
-        const oldVal = Array.isArray(props.value) ? [...props.value] : [];
+        const oldVal = Array.isArray(props.modelValue) ? [...props.modelValue] : [];
         const idx = oldVal.indexOf(value);
         if (idx === -1) oldVal.push(value);
         else oldVal.splice(idx, 1);
-        emit('input', oldVal);
+        emit('update:modelValue', oldVal);
       } else {
-        emit('input', value);
+        emit('update:modelValue', value);
         valueLabel.value = label;
       }
 
@@ -90,7 +90,7 @@ export default defineComponent({
     const setHover = () => {
       let index = -1;
       childOptions.value.forEach((item, i: number) => {
-        if (item.value == props.value) index = i;
+        if (item.value == props.modelValue) index = i;
       });
       hoverOption.value = index;
     };
@@ -98,16 +98,16 @@ export default defineComponent({
     const getValue = () => {
       const options = childOptions.value;
       const filterOptions = options.filter((option) => {
-        return typeof props.value == 'number'
-          ? props.value == option.value
-          : Array.isArray(props.value) && props.value.indexOf(option.value) !== -1;
+        return typeof props.modelValue == 'number'
+          ? props.modelValue == option.value
+          : Array.isArray(props.modelValue) && props.modelValue.indexOf(option.value) !== -1;
       });
       const label: Array<{ label: string; value: string | number }> = [];
       filterOptions.forEach((item) => {
         label.push({ label: item.label, value: item.value });
       });
-      if (Array.isArray(props.value)) {
-        label.sort((a, b) => props.value.indexOf(a.value) - props.value.indexOf(b.value));
+      if (Array.isArray(props.modelValue)) {
+        label.sort((a, b) => props.modelValue.indexOf(a.value) - props.modelValue.indexOf(b.value));
       }
       valueLabel.value = label;
     };
@@ -229,7 +229,7 @@ export default defineComponent({
     });
 
     watch(
-      () => props.value,
+      () => props.modelValue,
       (val) => {
         getValue();
         setTimeout(() => emit('change', val), 10);
@@ -459,7 +459,7 @@ export default defineComponent({
             {
               'sv-select__label--placeholder': props.labelPlaceholder,
               'sv-select__label--label': props.label,
-              'sv-select__label--hidden': !!props.value,
+              'sv-select__label--hidden': !!props.modelValue,
             },
           ],
           for: uid,
@@ -473,7 +473,7 @@ export default defineComponent({
           class: [
             'sv-select__label',
             {
-              'sv-select__label--hidden': !!props.value || !!textFilter.value,
+              'sv-select__label--hidden': !!props.modelValue || !!textFilter.value,
             },
           ],
           ref: placeholderRef,

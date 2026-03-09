@@ -27,21 +27,21 @@ describe('SvSwitch', () => {
   // --- Toggle ---
 
   it('emits input with false when value is true (boolean toggle)', async () => {
-    const wrapper = mount(SvSwitch, { props: { value: true as unknown as string } });
+    const wrapper = mount(SvSwitch, { props: { modelValue: true as unknown as string } });
     await wrapper.find('input').trigger('input');
-    expect(wrapper.emitted('input')).toBeTruthy();
-    expect(wrapper.emitted('input')![0][0]).toBe(false);
+    expect(wrapper.emitted('update:modelValue')).toBeTruthy();
+    expect(wrapper.emitted('update:modelValue')![0][0]).toBe(false);
   });
 
   it('emits input with true when value is false (boolean toggle)', async () => {
-    const wrapper = mount(SvSwitch, { props: { value: false as unknown as string } });
+    const wrapper = mount(SvSwitch, { props: { modelValue: false as unknown as string } });
     await wrapper.find('input').trigger('input');
-    expect(wrapper.emitted('input')).toBeTruthy();
-    expect(wrapper.emitted('input')![0][0]).toBe(true);
+    expect(wrapper.emitted('update:modelValue')).toBeTruthy();
+    expect(wrapper.emitted('update:modelValue')![0][0]).toBe(true);
   });
 
   it('emits change event on toggle', async () => {
-    const wrapper = mount(SvSwitch, { props: { value: true as unknown as string } });
+    const wrapper = mount(SvSwitch, { props: { modelValue: true as unknown as string } });
     await wrapper.find('input').trigger('input');
     expect(wrapper.emitted('change')).toBeTruthy();
   });

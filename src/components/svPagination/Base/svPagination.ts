@@ -6,7 +6,7 @@ export default defineComponent({
   name: 'SvPagination',
   props: {
     ...svColorProps,
-    value: {},
+    modelValue: {},
     infinite: { type: Boolean, default: false },
     progress: { type: Boolean, default: false },
     notMargin: { type: Boolean, default: false },
@@ -22,7 +22,7 @@ export default defineComponent({
     max: { type: Number, default: 9 },
     dottedNumber: { type: Number, default: 5 },
   },
-  emits: ['input'],
+  emits: ['update:modelValue'],
   setup(props, { emit, slots }) {
     const val = ref<number>(0);
     const leftActive = ref<number>(42);
@@ -36,13 +36,13 @@ export default defineComponent({
     const isDisabledItem = (item: number) => (props.disabledItems || []).indexOf(item) !== -1;
     const isLoadingItem = (item: number) => (props.loadingItems || []).indexOf(item) !== -1;
 
-    const setValuePage = (NumberPage: number) => emit('input', NumberPage);
+    const setValuePage = (NumberPage: number) => emit('update:modelValue', NumberPage);
 
     const handleLength = () => {
       nextTick(() => {
         try {
           const paginationEl = paginationRef.value;
-          const buttonEl = buttonRefs.value[`btn${props.value}`];
+          const buttonEl = buttonRefs.value[`btn${props.modelValue}`];
           if (!paginationEl || !buttonEl) return;
           const offsetLeftPagination = paginationEl.offsetLeft;
           leftActive.value = buttonEl.offsetLeft + offsetLeftPagination;
@@ -91,7 +91,7 @@ export default defineComponent({
     };
 
     watch(
-      () => props.value,
+      () => props.modelValue,
       (v: unknown, ov: unknown) => handleValue(Number(v), Number(ov)),
     );
 
@@ -101,10 +101,10 @@ export default defineComponent({
         {
           class: [
             'sv-pagination__dotted',
-            { next: props.value == props.length ? false : text == '...>' },
+            { next: props.modelValue == props.length ? false : text == '...>' },
           ],
           onClick: () => {
-            let newVal = (props.value == props.length ? false : text == '...>')
+            let newVal = (props.modelValue == props.length ? false : text == '...>')
               ? (val.value += props.dottedNumber)
               : (val.value -= props.dottedNumber);
             if (newVal > props.length) newVal = props.length;
@@ -129,9 +129,9 @@ export default defineComponent({
           class: [
             'sv-pagination__button',
             {
-              active: NumberPage == props.value,
-              prevActive: NumberPage == Number(props.value) - 1,
-              nextActive: NumberPage == Number(props.value) + 1,
+              active: NumberPage == props.modelValue,
+              prevActive: NumberPage == Number(props.modelValue) - 1,
+              nextActive: NumberPage == Number(props.modelValue) + 1,
               disabled: isDisabledItem(NumberPage),
               loading: isLoadingItem(NumberPage),
             },
@@ -167,12 +167,12 @@ export default defineComponent({
       const nextRange = length - prevRange + 1 + even;
 
       if (
-        Number(props.value) > prevRange &&
-        Number(props.value) <= nextRange &&
+        Number(props.modelValue) > prevRange &&
+        Number(props.modelValue) <= nextRange &&
         !props.buttonsDotted
       ) {
-        const start = Number(props.value) - prevRange + 2;
-        const end = Number(props.value) + prevRange - 2 - even;
+        const start = Number(props.modelValue) - prevRange + 2;
+        const end = Number(props.modelValue) + prevRange - 2 - even;
         return renderButtons([1, '<...', ...getButtons(start, end), '...>', props.length]);
       } else if (!props.buttonsDotted && props.length > 7) {
         return renderButtons([
@@ -189,14 +189,14 @@ export default defineComponent({
 
     const getProgress = () => {
       let percent = 0;
-      percent = (Number(props.value) * 100) / props.length;
+      percent = (Number(props.modelValue) * 100) / props.length;
       return percent;
     };
 
     onMounted(() => {
-      val.value = Number(props.value);
+      val.value = Number(props.modelValue);
       // call handleValue with previous value as val+1 to match previous behavior
-      handleValue(Number(props.value), (val.value += 1));
+      handleValue(Number(props.modelValue), (val.value += 1));
     });
 
     return () => {
@@ -206,7 +206,7 @@ export default defineComponent({
           class: ['sv-pagination__active', { move: activeClassMove.value }],
           style: { left: `${leftActive.value}px` },
         },
-        props.buttonsDotted ? '' : String(props.value),
+        props.buttonsDotted ? '' : String(props.modelValue),
       );
 
       const pagination = h('div', { class: 'sv-pagination', ref: paginationRef }, [getPages()]);

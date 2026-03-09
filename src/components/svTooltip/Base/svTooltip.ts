@@ -15,7 +15,7 @@ export default defineComponent({
   name: 'SvTooltip',
   props: {
     ...svColorProps,
-    value: {},
+    modelValue: {},
     loading: { type: Boolean, default: false },
     bottom: { type: Boolean, default: false },
     left: { type: Boolean, default: false },
@@ -63,7 +63,7 @@ export default defineComponent({
 
     const removeTooltip = () => {
       activeTooltip.value = false;
-      emit('input', false);
+      emit('update:modelValue', false);
     };
 
     const handleResize = () => {
@@ -90,7 +90,7 @@ export default defineComponent({
     };
 
     watch(
-      () => props.value,
+      () => props.modelValue,
       (val: boolean) => {
         activeTooltip.value = val;
         if (val) nextTick(() => insertTooltip());

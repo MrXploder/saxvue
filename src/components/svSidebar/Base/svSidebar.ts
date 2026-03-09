@@ -15,7 +15,7 @@ export default defineComponent({
   name: 'SvSidebar',
   props: {
     ...svColorProps,
-    value: {},
+    modelValue: {},
     reduce: { type: Boolean, default: false },
     hoverExpand: { type: Boolean, default: false },
     open: { type: Boolean, default: false },
@@ -85,7 +85,7 @@ export default defineComponent({
       },
     );
 
-    const handleClickItem = (id: string) => emit('input', id);
+    const handleClickItem = (id: string) => emit('update:modelValue', id);
 
     onMounted(() => {
       const el = rootRef.value;

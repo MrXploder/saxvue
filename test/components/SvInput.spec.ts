@@ -13,18 +13,18 @@ describe('SvInput', () => {
   });
 
   it('sets the input value from the value prop', () => {
-    const wrapper = mount(SvInput, { props: { value: 'Hello' } });
+    const wrapper = mount(SvInput, { props: { modelValue: 'Hello' } });
     expect(wrapper.find('input').element.value).toBe('Hello');
   });
 
   // --- Emit ---
 
   it('emits input event on typing', async () => {
-    const wrapper = mount(SvInput, { props: { value: '' } });
+    const wrapper = mount(SvInput, { props: { modelValue: '' } });
     const input = wrapper.find('input');
     await input.setValue('test');
-    expect(wrapper.emitted('input')).toBeTruthy();
-    expect(wrapper.emitted('input')![0][0]).toBe('test');
+    expect(wrapper.emitted('update:modelValue')).toBeTruthy();
+    expect(wrapper.emitted('update:modelValue')![0][0]).toBe('test');
   });
 
   // --- Label & placeholder ---

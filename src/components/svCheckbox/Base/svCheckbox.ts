@@ -6,7 +6,7 @@ export default defineComponent({
   name: 'SvCheckbox',
   props: {
     ...svColorProps,
-    value: { default: '' },
+    modelValue: { default: '' },
     val: { default: '' },
     notValue: { default: '' },
     indeterminate: { type: Boolean, default: false },
@@ -24,22 +24,22 @@ export default defineComponent({
     watch(
       () => props.indeterminate,
       (val: boolean) => {
-        emit('input', !!val);
+        emit('update:modelValue', !!val);
       },
     );
 
     onMounted(() => {
-      if (props.checked && typeof props.value == 'boolean') {
-        emit('input', true);
+      if (props.checked && typeof props.modelValue == 'boolean') {
+        emit('update:modelValue', true);
       }
     });
 
     const isChecked = computed(() => {
       let checked = false;
-      if (props.value) {
-        if (typeof props.value == 'boolean') checked = props.value as unknown as boolean;
-        else if (typeof props.value == 'object' && props.value !== null) {
-          const array = props.value as unknown[];
+      if (props.modelValue) {
+        if (typeof props.modelValue == 'boolean') checked = props.modelValue as unknown as boolean;
+        else if (typeof props.modelValue == 'object' && props.modelValue !== null) {
+          const array = props.modelValue as unknown[];
           const containValue =
             array.indexOf(props.val) === -1 &&
             JSON.stringify(array).indexOf(JSON.stringify(props.val)) === -1;
@@ -55,10 +55,10 @@ export default defineComponent({
     });
 
     const onInput = (evt: Event) => {
-      if (typeof props.value == 'boolean') {
-        emit('input', !(props.value as boolean));
-      } else if (typeof props.value == 'object' && props.value !== null) {
-        const array = props.value as unknown[];
+      if (typeof props.modelValue == 'boolean') {
+        emit('update:modelValue', !(props.modelValue as boolean));
+      } else if (typeof props.modelValue == 'object' && props.modelValue !== null) {
+        const array = props.modelValue as unknown[];
         const containValue =
           array.indexOf(props.val) === -1 &&
           JSON.stringify(array).indexOf(JSON.stringify(props.val)) === -1;
@@ -68,10 +68,10 @@ export default defineComponent({
         });
         if (containValue) array.push(props.val);
         else array.splice(indexVal, 1);
-        emit('input', array);
+        emit('update:modelValue', array);
       } else {
-        if (props.val !== props.value) emit('input', props.val);
-        else emit('input', props.notValue || null);
+        if (props.val !== props.modelValue) emit('update:modelValue', props.val);
+        else emit('update:modelValue', props.notValue || null);
       }
       emit('mousedown', evt);
     };
