@@ -20,6 +20,7 @@ export default defineComponent({
     progress: { type: [Number, String], default: 0 },
     page: { type: [Number, String], default: 0 },
   },
+  emits: ['update:modelValue', 'update:hiddenContent', 'update:page'],
   setup(props, { slots, emit }) {
     const root = ref<HTMLElement | null>(null);
     const content = ref<HTMLElement | null>(null);

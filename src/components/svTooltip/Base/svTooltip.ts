@@ -30,6 +30,7 @@ export default defineComponent({
     borderThick: { type: Boolean, default: false },
     delay: { type: [String, Number], default: null },
   },
+  emits: ['update:modelValue'],
   setup(props, { slots, emit }) {
     const activeTooltip = ref(false);
     const isHoverTooltip = ref(false);

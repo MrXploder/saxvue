@@ -12,6 +12,7 @@ export default defineComponent({
     loading: { type: Boolean, default: false },
     labelBefore: { type: Boolean, default: false },
   },
+  emits: ['update:modelValue'],
   setup(props, { emit, slots }) {
     const inst = getCurrentInstance();
     const uid = inst ? `vs-${inst.uid}` : `vs-${Math.random().toString(36).slice(2)}`;

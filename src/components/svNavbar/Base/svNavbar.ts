@@ -27,6 +27,7 @@ export default defineComponent({
     rightCollapsed: { type: Boolean, default: false },
     targetScroll: { default: null },
   },
+  emits: ['update:modelValue', 'collapsed'],
   setup(props, { slots, emit, attrs }) {
     const leftLine = ref<number>(0);
     const widthLine = ref<number>(0);
