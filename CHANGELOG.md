@@ -12,8 +12,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 ### Added
 
-- **Light / Dark theme system** — CSS custom properties (`--sv-background`, `--sv-text`, `--sv-gray-1..4`, `--sv-dark`) defined in `:root` for the light defaults; `[vs-theme='dark']` attribute already in `_dark.scss` activates dark values
-- **`$sv.setTheme(theme)`** — forces `'dark'` or `'light'` by toggling the `vs-theme` attribute on `<body>`; no `localStorage` or `sessionStorage` involved
+- **Light / Dark theme system** — CSS custom properties (`--sv-background`, `--sv-text`, `--sv-gray-1..4`, `--sv-dark`) defined in `:root` for the light defaults; `[sv-theme='dark']` attribute in `_dark.scss` activates dark values
+- **`$sv.setTheme(theme)`** — forces `'dark'` or `'light'` by toggling the `sv-theme` attribute on `<body>`; no `localStorage` or `sessionStorage` involved
 - **`$sv.toggleTheme()`** — convenience wrapper that reads the current attribute and flips it; returns the newly active theme string
 - Smooth CSS transition on `body` (`background-color` and `color`, 0.25 s ease) when switching themes
 - **Boxicons** bundled as a direct dependency and imported into the base stylesheet — icon classes (`bx bx-*`) are available out of the box without extra CDN links
@@ -22,7 +22,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 - `src/functions/toggleTheme/index.ts` fully rewritten: removed all `localStorage`, `window.matchMedia`, and storage reads; logic is now pure DOM attribute manipulation
 - `src/styles/_vars.scss`: added light-mode colour tokens alongside the existing root variables
-- `src/styles/_reset.scss`: removed hardcoded Google Fonts import; `[class*='vs-']` now falls back to `inherit` for `font-family`; added `body` transition rule
+- `src/styles/_reset.scss`: removed hardcoded Google Fonts import; `[class*='sv-']` now falls back to `inherit` for `font-family`; added `body` transition rule
 
 ### Fixed
 
@@ -105,7 +105,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 ### Added
 
-- **First public release** of the SaxVue component library (fork of Vuesax, renamed Saxvue)
+- **First public release** of the SaxVue component library
 - All components use the `sv*` naming convention (`sv-button`, `sv-input`, etc.) and are registered via `app.use(SaxVue)`
 - Global helper property `$sv` on every Vue instance (`$sv.loading()`, `$sv.notification()`, `$sv.setColor()`, `$sv.toggleTheme()`)
 - Layout grid system: `SvRow` / `SvCol` (`<sv-row>`, `<sv-col>` global components)

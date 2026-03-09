@@ -1,8 +1,8 @@
-/* SaxVue Docs Theme — ported from legacy Vuesax VuePress theme */
+/* SaxVue Docs Theme */
 
-/* ───── CSS Variables (matching legacy --vs-* palette) ───── */
+/* ───── CSS Variables for SaxVue docs palette ───── */
 :root {
-  /* Legacy Vuesax primary color */
+  /* SaxVue primary color */
   --sv-primary: 26, 92, 255;
   --sv-theme-bg: #f4f7f8;
   --sv-theme-color: #2c3e50;

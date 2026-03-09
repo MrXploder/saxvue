@@ -1,4 +1,4 @@
-const DARK_ATTR = 'vs-theme';
+const DARK_ATTR = 'sv-theme';
 const DARK_VAL = 'dark';
 
 /** Returns true if the page is currently in dark mode */

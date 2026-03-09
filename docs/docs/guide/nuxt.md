@@ -10,7 +10,7 @@ Add SaxVue to your Nuxt 3 project:
 npm install @mrxploder/saxvue
 ```
 
-<img src="/nuxt-ui-vuesax.png" alt="Nuxt UI framework selection" />
+<img src="/nuxt-ui-saxvue.png" alt="Nuxt UI framework selection" />
 
 </card>
 

@@ -4,16 +4,16 @@
       'con-components',
       {
         'btn-hover': expand,
-        'vuesax-hover': activeLogo === 'vuesax',
+        'saxvue-hover': activeLogo === 'saxvue',
         'discord-hover': activeLogo === 'discord',
         'github-hover': activeLogo === 'github',
       },
     ]"
   >
     <!-- Floating logos -->
-    <div class="con-logo vuesax-logo">
-      <img class="light-img" src="/vuesax-only.png" alt="SaxVue" />
-      <img class="dark-img" src="/vuesax-only-b.png" alt="SaxVue" />
+    <div class="con-logo saxvue-logo">
+      <img class="light-img" src="/saxvue-only.png" alt="SaxVue" />
+      <img class="dark-img" src="/saxvue-only-b.png" alt="SaxVue" />
       <div class="logo-wave logo-wave--1"></div>
       <div class="logo-wave logo-wave--2"></div>
       <div class="logo-wave logo-wave--3"></div>
@@ -51,8 +51,8 @@
 
       <!-- Component 2: Logo placeholder -->
       <div class="component2">
-        <img class="light-img" src="/vuesax-only.png" alt="SaxVue" />
-        <img class="dark-img" src="/vuesax-only-b.png" alt="SaxVue" />
+        <img class="light-img" src="/saxvue-only.png" alt="SaxVue" />
+        <img class="dark-img" src="/saxvue-only-b.png" alt="SaxVue" />
       </div>
 
       <!-- Component 3: Switches -->
@@ -951,7 +951,7 @@ function handleBlurDrop() {
   width: 50%;
   z-index: 100;
 }
-.con-logo.vuesax-logo {
+.con-logo.saxvue-logo {
   border-radius: 50px;
 }
 .con-logo.discord-logo {
@@ -984,7 +984,7 @@ function handleBlurDrop() {
 }
 
 /* Show floating logos on hero button hover */
-.con-components.btn-hover.vuesax-hover .vuesax-logo {
+.con-components.btn-hover.saxvue-hover .saxvue-logo {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%) scale(1);

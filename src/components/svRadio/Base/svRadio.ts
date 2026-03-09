@@ -15,7 +15,7 @@ export default defineComponent({
   emits: ['update:modelValue'],
   setup(props, { emit, slots }) {
     const inst = getCurrentInstance();
-    const uid = inst ? `vs-${inst.uid}` : `vs-${Math.random().toString(36).slice(2)}`;
+    const uid = inst ? `sv-${inst.uid}` : `sv-${Math.random().toString(36).slice(2)}`;
     const { getColor } = useSvComponent(props);
 
     const isChecked = computed(() => props.modelValue == props.val);

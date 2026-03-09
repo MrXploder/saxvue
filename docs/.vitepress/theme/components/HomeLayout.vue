@@ -20,7 +20,7 @@
             class="btn-primary"
             href="/saxvue/docs/guide/"
             @mouseenter="
-              activeLogo = 'vuesax';
+              activeLogo = 'saxvue';
               expand = true;
             "
             @mouseleave="clearLogo"
@@ -62,8 +62,8 @@
     <!-- Feature 1: Reusable Components -->
     <section class="sv-feature">
       <div class="feature-visual">
-        <img class="light-img" src="/vuesax-white-1.svg" alt="Reusable Components" />
-        <img class="dark-img" src="/vuesax-dark-1.svg" alt="Reusable Components" />
+        <img class="light-img" src="/saxvue-white-1.svg" alt="Reusable Components" />
+        <img class="dark-img" src="/saxvue-dark-1.svg" alt="Reusable Components" />
       </div>
       <div class="feature-text">
         <h2><b>Reusable Components</b> and easy to implement</h2>
@@ -78,8 +78,8 @@
     <!-- Feature 2: Responsive -->
     <section class="sv-feature reverse">
       <div class="feature-visual">
-        <img class="light-img" src="/vuesax-white-2.svg" alt="Responsive Design" />
-        <img class="dark-img" src="/vuesax-dark-2.svg" alt="Responsive Design" />
+        <img class="light-img" src="/saxvue-white-2.svg" alt="Responsive Design" />
+        <img class="dark-img" src="/saxvue-dark-2.svg" alt="Responsive Design" />
       </div>
       <div class="feature-text">
         <h2>Do you need support for applications or <b>Responsive Pages</b>?</h2>
@@ -116,8 +116,8 @@
     <!-- Feature 3: Help create projects -->
     <section class="sv-feature">
       <div class="feature-visual">
-        <img class="light-img" src="/vuesax-white-4.svg" alt="Create Projects" />
-        <img class="dark-img" src="/vuesax-dark-4.svg" alt="Create Projects" />
+        <img class="light-img" src="/saxvue-white-4.svg" alt="Create Projects" />
+        <img class="dark-img" src="/saxvue-dark-4.svg" alt="Create Projects" />
       </div>
       <div class="feature-text">
         <h2>
@@ -136,8 +136,8 @@
     <!-- Feature 4: Unique design -->
     <section class="sv-feature reverse">
       <div class="feature-visual">
-        <img class="light-img" src="/vuesax-white-3.svg" alt="Unique Design" />
-        <img class="dark-img" src="/vuesax-dark-3.svg" alt="Unique Design" />
+        <img class="light-img" src="/saxvue-white-3.svg" alt="Unique Design" />
+        <img class="dark-img" src="/saxvue-dark-3.svg" alt="Unique Design" />
       </div>
       <div class="feature-text">
         <h2><b>Unique and beautiful</b> design</h2>
@@ -195,16 +195,16 @@ function clearLogo() {
 }
 
 const techs = [
-  { name: 'Vuejs', img: '/use/vuejs-vuesax-1.png' },
-  { name: 'Javascript', img: '/use/js-javaScript-vuesax.png' },
-  { name: 'Typescript', img: '/use/typescript-vuesax.png' },
-  { name: 'SCSS', img: '/use/sass-vuesax-4.png' },
-  { name: 'Vuepress', img: '/use/vuepress-vuesax-5.png' },
-  { name: 'Babel', img: '/use/babel-vuesax-6.png' },
-  { name: 'Jest', img: '/use/jest-vuesax-8-w.svg', img2: '/use/jest-vuesax-8.svg' },
-  { name: 'Boxicons', img: '/use/boxicons-vuesax-10.png', img2: '/use/boxicons-vuesax-9.png' },
+  { name: 'Vuejs', img: '/use/vuejs-saxvue-1.png' },
+  { name: 'Javascript', img: '/use/js-javaScript-saxvue.png' },
+  { name: 'Typescript', img: '/use/typescript-saxvue.png' },
+  { name: 'SCSS', img: '/use/sass-saxvue-4.png' },
+  { name: 'VitePress', img: '/use/vitepress-saxvue-5.png' },
+  { name: 'Babel', img: '/use/babel-saxvue-6.png' },
+  { name: 'Jest', img: '/use/jest-saxvue-8-w.svg', img2: '/use/jest-saxvue-8.svg' },
+  { name: 'Boxicons', img: '/use/boxicons-saxvue-10.png', img2: '/use/boxicons-saxvue-9.png' },
   { name: 'Adobe XD', img: '/use/adobe-xd-1.svg' },
-  { name: 'Webpack', img: '/use/webpack-vuesax-13.png', img2: '/use/webpack-vuesax-12.png' },
-  { name: 'Illustrator', img: '/use/illustrator-vuesax-11.png' },
+  { name: 'Webpack', img: '/use/webpack-saxvue-13.png', img2: '/use/webpack-saxvue-12.png' },
+  { name: 'Illustrator', img: '/use/illustrator-saxvue-11.png' },
 ];
 </script>
