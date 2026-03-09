@@ -23,13 +23,16 @@ export default defineComponent({
         ? h('div', { class: 'sv-card__img' }, [slots.img(), interactions])
         : null;
 
-      const card = h('div', Object.assign({ class: 'sv-card' }, attrs), [
-        img,
-        slots.text ? text : null,
-        slots.buttons ? buttons : null,
-      ]);
+      const card = h(
+        'div',
+        {
+          ...attrs,
+          class: ['sv-card-content', attrs.class],
+        },
+        [img, slots.text ? text : null, slots.buttons ? buttons : null],
+      );
 
-      return h('div', { class: ['sv-card-content', `type-${props.type}`] }, [card]);
+      return h('div', { class: ['sv-card', `type-${props.type}`] }, [card]);
     };
   },
 });

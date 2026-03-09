@@ -9,6 +9,15 @@ describe('SvAvatar', () => {
     expect(wrapper.find('.sv-avatar-content').exists()).toBe(true);
   });
 
+  it('merges external class with sv-avatar-content', () => {
+    const wrapper = mount(SvAvatar, {
+      attrs: { class: 'external-avatar-class' },
+    });
+    const root = wrapper.find('.sv-avatar-content');
+    expect(root.exists()).toBe(true);
+    expect(root.classes()).toContain('external-avatar-class');
+  });
+
   it('renders sv-avatar inner element', () => {
     const wrapper = mount(SvAvatar);
     expect(wrapper.find('.sv-avatar').exists()).toBe(true);

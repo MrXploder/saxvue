@@ -155,15 +155,15 @@ export default defineComponent({
       return h(
         'div',
         {
+          ...attrs,
           ref: root,
-          class: ['sv-avatar-content', classes],
+          class: ['sv-avatar-content', classes, attrs.class],
           style: {
             width: `${props.size}px`,
             height: `${props.size}px`,
             cursor: props.pointer ? 'pointer' : undefined,
             ['--sv-color']: props.color ? getColor : '',
           },
-          ...attrs,
         },
         [
           props.loading && loadingNode,

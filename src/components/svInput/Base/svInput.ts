@@ -76,6 +76,7 @@ export default defineComponent({
               'sv-input--has-icon': !!slots.icon,
               'sv-input--has-icon--after': !!props.iconAfter,
             },
+            attrs.class,
           ],
           value: props.modelValue,
           id: getId(),

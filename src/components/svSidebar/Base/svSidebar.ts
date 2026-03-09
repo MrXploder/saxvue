@@ -139,6 +139,7 @@ export default defineComponent({
             { [`sv-component--success`]: !!props.success },
             { [`sv-component--dark`]: !!props.dark },
             { [`sv-component--is-color`]: !!props.color },
+            attrs.class,
           ],
           style: { ['--sv-color']: props.color ? getColor : '' },
           onMouseenter: () => {

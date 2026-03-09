@@ -141,7 +141,7 @@ export default defineComponent({
 
       // merge attrs so external listeners/props are preserved
       const vnodeProps: Record<string, unknown> = Object.assign({}, attrs, {
-        class: ['sv-button', classes],
+        class: ['sv-button', classes, attrs.class],
         style,
         onMousedown,
         onClick,

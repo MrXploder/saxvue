@@ -21,7 +21,7 @@ export default defineComponent({
       return h(
         'th',
         Object.assign({}, attrs, {
-          class: ['sv-table__th', { sort: props.sort }],
+          class: ['sv-table__th', { sort: props.sort }, attrs.class],
         }),
         [content],
       );

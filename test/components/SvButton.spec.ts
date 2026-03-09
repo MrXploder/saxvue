@@ -19,6 +19,14 @@ describe('SvButton', () => {
     expect(wrapper.classes()).toContain('sv-button');
   });
 
+  it('merges external class with sv-button class', () => {
+    const wrapper = mount(SvButton, {
+      attrs: { class: 'external-button-class' },
+    });
+    expect(wrapper.classes()).toContain('sv-button');
+    expect(wrapper.classes()).toContain('external-button-class');
+  });
+
   // --- Color variant classes ---
 
   it('applies sv-button--primary when no color variant is set', () => {

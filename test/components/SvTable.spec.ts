@@ -1,5 +1,7 @@
 import { mount } from '@vue/test-utils';
 import SvTable from '../../src/components/svTable/Base/svTable';
+import SvTableTh from '../../src/components/svTable/Th/svTableTh';
+import SvTableTd from '../../src/components/svTable/Td/svTableTd';
 
 describe('SvTable', () => {
   // --- Rendering ---
@@ -144,5 +146,23 @@ describe('SvTable', () => {
     expect(wrapper.find('.sv-table__tbody').exists()).toBe(true);
     expect(wrapper.find('.sv-table__footer').exists()).toBe(true);
     expect(wrapper.find('.striped').exists()).toBe(true);
+  });
+
+  it('merges external class with sv-table__th', () => {
+    const wrapper = mount(SvTableTh, {
+      attrs: { class: 'external-th-class' },
+      slots: { default: 'Header' },
+    });
+    expect(wrapper.classes()).toContain('sv-table__th');
+    expect(wrapper.classes()).toContain('external-th-class');
+  });
+
+  it('merges external class with sv-table__td', () => {
+    const wrapper = mount(SvTableTd, {
+      attrs: { class: 'external-td-class' },
+      slots: { default: 'Cell' },
+    });
+    expect(wrapper.classes()).toContain('sv-table__td');
+    expect(wrapper.classes()).toContain('external-td-class');
   });
 });

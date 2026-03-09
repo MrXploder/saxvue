@@ -12,11 +12,14 @@ export default defineComponent({
       return h(
         'td',
         Object.assign({}, attrs, {
-          class: {
-            'sv-table__td': true,
-            isCheckbox: props.checkbox,
-            isEdit: props.edit,
-          },
+          class: [
+            {
+              'sv-table__td': true,
+              isCheckbox: props.checkbox,
+              isEdit: props.edit,
+            },
+            attrs.class,
+          ],
           onClick: (evt: MouseEvent) => emit('click', evt),
         }),
         slots.default ? slots.default() : null,

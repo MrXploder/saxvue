@@ -1,6 +1,6 @@
 {
   "name": "@mrxploder/saxvue",
-  "version": "0.14.0",
+  "version": "0.21.0",
   "description": "Framework components for Vue 3",
   "keywords": [
     "vue",
@@ -48,7 +48,8 @@
     "lint": "eslint --ext .ts,.tsx,.vue src test",
     "lint:fix": "eslint --ext .ts,.tsx,.vue src test --fix",
     "dev": "tsc -w src/index.ts --module es6",
-    "test:types": "tsc -p ./types/test/tsconfig.json"
+    "test:types": "tsc -p ./types/test/tsconfig.json",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "boxicons": "^2.1.4",
