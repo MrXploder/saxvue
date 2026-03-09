@@ -1,63 +1,33 @@
-const setTheme = (forceTheme: string) => {
-  document.body.classList.add("vs-remove-transition");
-  const media = window.matchMedia("(prefers-color-scheme: dark)");
+const DARK_ATTR = 'vs-theme';
+const DARK_VAL = 'dark';
 
-  let isThemeDark = media.matches;
+/** Returns true if the page is currently in dark mode */
+const isDark = (): boolean => document.body.getAttribute(DARK_ATTR) === DARK_VAL;
 
-  if (localStorage.vsTheme) {
-    isThemeDark = localStorage.vsTheme == "dark";
-  }
+/**
+ * Force a specific theme.
+ * @param theme 'dark' | 'light'
+ */
+const setTheme = (theme: 'dark' | 'light'): 'dark' | 'light' => {
+  document.body.classList.add('vs-remove-transition');
 
-  if (isThemeDark) {
-    document.body.setAttribute("vs-theme", "dark");
+  if (theme === 'dark') {
+    document.body.setAttribute(DARK_ATTR, DARK_VAL);
   } else {
-    document.body.removeAttribute("vs-theme");
+    document.body.removeAttribute(DARK_ATTR);
   }
-
-  if (forceTheme == "dark") {
-    document.body.setAttribute("vs-theme", "dark");
-  } else if (forceTheme == "light") {
-    document.body.removeAttribute("vs-theme");
-  }
-
-  localStorage.vsTheme = isThemeDark ? "dark" : "light";
 
   setTimeout(() => {
-    document.body.classList.remove("vs-remove-transition");
+    document.body.classList.remove('vs-remove-transition');
   }, 100);
 
-  return isThemeDark ? "dark" : "light";
+  return theme;
 };
 
-const toggleTheme = (forceTheme: string) => {
-  document.body.classList.add("vs-remove-transition");
-  const media = window.matchMedia("(prefers-color-scheme: dark)");
-
-  let isThemeDark = media.matches;
-
-  if (localStorage.vsTheme) {
-    isThemeDark = localStorage.vsTheme == "dark";
-  }
-
-  if (!isThemeDark) {
-    document.body.setAttribute("vs-theme", "dark");
-  } else {
-    document.body.removeAttribute("vs-theme");
-  }
-
-  if (forceTheme == "dark") {
-    document.body.removeAttribute("vs-theme");
-  } else if (forceTheme == "light") {
-    document.body.setAttribute("vs-theme", "dark");
-  }
-
-  localStorage.vsTheme = !isThemeDark ? "dark" : "light";
-
-  setTimeout(() => {
-    document.body.classList.remove("vs-remove-transition");
-  }, 100);
-
-  return !isThemeDark ? "dark" : "light";
-};
+/**
+ * Toggle between dark and light themes.
+ * Returns the new active theme.
+ */
+const toggleTheme = (): 'dark' | 'light' => setTheme(isDark() ? 'light' : 'dark');
 
 export { toggleTheme, setTheme };
