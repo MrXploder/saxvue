@@ -2,18 +2,18 @@
   <div class="examplex" style="width: 100%">
     <sv-table>
       <template #thead>
-        <sv-tr>
-          <sv-th>Name</sv-th>
-          <sv-th>Email</sv-th>
-          <sv-th>Id</sv-th>
-        </sv-tr>
+        <sv-table-tr>
+          <sv-table-th>Name</sv-table-th>
+          <sv-table-th>Email</sv-table-th>
+          <sv-table-th>Id</sv-table-th>
+        </sv-table-tr>
       </template>
       <template #tbody>
-        <sv-tr :key="i" v-for="(tr, i) in users" :data="tr">
-          <sv-td>{{ tr.name }}</sv-td>
-          <sv-td>{{ tr.email }}</sv-td>
-          <sv-td>{{ tr.id }}</sv-td>
-        </sv-tr>
+        <sv-table-tr :key="i" v-for="(tr, i) in users" :data="tr">
+          <sv-table-td>{{ tr.name }}</sv-table-td>
+          <sv-table-td>{{ tr.email }}</sv-table-td>
+          <sv-table-td>{{ tr.id }}</sv-table-td>
+        </sv-table-tr>
       </template>
     </sv-table>
   </div>

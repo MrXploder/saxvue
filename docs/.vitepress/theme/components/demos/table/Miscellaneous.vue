@@ -5,21 +5,23 @@
         <sv-input v-model="search" border placeholder="Search" block />
       </template>
       <template #thead>
-        <sv-tr>
-          <sv-th>
+        <sv-table-tr>
+          <sv-table-th>
             <sv-checkbox
               :indeterminate="selected.length == users.length"
               v-model="allCheck"
               @change="selected = $sv.checkAll(selected, users)"
             />
-          </sv-th>
-          <sv-th sort @click="users = $sv.sortData($event, users, 'name')">Name</sv-th>
-          <sv-th sort @click="users = $sv.sortData($event, users, 'email')">Email</sv-th>
-          <sv-th sort @click="users = $sv.sortData($event, users, 'id')">Id</sv-th>
-        </sv-tr>
+          </sv-table-th>
+          <sv-table-th sort @click="users = $sv.sortData($event, users, 'name')">Name</sv-table-th>
+          <sv-table-th sort @click="users = $sv.sortData($event, users, 'email')"
+            >Email</sv-table-th
+          >
+          <sv-table-th sort @click="users = $sv.sortData($event, users, 'id')">Id</sv-table-th>
+        </sv-table-tr>
       </template>
       <template #tbody>
-        <sv-tr
+        <sv-table-tr
           :key="i"
           v-for="(tr, i) in $sv.getPage($sv.getSearch(users, search), page, max)"
           :data="tr"
@@ -27,10 +29,10 @@
           not-click-selected
           open-expand-only-td
         >
-          <sv-td checkbox>
+          <sv-table-td checkbox>
             <sv-checkbox :val="tr" v-model="selected" />
-          </sv-td>
-          <sv-td
+          </sv-table-td>
+          <sv-table-td
             edit
             @click="
               edit = tr;
@@ -39,9 +41,9 @@
             "
           >
             {{ tr.name }}
-          </sv-td>
-          <sv-td>{{ tr.email }}</sv-td>
-          <sv-td>{{ tr.id }}</sv-td>
+          </sv-table-td>
+          <sv-table-td>{{ tr.email }}</sv-table-td>
+          <sv-table-td>{{ tr.id }}</sv-table-td>
           <template #expand>
             <div
               style="
@@ -62,7 +64,7 @@
               </div>
             </div>
           </template>
-        </sv-tr>
+        </sv-table-tr>
       </template>
       <template #footer>
         <sv-pagination v-model="page" :length="$sv.getLength($sv.getSearch(users, search), max)" />

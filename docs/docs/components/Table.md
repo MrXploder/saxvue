@@ -14,16 +14,16 @@ The `<sv-table>` component creates a styled data table.
 <template>
   <sv-table>
     <template #header>
-      <sv-th>Name</sv-th>
-      <sv-th>Email</sv-th>
-      <sv-th>Id</sv-th>
+      <sv-table-th>Name</sv-table-th>
+      <sv-table-th>Email</sv-table-th>
+      <sv-table-th>Id</sv-table-th>
     </template>
     <template #body>
-      <sv-tr v-for="(user, i) in users" :key="i">
-        <sv-td>{{ user.name }}</sv-td>
-        <sv-td>{{ user.email }}</sv-td>
-        <sv-td>{{ user.id }}</sv-td>
-      </sv-tr>
+      <sv-table-tr v-for="(user, i) in users" :key="i">
+        <sv-table-td>{{ user.name }}</sv-table-td>
+        <sv-table-td>{{ user.email }}</sv-table-td>
+        <sv-table-td>{{ user.id }}</sv-table-td>
+      </sv-table-tr>
     </template>
   </sv-table>
 </template>
@@ -106,8 +106,8 @@ Enable search functionality using the `#header` slot with the search function.
 ```html
 <sv-table>
   <template #header>
-    <sv-th sort>Name</sv-th>
-    <sv-th sort>Email</sv-th>
+    <sv-table-th sort>Name</sv-table-th>
+    <sv-table-th sort>Email</sv-table-th>
   </template>
   <template #body>
     <!-- rows -->
@@ -122,14 +122,14 @@ Enable search functionality using the `#header` slot with the search function.
 
 ## Sort
 
-Add sorting to columns using the `sort` property on `<sv-th>`.
+Add sorting to columns using the `sort` property on `<sv-table-th>`.
 
 <template #example>
 <ClientOnly><TableSort /></ClientOnly>
 </template>
 
 ```html
-<sv-th sort>Sortable Column</sv-th>
+<sv-table-th sort>Sortable Column</sv-table-th>
 ```
 
 </card>
@@ -138,19 +138,19 @@ Add sorting to columns using the `sort` property on `<sv-th>`.
 
 ## Expand
 
-Add expandable rows using the `#expand` slot on `<sv-tr>`.
+Add expandable rows using the `#expand` slot on `<sv-table-tr>`.
 
 <template #example>
 <ClientOnly><TableExpand /></ClientOnly>
 </template>
 
 ```html
-<sv-tr>
-  <sv-td>Row Content</sv-td>
+<sv-table-tr>
+  <sv-table-td>Row Content</sv-table-td>
   <template #expand>
     <div>Expanded content here</div>
   </template>
-</sv-tr>
+</sv-table-tr>
 ```
 
 </card>
@@ -168,7 +168,7 @@ Add pagination to the table.
 ```html
 <sv-table>
   <template #header>
-    <sv-th>Name</sv-th>
+    <sv-table-th>Name</sv-table-th>
   </template>
   <template #body>
     <!-- paginated rows -->
@@ -192,9 +192,9 @@ Add color-coded state to rows using `danger`, `success`, `primary`, or `warn` pr
 </template>
 
 ```html
-<sv-tr :danger="row.id == 3" :success="row.id == 5" :primary="row.id == 8">
-  <sv-td>{{ row.name }}</sv-td>
-</sv-tr>
+<sv-table-tr :danger="row.id == 3" :success="row.id == 5" :primary="row.id == 8">
+  <sv-table-td>{{ row.name }}</sv-table-td>
+</sv-table-tr>
 ```
 
 </card>
@@ -210,7 +210,7 @@ Use the `edit` prop on `sv-td` to make cells clickable for editing. Typically op
 </template>
 
 ```html
-<sv-td edit @click="openEdit(row, 'name')">{{ row.name }}</sv-td>
+<sv-table-td edit @click="openEdit(row, 'name')">{{ row.name }}</sv-table-td>
 ```
 
 </card>
@@ -231,16 +231,16 @@ A full-featured table combining search, sort, checkbox selection, expand rows, i
     <sv-input v-model="search" border placeholder="Search" block />
   </template>
   <template #thead>
-    <sv-tr>
-      <sv-th><sv-checkbox v-model="allCheck" /></sv-th>
-      <sv-th sort @click="users = $sv.sortData($event, users, 'name')">Name</sv-th>
-    </sv-tr>
+    <sv-table-tr>
+      <sv-table-th><sv-checkbox v-model="allCheck" /></sv-table-th>
+      <sv-table-th sort @click="users = $sv.sortData($event, users, 'name')">Name</sv-table-th>
+    </sv-table-tr>
   </template>
   <template #tbody>
-    <sv-tr v-for="(tr, i) in $sv.getPage(users, page, 5)" :data="tr">
-      <sv-td checkbox><sv-checkbox :val="tr" v-model="selected" /></sv-td>
-      <sv-td>{{ tr.name }}</sv-td>
-    </sv-tr>
+    <sv-table-tr v-for="(tr, i) in $sv.getPage(users, page, 5)" :data="tr">
+      <sv-table-td checkbox><sv-checkbox :val="tr" v-model="selected" /></sv-table-td>
+      <sv-table-td>{{ tr.name }}</sv-table-td>
+    </sv-table-tr>
   </template>
   <template #footer>
     <sv-pagination v-model="page" :length="$sv.getLength(users, 5)" />

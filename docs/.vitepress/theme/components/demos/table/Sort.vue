@@ -2,18 +2,18 @@
   <div class="center" style="flex-direction: column; gap: 15px">
     <sv-table>
       <template #thead>
-        <sv-tr>
-          <sv-th sort>Name</sv-th>
-          <sv-th sort>Email</sv-th>
-          <sv-th sort>Id</sv-th>
-        </sv-tr>
+        <sv-table-tr>
+          <sv-table-th sort>Name</sv-table-th>
+          <sv-table-th sort>Email</sv-table-th>
+          <sv-table-th sort>Id</sv-table-th>
+        </sv-table-tr>
       </template>
       <template #tbody>
-        <sv-tr v-for="(item, i) in data" :key="i">
-          <sv-td>{{ item.name }}</sv-td>
-          <sv-td>{{ item.email }}</sv-td>
-          <sv-td>{{ item.id }}</sv-td>
-        </sv-tr>
+        <sv-table-tr v-for="(item, i) in data" :key="i">
+          <sv-table-td>{{ item.name }}</sv-table-td>
+          <sv-table-td>{{ item.email }}</sv-table-td>
+          <sv-table-td>{{ item.id }}</sv-table-td>
+        </sv-table-tr>
       </template>
     </sv-table>
   </div>

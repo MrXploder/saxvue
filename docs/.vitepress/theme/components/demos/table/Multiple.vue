@@ -2,28 +2,33 @@
   <div style="width: 100%">
     <sv-table v-model="selected">
       <template #thead>
-        <sv-tr>
-          <sv-th>
+        <sv-table-tr>
+          <sv-table-th>
             <sv-checkbox
               :indeterminate="selected.length == users.length"
               v-model="allCheck"
               @change="selected = $sv.checkAll(selected, users)"
             />
-          </sv-th>
-          <sv-th>Name</sv-th>
-          <sv-th>Email</sv-th>
-          <sv-th>Id</sv-th>
-        </sv-tr>
+          </sv-table-th>
+          <sv-table-th>Name</sv-table-th>
+          <sv-table-th>Email</sv-table-th>
+          <sv-table-th>Id</sv-table-th>
+        </sv-table-tr>
       </template>
       <template #tbody>
-        <sv-tr :key="i" v-for="(tr, i) in users" :data="tr" :is-selected="!!selected.includes(tr)">
-          <sv-td checkbox>
+        <sv-table-tr
+          :key="i"
+          v-for="(tr, i) in users"
+          :data="tr"
+          :is-selected="!!selected.includes(tr)"
+        >
+          <sv-table-td checkbox>
             <sv-checkbox :val="tr" v-model="selected" />
-          </sv-td>
-          <sv-td>{{ tr.name }}</sv-td>
-          <sv-td>{{ tr.email }}</sv-td>
-          <sv-td>{{ tr.id }}</sv-td>
-        </sv-tr>
+          </sv-table-td>
+          <sv-table-td>{{ tr.name }}</sv-table-td>
+          <sv-table-td>{{ tr.email }}</sv-table-td>
+          <sv-table-td>{{ tr.id }}</sv-table-td>
+        </sv-table-tr>
       </template>
     </sv-table>
     <pre
