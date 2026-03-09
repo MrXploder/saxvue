@@ -3,15 +3,13 @@ import {
   h,
   ref,
   computed,
-  onMounted,
   onBeforeUnmount,
-  nextTick,
   watch,
-  getCurrentInstance,
+  Teleport,
+  Transition,
   type PropType,
 } from 'vue';
 import SvIconsClose from '../../../icons/close';
-import { insertBody } from '../../../util/index';
 import { svColorProps, useSvComponent } from '../../../mixins/component';
 
 export type SvDialogAnimation =
@@ -51,7 +49,6 @@ export default defineComponent({
   emits: ['update:modelValue', 'close'],
   setup(props, { slots, emit }) {
     const rebound = ref(false);
-    const dialogContentRef = ref<HTMLElement | null>(null);
 
     const esc = (evt: KeyboardEvent) => {
       if (evt.which === 27 && !props.preventClose) {
@@ -60,21 +57,11 @@ export default defineComponent({
       }
     };
 
-    const addEsc = () => window.addEventListener('keydown', esc);
-
-    const insertDialog = () => {
-      addEsc();
-      nextTick(() => {
-        const dialog = dialogContentRef.value as HTMLElement | null;
-        if (dialog) insertBody(dialog, document.querySelector('#app'));
-      });
-    };
-
     watch(
       () => props.modelValue,
       (val: boolean) => {
         if (val) {
-          insertDialog();
+          window.addEventListener('keydown', esc);
           if (props.overflowHidden) document.body.style.overflow = 'hidden';
         } else {
           window.removeEventListener('keydown', esc);
@@ -83,22 +70,12 @@ export default defineComponent({
       },
     );
 
-    onMounted(() => {
-      // nothing extra here besides watch behavior
-    });
-
     onBeforeUnmount(() => {
-      if (dialogContentRef.value && dialogContentRef.value.parentNode) {
-        try {
-          dialogContentRef.value.parentNode.removeChild(dialogContentRef.value);
-        } catch (e) {
-          /* ignore */
-        }
-      }
+      window.removeEventListener('keydown', esc);
+      if (props.overflowHidden) document.body.style.overflow = '';
     });
 
-    const inst = getCurrentInstance();
-    const { getColor } = useSvComponent(props);
+    useSvComponent(props);
 
     const transitionName = computed(() =>
       props.animation === 'scale' ? 'sv-dialog' : `sv-dialog-${props.animation}`,
@@ -167,7 +144,6 @@ export default defineComponent({
       const dialogContent = h(
         'div',
         {
-          ref: dialogContentRef,
           class: ['sv-dialog-content', { blur: props.blur, fullScreen: props.fullScreen }],
           onClick: (evt: MouseEvent) => {
             const target = evt.target as Element;
@@ -187,7 +163,11 @@ export default defineComponent({
         [dialog],
       );
 
-      return h('transition', { name: transitionName.value }, [props.modelValue && dialogContent]);
+      return h(Teleport, { to: 'body' }, [
+        h(Transition, { name: transitionName.value }, () => [
+          props.modelValue ? dialogContent : null,
+        ]),
+      ]);
     };
   },
 });
