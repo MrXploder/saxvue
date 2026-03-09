@@ -9,7 +9,7 @@ const isDark = (): boolean => document.body.getAttribute(DARK_ATTR) === DARK_VAL
  * @param theme 'dark' | 'light'
  */
 const setTheme = (theme: 'dark' | 'light'): 'dark' | 'light' => {
-  document.body.classList.add('vs-remove-transition');
+  document.body.classList.add('sv-remove-transition');
 
   if (theme === 'dark') {
     document.body.setAttribute(DARK_ATTR, DARK_VAL);
@@ -18,7 +18,7 @@ const setTheme = (theme: 'dark' | 'light'): 'dark' | 'light' => {
   }
 
   setTimeout(() => {
-    document.body.classList.remove('vs-remove-transition');
+    document.body.classList.remove('sv-remove-transition');
   }, 100);
 
   return theme;

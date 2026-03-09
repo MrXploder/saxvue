@@ -28,7 +28,7 @@
   width: 100%;
 }
 .grid-demo :deep(.sv-row),
-.grid-demo :deep(.vs-row) {
+.grid-demo :deep(.sv-row) {
   background: var(--vp-c-divider);
   border-bottom: 1px dashed var(--vp-c-bg-soft);
   min-height: 70px;

@@ -78,7 +78,7 @@ export default defineComponent({
     const applyBadgeColor = () => {
       if (root.value) {
         setColor('badge', props.badgeColor, root.value);
-        root.value.classList.add('vs-change-color-badge');
+        root.value.classList.add('sv-change-color-badge');
       }
     };
 

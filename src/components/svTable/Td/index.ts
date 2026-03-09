@@ -3,7 +3,7 @@ import component from './svTableTd';
 import './style.scss';
 
 component.install = (app: App) => {
-  app.component('VsTd', component);
+  app.component('SvTableTd', component);
 };
 
 export default component;

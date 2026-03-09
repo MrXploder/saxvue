@@ -81,26 +81,26 @@ const setColor = (colorName: string, color: string, el: HTMLElement | null, addC
     newColor = `${arrayColor[0]},${arrayColor[1]},${arrayColor[2]}`;
     setVar(colorName, newColor, el);
     if (addClass) {
-      el.classList.add('vs-change-color');
+      el.classList.add('sv-change-color');
     }
   } else if (isHEX) {
     const rgb = hexToRgb(color);
     newColor = `${rgb!.r},${rgb!.g},${rgb!.b}`;
     setVar(colorName, newColor, el);
     if (addClass) {
-      el.classList.add('vs-change-color');
+      el.classList.add('sv-change-color');
     }
   } else if (isColor(color)) {
     const style = window.getComputedStyle(document.body);
     newColor = style.getPropertyValue('--sv-' + color);
     setVar(colorName, newColor, el);
     if (addClass) {
-      el.classList.add('vs-change-color');
+      el.classList.add('sv-change-color');
     }
   } else if (isRGBNumbers) {
     setVar(colorName, color, el);
     if (addClass) {
-      el.classList.add('vs-change-color');
+      el.classList.add('sv-change-color');
     }
   } else {
     // unsupported color format — silently ignored

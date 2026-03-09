@@ -12,7 +12,7 @@
   &.expand {
     cursor: pointer;
   }
-  &.vs-change-color {
+  &.sv-change-color {
     .sv-table__td {
       background: sv-color('color', 0.1) !important;
       color: sv-color('color', 1) !important;
@@ -63,7 +63,7 @@
     background: sv-color('bg', 0.1);
     color: sv-color('bg', 1);
   }
-  &.vs-change-color {
+  &.sv-change-color {
     &:hover {
       .sv-table__td {
         background: sv-color('color', 0.2) !important;

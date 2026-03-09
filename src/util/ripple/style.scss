@@ -1,6 +1,6 @@
 @use '../../styles/mixins' as *;
 
-.vs-ripple-content {
+.sv-ripple-content {
   --sv-color: inherit;
   width: 100px;
   height: 100px;
@@ -14,7 +14,7 @@
   border-radius: inherit;
   z-index: -1;
 
-  .vs-ripple {
+  .sv-ripple {
     width: 0px;
     height: 0px;
     border-radius: 50%;
@@ -29,7 +29,7 @@
       opacity: 1;
     }
   }
-  .vs-ripple-invert {
+  .sv-ripple-invert {
     width: 0px;
     height: 0px;
     border-radius: 50%;
@@ -39,7 +39,7 @@
     transition: all 0.5s ease;
     background-image: radial-gradient(circle, sv-color(color, 0.5), sv-color(color, 0));
   }
-  .vs-ripple-cut-1 {
+  .sv-ripple-cut-1 {
     width: 0px;
     height: 0px;
     opacity: 0;
@@ -52,7 +52,7 @@
       rgba(255, 255, 255, 0) 100%
     );
   }
-  .vs-ripple-cut-2 {
+  .sv-ripple-cut-2 {
     width: 0px;
     height: 0px;
     opacity: 0;

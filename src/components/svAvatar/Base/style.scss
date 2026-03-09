@@ -9,14 +9,14 @@
   position: relative;
   transition: all 0.25s ease;
   user-select: none;
-  &.vs-change-color-badge {
+  &.sv-change-color-badge {
     .sv-avatar__badge {
       .sv-avatar__points__point {
         background: sv-color('background');
       }
     }
   }
-  &.vs-change-color {
+  &.sv-change-color {
     &:hover {
       .sv-avatar {
         box-shadow: inset 0px 0px 40px 0px rgba(0, 0, 0, 0.1);

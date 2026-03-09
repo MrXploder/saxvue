@@ -25,7 +25,7 @@
   .sv-tooltip {
     --sv-color: var(--sv-gray-3);
     color: #fff;
-    &:not(.vs-change-color) {
+    &:not(.sv-change-color) {
       color: #fff !important;
     }
   }

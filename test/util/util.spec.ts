@@ -80,9 +80,9 @@ describe('setColor', () => {
     expect(el.style.getPropertyValue('--sv-color')).toBe('100,200,50');
   });
 
-  it('adds vs-change-color class when addClass is true', () => {
+  it('adds sv-change-color class when addClass is true', () => {
     setColor('color', '#0000ff', el, true);
-    expect(el.classList.contains('vs-change-color')).toBe(true);
+    expect(el.classList.contains('sv-change-color')).toBe(true);
   });
 
   it("adds sv-component-dark class when color is 'dark'", () => {
