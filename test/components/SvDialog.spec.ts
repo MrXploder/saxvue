@@ -3,13 +3,13 @@ import SvDialog from '../../src/components/svDialog/Base/svDialog';
 
 describe('SvDialog', () => {
   it('does not render dialog content when value is false', () => {
-    const wrapper = mount(SvDialog, { props: { value: false } });
+    const wrapper = mount(SvDialog, { props: { modelValue: false } });
     expect(wrapper.find('.sv-dialog-content').exists()).toBe(false);
   });
 
   it('renders dialog content when value is true', () => {
     const wrapper = mount(SvDialog, {
-      props: { value: true },
+      props: { modelValue: true },
       attachTo: document.body,
     });
     // Dialog is inserted into body via insertBody, so we check the DOM directly
@@ -20,7 +20,7 @@ describe('SvDialog', () => {
 
   it('renders the sv-dialog element when visible', () => {
     const wrapper = mount(SvDialog, {
-      props: { value: true },
+      props: { modelValue: true },
       attachTo: document.body,
     });
     const dialog = document.querySelector('.sv-dialog');
@@ -32,7 +32,7 @@ describe('SvDialog', () => {
 
   it('renders header slot', () => {
     const wrapper = mount(SvDialog, {
-      props: { value: true },
+      props: { modelValue: true },
       slots: { header: '<h3>Title</h3>' },
       attachTo: document.body,
     });
@@ -44,7 +44,7 @@ describe('SvDialog', () => {
 
   it('renders default slot content', () => {
     const wrapper = mount(SvDialog, {
-      props: { value: true },
+      props: { modelValue: true },
       slots: { default: '<p>Body content</p>' },
       attachTo: document.body,
     });
@@ -56,7 +56,7 @@ describe('SvDialog', () => {
 
   it('renders footer slot', () => {
     const wrapper = mount(SvDialog, {
-      props: { value: true },
+      props: { modelValue: true },
       slots: { footer: '<button>OK</button>' },
       attachTo: document.body,
     });
@@ -70,7 +70,7 @@ describe('SvDialog', () => {
 
   it('renders close button by default', () => {
     const wrapper = mount(SvDialog, {
-      props: { value: true },
+      props: { modelValue: true },
       attachTo: document.body,
     });
     const closeBtn = document.querySelector('.sv-dialog__close');
@@ -80,7 +80,7 @@ describe('SvDialog', () => {
 
   it('hides close button when notClose is true', () => {
     const wrapper = mount(SvDialog, {
-      props: { value: true, notClose: true },
+      props: { modelValue: true, notClose: true },
       attachTo: document.body,
     });
     const closeBtn = document.querySelector('.sv-dialog__close');
@@ -92,7 +92,7 @@ describe('SvDialog', () => {
 
   it('applies fullScreen class when fullScreen prop is true', () => {
     const wrapper = mount(SvDialog, {
-      props: { value: true, fullScreen: true },
+      props: { modelValue: true, fullScreen: true },
       attachTo: document.body,
     });
     expect(document.querySelector('.sv-dialog--fullScreen')).toBeTruthy();
@@ -101,7 +101,7 @@ describe('SvDialog', () => {
 
   it('applies square class when square prop is true', () => {
     const wrapper = mount(SvDialog, {
-      props: { value: true, square: true },
+      props: { modelValue: true, square: true },
       attachTo: document.body,
     });
     expect(document.querySelector('.sv-dialog--square')).toBeTruthy();
@@ -110,7 +110,7 @@ describe('SvDialog', () => {
 
   it('applies notPadding class when notPadding prop is true', () => {
     const wrapper = mount(SvDialog, {
-      props: { value: true, notPadding: true },
+      props: { modelValue: true, notPadding: true },
       attachTo: document.body,
     });
     expect(document.querySelector('.sv-dialog--notPadding')).toBeTruthy();
@@ -119,7 +119,7 @@ describe('SvDialog', () => {
 
   it('applies blur class when blur prop is true', () => {
     const wrapper = mount(SvDialog, {
-      props: { value: true, blur: true },
+      props: { modelValue: true, blur: true },
       attachTo: document.body,
     });
     expect(document.querySelector('.sv-dialog-content.blur')).toBeTruthy();
@@ -128,7 +128,7 @@ describe('SvDialog', () => {
 
   it('applies loading class and element when loading prop is true', () => {
     const wrapper = mount(SvDialog, {
-      props: { value: true, loading: true },
+      props: { modelValue: true, loading: true },
       attachTo: document.body,
     });
     expect(document.querySelector('.sv-dialog--loading')).toBeTruthy();
@@ -138,7 +138,7 @@ describe('SvDialog', () => {
 
   it('sets custom width', () => {
     const wrapper = mount(SvDialog, {
-      props: { value: true, width: '800px' },
+      props: { modelValue: true, width: '800px' },
       attachTo: document.body,
     });
     const dialog = document.querySelector('.sv-dialog') as HTMLElement | null;
@@ -151,15 +151,15 @@ describe('SvDialog', () => {
 
   it('emits close and input when close button is clicked', async () => {
     const wrapper = mount(SvDialog, {
-      props: { value: true },
+      props: { modelValue: true },
       attachTo: document.body,
     });
     const closeBtn = document.querySelector('.sv-dialog__close') as HTMLElement | null;
     expect(closeBtn).toBeTruthy();
     closeBtn!.click();
     expect(wrapper.emitted('close')).toBeTruthy();
-    expect(wrapper.emitted('input')).toBeTruthy();
-    expect(wrapper.emitted('input')![0][0]).toBe(false);
+    expect(wrapper.emitted('update:modelValue')).toBeTruthy();
+    expect(wrapper.emitted('update:modelValue')![0][0]).toBe(false);
     wrapper.unmount();
   });
 });

@@ -21,7 +21,7 @@ interface SelectParent {
 export default defineComponent({
   name: 'SvSelectOption',
   props: {
-    value: { default: null },
+    modelValue: { default: null },
     disabled: { type: Boolean, default: false },
     label: { default: null },
   },

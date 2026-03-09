@@ -96,7 +96,7 @@ describe('SvTable', () => {
 
   it('applies isSelectedValue class when value is set', () => {
     const wrapper = mount(SvTable, {
-      props: { value: 'row1' },
+      props: { modelValue: 'row1' },
     });
     expect(wrapper.find('.isSelectedValue').exists()).toBe(true);
   });
@@ -108,7 +108,7 @@ describe('SvTable', () => {
 
   it('applies isMultipleSelected class when value is an array', () => {
     const wrapper = mount(SvTable, {
-      props: { value: ['row1', 'row2'] },
+      props: { modelValue: ['row1', 'row2'] },
     });
     expect(wrapper.find('.isMultipleSelected').exists()).toBe(true);
   });
@@ -119,12 +119,12 @@ describe('SvTable', () => {
     // SvTable exposes selected() through its child components;
     // we test the emit mechanism by calling through the component instance
     const wrapper = mount(SvTable, {
-      props: { value: null },
+      props: { modelValue: null },
     });
     // Access the component's setup return via vm
     // The component doesn't expose selected directly, but we can verify
     // that the component mounts without errors and the emit mechanism exists
-    expect(wrapper.emitted('input')).toBeUndefined(); // no emit yet
+    expect(wrapper.emitted('update:modelValue')).toBeUndefined(); // no emit yet
   });
 
   // --- Full table ---

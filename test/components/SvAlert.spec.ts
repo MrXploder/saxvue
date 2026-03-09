@@ -55,8 +55,8 @@ describe('SvAlert', () => {
       props: { closable: true, value: true },
     });
     await wrapper.find('.sv-alert__close').trigger('click');
-    expect(wrapper.emitted('input')).toBeTruthy();
-    expect(wrapper.emitted('input')![0][0]).toBe(false);
+    expect(wrapper.emitted('update:modelValue')).toBeTruthy();
+    expect(wrapper.emitted('update:modelValue')![0][0]).toBe(false);
   });
 
   // --- Style variants ---

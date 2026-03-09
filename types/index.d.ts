@@ -97,6 +97,10 @@ declare module 'vue' {
   interface ComponentCustomProperties {
     $sv: SvFunctions;
   }
+
+  interface globalProperties {
+    $sv: SvFunctions;
+  }
 }
 
 declare module '*.svg' {

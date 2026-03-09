@@ -5,7 +5,7 @@ export default defineComponent({
   name: 'SvRadio',
   props: {
     ...svColorProps,
-    value: {},
+    modelValue: {},
     val: {},
     name: { type: String, default: null },
     disabled: { type: Boolean, default: false },
@@ -17,16 +17,16 @@ export default defineComponent({
     const uid = inst ? `vs-${inst.uid}` : `vs-${Math.random().toString(36).slice(2)}`;
     const { getColor } = useSvComponent(props);
 
-    const isChecked = computed(() => props.value == props.val);
+    const isChecked = computed(() => props.modelValue == props.val);
 
     return () => {
       const radioInput = h('input', {
         type: 'radio',
         id: uid,
         value: props.val,
-        name: props.name || String(props.value),
+        name: props.name || String(props.modelValue),
         checked: isChecked.value,
-        onInput: () => emit('input', props.val),
+        onInput: () => emit('update:modelValue', props.val),
       });
 
       const radioEffect = h('span', { class: 'sv-radio__effect' }, [

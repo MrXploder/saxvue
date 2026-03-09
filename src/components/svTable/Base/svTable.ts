@@ -3,11 +3,11 @@ import { defineComponent, h, ref, onMounted, computed } from 'vue';
 export default defineComponent({
   name: 'SvTable',
   props: {
-    value: {},
+    modelValue: {},
     striped: { type: Boolean, default: false },
     loading: { type: Boolean, default: false },
   },
-  emits: ['input'],
+  emits: ['update:modelValue'],
   setup(props, { emit, slots }) {
     const colspan = ref<number>(0);
     const theadRef = ref<HTMLElement | null>(null);
@@ -19,19 +19,19 @@ export default defineComponent({
       }
     });
 
-    const isMultipleSelected = computed(() => Array.isArray(props.value));
+    const isMultipleSelected = computed(() => Array.isArray(props.modelValue));
 
     const selected = (val: unknown) => {
       if (isMultipleSelected.value) selectedMultiple(val);
-      else emit('input', val);
+      else emit('update:modelValue', val);
     };
 
     const selectedMultiple = (val: unknown) => {
-      const newVal = Array.isArray(props.value) ? (props.value as unknown[]).slice() : [];
+      const newVal = Array.isArray(props.modelValue) ? (props.modelValue as unknown[]).slice() : [];
       const idx = newVal.indexOf(val);
       if (idx !== -1) newVal.splice(idx, 1);
       else newVal.push(val);
-      emit('input', newVal);
+      emit('update:modelValue', newVal);
     };
 
     return () => {
@@ -67,7 +67,7 @@ export default defineComponent({
           class: [
             'sv-table',
             {
-              isSelectedValue: !!props.value,
+              isSelectedValue: !!props.modelValue,
               striped: props.striped,
               isMultipleSelected: isMultipleSelected.value,
             },

@@ -14,7 +14,7 @@ export default defineComponent({
     gradient: { type: Boolean, default: false },
     flat: { type: Boolean, default: false },
     relief: { type: Boolean, default: false },
-    value: { default: true },
+    modelValue: { default: true },
     hiddenContent: { type: Boolean, default: null },
     closable: { type: Boolean, default: false },
     progress: { type: [Number, String], default: 0 },
@@ -60,7 +60,7 @@ export default defineComponent({
       done && done();
     };
 
-    const handleClickClose = () => emit('input', !props.value);
+    const handleClickClose = () => emit('update:modelValue', !props.modelValue);
     const handleClickHidden = () => emit('update:hiddenContent', !props.hiddenContent);
     const handleClickPrevPage = () => {
       if (Number(props.page) > 1) emit('update:page', Number(props.page) - 1);
@@ -82,7 +82,7 @@ export default defineComponent({
     watch(
       () => props.hiddenContent,
       (val) => {
-        if (!props.value) return;
+        if (!props.modelValue) return;
         if (!root.value || !content.value) return;
         if (!val) {
           root.value.style.height = 'auto';
@@ -200,7 +200,7 @@ export default defineComponent({
       );
 
       return h('transition', { onBeforeEnter: beforeEnter, onEnter: enter, onLeave: leave }, [
-        props.value && rootNode,
+        props.modelValue && rootNode,
       ]);
     };
   },

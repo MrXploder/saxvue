@@ -30,7 +30,7 @@ describe('SvRadio', () => {
 
   it('is checked when value equals val', () => {
     const wrapper = mount(SvRadio, {
-      props: { value: 'a', val: 'a' },
+      props: { modelValue: 'a', val: 'a' },
     });
     expect(wrapper.find('.active').exists()).toBe(true);
     const input = wrapper.find('input[type="radio"]');
@@ -39,7 +39,7 @@ describe('SvRadio', () => {
 
   it('is not checked when value differs from val', () => {
     const wrapper = mount(SvRadio, {
-      props: { value: 'b', val: 'a' },
+      props: { modelValue: 'b', val: 'a' },
     });
     expect(wrapper.find('.active').exists()).toBe(false);
   });
@@ -48,11 +48,11 @@ describe('SvRadio', () => {
 
   it('emits input with val on input event', async () => {
     const wrapper = mount(SvRadio, {
-      props: { value: 'b', val: 'a' },
+      props: { modelValue: 'b', val: 'a' },
     });
     await wrapper.find('input[type="radio"]').trigger('input');
-    expect(wrapper.emitted('input')).toBeTruthy();
-    expect(wrapper.emitted('input')![0][0]).toBe('a');
+    expect(wrapper.emitted('update:modelValue')).toBeTruthy();
+    expect(wrapper.emitted('update:modelValue')![0][0]).toBe('a');
   });
 
   // --- Label ---

@@ -16,7 +16,7 @@ export default defineComponent({
   name: 'SvDialog',
   props: {
     ...svColorProps,
-    value: { type: Boolean, default: false },
+    modelValue: { type: Boolean, default: false },
     loading: { type: Boolean, default: false },
     fullScreen: { type: Boolean, default: false },
     notClose: { type: Boolean, default: false },
@@ -37,7 +37,7 @@ export default defineComponent({
 
     const esc = (evt: KeyboardEvent) => {
       if (evt.which === 27 && !props.preventClose) {
-        emit('input', false);
+        emit('update:modelValue', false);
         emit('close');
       }
     };
@@ -53,7 +53,7 @@ export default defineComponent({
     };
 
     watch(
-      () => props.value,
+      () => props.modelValue,
       (val: boolean) => {
         if (val) {
           insertDialog();
@@ -104,7 +104,7 @@ export default defineComponent({
         {
           class: 'sv-dialog__close',
           onClick: (evt: MouseEvent) => {
-            emit('input', !props.value);
+            emit('update:modelValue', !props.modelValue);
             emit('close');
           },
         },
@@ -150,7 +150,7 @@ export default defineComponent({
           onClick: (evt: MouseEvent) => {
             const target = evt.target as Element;
             if (!target.closest('.sv-dialog') && !props.preventClose) {
-              emit('input', !props.value);
+              emit('update:modelValue', !props.modelValue);
               emit('close');
             }
 
@@ -165,7 +165,7 @@ export default defineComponent({
         [dialog],
       );
 
-      return h('transition', { name: 'sv-dialog' }, [props.value && dialogContent]);
+      return h('transition', { name: 'sv-dialog' }, [props.modelValue && dialogContent]);
     };
   },
 });

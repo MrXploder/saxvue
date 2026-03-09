@@ -72,7 +72,7 @@ export default defineComponent({
       scrollTop.value = currentScrollTop;
     };
 
-    const setModel = (id: string) => emit('input', id);
+    const setModel = (id: string) => emit('update:modelValue', id);
 
     const setLeftLine = (left: number, transition: boolean = true) => {
       lineNotTransition.value = !transition;
