@@ -1,15 +1,14 @@
-import type { App } from 'vue';
-import { SvAlert } from './components/SvAlert';
+import type { App, DefineComponent } from 'vue';
 
 // ── Plugin ──────────────────────────────────────────────────────
 
 export interface SaxVueColors {
-  primary: string;
-  success: string;
-  danger: string;
-  warn: string;
-  dark: string;
-  [key: string]: string;
+  primary?: string;
+  success?: string;
+  danger?: string;
+  warn?: string;
+  dark?: string;
+  [key: string]: string | undefined;
 }
 
 export interface SaxVueOptions {
@@ -24,7 +23,7 @@ export default SaxVue;
 
 // ── $sv global functions ────────────────────────────────────────
 
-export interface SvFunctions {
+export interface SaxVueFunctions {
   /** Set a named color CSS custom-property on `<body>` */
   setColor(color: string, val: string): void;
 
@@ -34,16 +33,16 @@ export interface SvFunctions {
   /** Show a notification toast. Returns a handle with `.close()` */
   notification(options?: Record<string, unknown>): { close: () => void };
 
-  /** Toggle between light / dark theme */
-  toggleTheme(): void;
+  /** Toggle between light / dark theme. Returns the new active theme. */
+  toggleTheme(): 'light' | 'dark';
 
-  /** Explicitly set the theme to 'light' or 'dark' */
-  setTheme(theme: 'light' | 'dark'): void;
+  /** Explicitly set the theme. Returns the applied theme. */
+  setTheme(theme: 'light' | 'dark'): 'light' | 'dark';
 
   /** Table helper – get current page rows */
   getPage<T>(data: T[], page: number, maxItems?: number): T[];
 
-  /** Table helper – get filtered length */
+  /** Table helper – get total page count */
   getLength(data: unknown[], maxItems?: number): number;
 
   /** Table helper – toggle check-all */
@@ -56,50 +55,70 @@ export interface SvFunctions {
   sortData(event: Event, data: unknown[], sortKey: string, type: string): unknown[];
 }
 
+// ── Component prop types ────────────────────────────────────────
+
+export type { SvButtonProps } from './components/SvButton';
+export type { SvAlertProps } from './components/SvAlert';
+export type { SvInputProps } from './components/SvInput';
+export type { SvCheckboxProps } from './components/SvCheckbox';
+export type { SvSwitchProps } from './components/SvSwitch';
+export type { SvRadioProps } from './components/SvRadio';
+export type { SvSelectProps, SvOptionProps, SvOptionGroupProps } from './components/SvSelect';
+export type { SvDialogProps } from './components/SvDialog';
+export type { SvTooltipProps } from './components/SvTooltip';
+export type { SvPaginationProps } from './components/SvPagination';
+export type {
+  SvTableProps,
+  SvTableTrProps,
+  SvTableThProps,
+  SvTableTdProps,
+} from './components/SvTable';
+export type { SvNavbarProps, SvNavbarItemProps } from './components/SvNavbar';
+export type {
+  SvSidebarProps,
+  SvSidebarItemProps,
+  SvSidebarGroupProps,
+} from './components/SvSidebar';
+export type { SvAvatarProps, SvAvatarGroupProps } from './components/SvAvatar';
+export type { SvCardProps } from './components/SvCard';
+
 // ── Component exports ───────────────────────────────────────────
 
-export const svButton: typeof import('../src/components/svButton/Base/SvButton').default;
-export const svButtonGroup: typeof import('../src/components/svButton/Group/SvButtonGroup').default;
-export const svAlert: typeof import('../src/components/svAlert/Base/svAlert').default;
-export const svInput: typeof import('../src/components/svInput/Base/svInput').default;
-export const svCheckbox: typeof import('../src/components/svCheckbox/Base/svCheckbox').default;
-export const svSwitch: typeof import('../src/components/svSwitch/Base/svSwitch').default;
-export const svSelect: typeof import('../src/components/svSelect/Base/svSelect').default;
-export const svOption: typeof import('../src/components/svSelect/Option/svSelectOption').default;
-export const svOptionGroup: typeof import('../src/components/svSelect/OptionGroup/svOptionGroup').default;
-export const svAvatar: typeof import('../src/components/svAvatar/Base/svAvatar').default;
-export const svAvatarGroup: typeof import('../src/components/svAvatar/Group/svAvatarGroup').default;
-export const svRadio: typeof import('../src/components/svRadio/Base/svRadio').default;
-export const svTooltip: typeof import('../src/components/svTooltip/Base/svTooltip').default;
-export const svDialog: typeof import('../src/components/svDialog/Base/svDialog').default;
-export const svPagination: typeof import('../src/components/svPagination/Base/svPagination').default;
-export const svTable: typeof import('../src/components/svTable/Base/svTable').default;
-export const svTableTr: typeof import('../src/components/svTable/Tr/svTableTr').default;
-export const svTableTh: typeof import('../src/components/svTable/Th/svTableTh').default;
-export const svTableTd: typeof import('../src/components/svTable/Td/svTableTd').default;
-export const svNavbar: typeof import('../src/components/svNavbar/Base/svNavbar').default;
-export const svNavbarItem: typeof import('../src/components/svNavbar/Item/svNavbarItem').default;
-export const svNavbarGroup: typeof import('../src/components/svNavbar/Group/svNavbarGroup').default;
-export const svSidebar: typeof import('../src/components/svSidebar/Base/svSidebar').default;
-export const svSidebarItem: typeof import('../src/components/svSidebar/Item/svSidebarItem').default;
-export const svSidebarGroup: typeof import('../src/components/svSidebar/Group/svSidebarGroup').default;
-export const svCard: typeof import('../src/components/svCard/Base/svCard').default;
-export const svCardGroup: typeof import('../src/components/svCard/Group/svCardGroup').default;
-export const svRow: typeof import('../src/layout/grid/SvRow').default;
-export const svCol: typeof import('../src/layout/grid/SvCol').default;
-
-/** Alert Component */
-export class Alert extends SvAlert {}
+export declare const SvButton: DefineComponent;
+export declare const SvButtonGroup: DefineComponent;
+export declare const SvAlert: DefineComponent;
+export declare const SvInput: DefineComponent;
+export declare const SvCheckbox: DefineComponent;
+export declare const SvSwitch: DefineComponent;
+export declare const SvSelect: DefineComponent;
+export declare const SvOption: DefineComponent;
+export declare const SvOptionGroup: DefineComponent;
+export declare const SvAvatar: DefineComponent;
+export declare const SvAvatarGroup: DefineComponent;
+export declare const SvRadio: DefineComponent;
+export declare const SvTooltip: DefineComponent;
+export declare const SvDialog: DefineComponent;
+export declare const SvPagination: DefineComponent;
+export declare const SvTable: DefineComponent;
+export declare const SvTableTr: DefineComponent;
+export declare const SvTableTh: DefineComponent;
+export declare const SvTableTd: DefineComponent;
+export declare const SvNavbar: DefineComponent;
+export declare const SvNavbarItem: DefineComponent;
+export declare const SvNavbarGroup: DefineComponent;
+export declare const SvSidebar: DefineComponent;
+export declare const SvSidebarItem: DefineComponent;
+export declare const SvSidebarGroup: DefineComponent;
+export declare const SvCard: DefineComponent;
+export declare const SvCardGroup: DefineComponent;
+export declare const SvRow: DefineComponent;
+export declare const SvCol: DefineComponent;
 
 // ── Vue augmentations ───────────────────────────────────────────
 
 declare module 'vue' {
   interface ComponentCustomProperties {
-    $sv: SvFunctions;
-  }
-
-  interface globalProperties {
-    $sv: SvFunctions;
+    $sv: SaxVueFunctions;
   }
 }
 

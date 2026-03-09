@@ -1,14 +1,28 @@
-import { SaxVueUIComponent } from '../component';
-/** Alert Component */
+import type { DefineComponent } from 'vue';
 
-export declare class SvAlert extends SaxVueUIComponent {
-  hiddenContent: boolean;
-  closable: boolean;
-  progress: number | string;
-  relief: boolean;
-  flat: boolean;
-  gradient: boolean;
-  shadow: boolean;
-  border: boolean;
-  solid: boolean;
+export interface SvAlertProps {
+  /** v-model — controls visibility */
+  modelValue?: boolean;
+  solid?: boolean;
+  border?: boolean;
+  shadow?: boolean;
+  gradient?: boolean;
+  flat?: boolean;
+  relief?: boolean;
+  hiddenContent?: boolean | null;
+  closable?: boolean;
+  progress?: number | string;
+  page?: number | string;
+  // color props
+  color?: string | null;
+  primary?: boolean;
+  danger?: boolean;
+  success?: boolean;
+  warn?: boolean;
+  dark?: boolean;
+  active?: boolean;
 }
+
+declare const SvAlert: DefineComponent<SvAlertProps>;
+export { SvAlert };
+export default SvAlert;

@@ -1,6 +1,7 @@
-import { Alert } from '../index';
+import type { SvAlertProps } from '../index';
 
-class Test extends Alert {
-  progress: string = '60';
-  color: string = 's';
-}
+const alertProps: SvAlertProps = {
+  progress: 60,
+  color: 's',
+  modelValue: true,
+};
